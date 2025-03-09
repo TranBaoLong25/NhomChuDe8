@@ -2,15 +2,14 @@ package uth.edu.homestay_campingbooking.services;
 import uth.edu.homestay_campingbooking.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uth.edu.homestay_campingbooking.models.User;
-import uth.edu.homestay_campingbooking.repositories.UserRepository;
+import uth.edu.homestay_campingbooking.repositories.IUserRepository;
 
 import java.util.List;
 
 @Service
 public class UserService {
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
     public void create(User user) {
         userRepository.save(user);
     }

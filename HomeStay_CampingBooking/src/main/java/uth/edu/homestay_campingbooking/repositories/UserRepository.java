@@ -9,7 +9,7 @@ import uth.edu.homestay_campingbooking.models.User;
 import java.util.List;
 @Repository
 @Transactional
-public class UserRepository {
+public class UserRepository implements IUserRepository {
     @PersistenceContext
     private EntityManager entityManager;
     public void save(User user) {
