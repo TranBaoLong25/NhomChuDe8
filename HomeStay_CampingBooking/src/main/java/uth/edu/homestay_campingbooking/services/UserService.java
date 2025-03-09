@@ -7,25 +7,35 @@ import uth.edu.homestay_campingbooking.repositories.IUserRepository;
 import java.util.List;
 
 @Service
-public class UserService {
-    @Autowired
+public class UserService implements IUserService {
     private IUserRepository userRepository;
-    public void create(User user) {
+    @Override
+    public void save(User user) {
         userRepository.save(user);
     }
-    public User getUserByName(String username) {
-        return userRepository.findByUsername(username);
-    }
-    public User getUserById(long id) {
+
+    @Override
+    public User findById(long id) {
         return userRepository.findById(id);
     }
-    public List<User> getAllUsers() {
+
+    @Override
+    public List<User> findAll() {
         return userRepository.findAll();
     }
-    public void update(User user) {
-        userRepository.update(user);
+
+    @Override
+    public User findByUser(User user) {
+        return userRepository.findByUsername(user.getUsername());
     }
-    public void delete(User user) {
-        userRepository.deleteById(user.getId());
+
+    @Override
+    public void deleteById(long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public void update(User user) {
+        userRepository.save(user);
     }
 }
