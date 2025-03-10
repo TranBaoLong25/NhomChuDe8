@@ -8,11 +8,15 @@ public class User {
     private long id;
     private String username;
     private String password;
-    public User(String username, String password) {
+    private String role;
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
     public User() {}
+    public String getRole() {return role;}
+    public void setRole(String role) {this.role = role;}
     public long getId() {return id;}
     public String getUsername() {return username;}
     public String getPassword() {return password;}

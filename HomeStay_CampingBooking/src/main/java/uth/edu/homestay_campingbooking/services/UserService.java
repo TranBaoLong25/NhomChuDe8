@@ -1,6 +1,6 @@
 package uth.edu.homestay_campingbooking.services;
-import uth.edu.homestay_campingbooking.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import uth.edu.homestay_campingbooking.models.User;
 import org.springframework.stereotype.Service;
 import uth.edu.homestay_campingbooking.repositories.IUserRepository;
 
@@ -9,6 +9,10 @@ import java.util.List;
 @Service
 public class UserService implements IUserService {
     private IUserRepository userRepository;
+    @Autowired
+    public UserService(IUserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
     @Override
     public void save(User user) {
         userRepository.save(user);
