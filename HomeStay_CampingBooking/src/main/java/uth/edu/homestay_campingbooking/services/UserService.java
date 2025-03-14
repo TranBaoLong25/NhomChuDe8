@@ -15,6 +15,11 @@ public class UserService implements IUserService {
     }
     @Override
     public void save(User user) {
+        for (User u : userRepository.findAll()) {
+            if (u.getUsername().equals(user.getUsername())) {
+                throw new RuntimeException("Username is already in use");
+            }
+        }
         userRepository.save(user);
     }
 
@@ -29,8 +34,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findByUser(User user) {
-        return userRepository.findByUsername(user.getUsername());
+    public User findByUser(String username) {
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -39,7 +44,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void update(User user) {
-        userRepository.save(user);
+    public void update(long id, User user) {
+        userRepository.update(id, user);
     }
 }

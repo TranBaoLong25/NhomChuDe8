@@ -16,6 +16,9 @@ public class UserRepository implements IUserRepository {
         entityManager.persist(user);
     }
     public User findById(long id) {
+        if (entityManager.find(User.class, id) == null) {
+            throw new RuntimeException("id=" + id + " not found");
+        }
         return entityManager.find(User.class, id);
     }
     public List<User> findAll() {
@@ -27,16 +30,27 @@ public class UserRepository implements IUserRepository {
                     .setParameter("username", username)
                     .getSingleResult();
         } catch (Exception e) {
-            return null; // Trả về null nếu không tìm thấy
+            throw new RuntimeException("username: "+username+" not found"); // Trả về null nếu không tìm thấy
         }
     }
     public void deleteById(long id) {
         User user = findById(id);
         if (user != null) {
             entityManager.remove(user);
+        }else {
+            throw new RuntimeException("id: " + id + " not found");
         }
     }
-    public void update(User user) {
-        entityManager.merge(user);
+    public void update(long id, User newData) {
+        User user = findById(id);
+        if (user != null) {
+            user.setUsername(newData.getUsername());
+            user.setPassword(newData.getPassword());
+            user.setRole(newData.getRole());
+            entityManager.merge(user); // Cập nhật user
+        } else {
+            throw new RuntimeException("id: " + id + " not found");
+        }
     }
+
 }

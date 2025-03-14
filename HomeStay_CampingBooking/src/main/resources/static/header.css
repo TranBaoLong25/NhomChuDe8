@@ -1,0 +1,113 @@
+/* ======= HEADER ======= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.8); /* Nền tối trong suốt */
+    backdrop-filter: blur(10px); /* Hiệu ứng làm mờ nền */
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* ======= LOGO + MENU ======= */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Logo bên trái, menu bên phải */
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* ======= MENU CHÍNH ======= */
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    color: #ffcc00; /* Màu vàng khi hover */
+}
+
+/* ======= DROPDOWN MENU ======= */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9); /* Nền tối mờ */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    min-width: 180px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 16px;
+    display: block;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hiện dropdown khi hover */
+.account:hover .dropdown-content {
+    display: block;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+    .menu {
+        flex-direction: column;
+        text-align: center;
+    }
+    .menu li {
+        margin: 10px 0;
+    }
+}
+html, body {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+h1 { font-size: 28px; font-weight: bold; }
+h2 { font-size: 24px; font-weight: bold; }
+p, a, button, input {
+    font-size: 16px;
+}
+.homepage {
+    font-size: 16px !important;
+}
+body {
+    padding-top: 60px; /* Điều chỉnh theo chiều cao của header */
+}

@@ -9,5 +9,5 @@ public interface IUserRepository {
     List<User> findAll();
     User findByUsername(String username);
     void deleteById(long id);
-    void update(User user);
+    void update(long id, User user);
 }

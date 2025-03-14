@@ -7,7 +7,7 @@ public interface IUserService {
     void save(User user);
     User findById(long id);
     List<User> findAll();
-    User findByUser(User user);
+    User findByUser(String username);
     void deleteById(long id);
-    void update(User user);
+    void update(long id, User user);
 }

@@ -1,0 +1,184 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-family: Arial, sans-serif;
+}
+.wrapper {
+    margin-top: -50px;
+    position: relative;
+    width: 800px;
+    height: 65vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 50px 0 #00a6bc;
+    padding: 20px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.title {
+    margin-left:115px;
+    font-size: 35px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.inp {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 20px;
+}
+
+.inp label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-right: 20px; /* Khoảng cách giữa label và ô nhập */
+    flex: 0 0 50px; /* Label có chiều rộng cố định */
+}
+
+.input-wrapper {
+    flex-grow: 1; /* Ô nhập liệu sẽ chiếm hết không gian còn lại */
+}
+
+.input, .form-control {
+    width: 400px; /* Đảm bảo các input chiếm hết chiều rộng của phần tử cha */
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus, .form-control:focus, select.input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+select.input {
+    width: 235px;
+    padding: 12px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    outline: none;
+}
+
+.submit {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-top: 0px;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #0ef, #c800ff);
+    color: white;
+}
+
+.submit:hover {
+    background: linear-gradient(45deg, #c800ff, #0ef);
+}
+
+.footer {
+    margin-left: 100px;
+    text-align: center;
+}
+
+.footer a {
+    color: #0ef;
+    text-decoration: none;
+}
+
+.text-danger {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 5px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+}
+
+.link {
+    color: #0ef;
+    text-decoration: none;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 390px;
+    background: linear-gradient(to right, #0ef, #c800ff);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+    padding-right: 70px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.wel_text {
+    font-size: 40px;
+    margin-top: -50px;
+    line-height: 50px;
+}
+
+.para {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
+</head>
+<body>
+<header>
+    <ul class="menu">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="account">
+            <a href="javascript:void(0)">Tài khoản</a>
+            <div class="dropdown-content">
+                <a href="/login" id="loginLink">Đăng Nhập</a>
+                <a href="/register" id="registerLink">Đăng Ký</a>
+                <a href="" id="logoutLink">Đăng Xuất</a>
+            </div>
+        </li>
+    </ul>
+</header>
+<div class="wrapper">
+    <form id="registerForm" method="post" class="form">
+        <h1 class="title">Đăng Ký</h1>
+        <div class="inp">
+            <input asp-for="Users.Username" class="input" type="text" placeholder="Username" />
+        </div>
+
+        <div class="inp">
+            <input asp-for="Users.Password" class="input" type="password" placeholder="Password" />
+        </div>
+
+        <div class="inp">
+            <input asp-for="Users.Password" class="input" type="password" placeholder="confirmPassword" />
+        </div>
+        <div class="inp">
+            <select class="input" style="width: 400px">
+                <option>Student</option>
+                <option>Parent</option>
+            </select>
+        </div>
+        <button type="submit" class="submit">Đăng ký</button>
+
+        <p class="footer">
+            Đã có tài khoản? <a href="/login" class="link">Đăng nhập</a>
+        </p>
+    </form>
+
+    <div class="banner">
+        <h1 class="wel_text">HomeStay</h1>
+        <p class="para"></p>
+    </div>
+</div>
+</body>
+</html>

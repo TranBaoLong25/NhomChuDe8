@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/login.css">
+  <link rel="stylesheet" type="text/css" href="/header.css">
+</head>
+<body>
+<header>
+  <ul class="menu">
+    <li><a href="/">Trang chủ</a></li>
+    <li class="account">
+      <a href="javascript:void(0)">Tài khoản</a>
+      <div class="dropdown-content">
+        <a href="/login" id="loginLink">Đăng Nhập</a>
+        <a href="/register" id="registerLink">Đăng Ký</a>
+        <a href="" id="logoutLink">Đăng Xuất</a>
+      </div>
+    </li>
+  </ul>
+</header>
+<div class="wrapper">
+  <form method="post" class="form" id="loginForm">
+    <h1 class="title">Đăng Nhập</h1>
+    <div class="inp">
+      <input type="text" name="Username" id="loginUsername" class="input" placeholder="Username" required />
+    </div>
+    <div class="inp">
+      <input type="password" name="Password" id="loginPassword" class="input" placeholder="Password" required />
+    </div>
+    <button type="submit" class="submit">Đăng nhập</button>
+    <p class="footer">Chưa có tài khoản? <a href="/register" class="link">Đăng ký</a></p>
+  </form>
+  <div class="banner">
+    <h1 class="wel_text">HomeStay</h1>
+    <p class="para"></p>
+  </div>
+</div>
+</body>
+</html>
