@@ -1,25 +1,293 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Trang chu</title>
-    <link rel="stylesheet" type="text/css" href="/header.css">
-</head>
-<body>
-<header>
-    <ul class="menu">
-        <li><a href="/">Trang chủ</a></li>
-        <li class="account">
-            <a href="javascript:void(0)">Tài khoản</a>
-            <div class="dropdown-content">
-                <a href="/login" id="loginLink">Đăng Nhập</a>
-                <a href="/register" id="registerLink">Đăng Ký</a>
-                <a href="" id="logoutLink">Đăng Xuất</a>
-            </div>
-        </li>
-    </ul>
-</header>
-He thong homstay & Camping Booking
-</body>
-</html>
-
+@@ -1,292 +1,296 @@
+-@@ -1,88 +1,88 @@
+--<!DOCTYPE html>
+--<html lang="en">
+--<head>
+--    <meta charset="UTF-8">
+--    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+--    <link rel="stylesheet" href="style.css">
+--    <title>Homestays and Camping</title>
+--</head>
+--<body>
+--    <nav>
+--        <div class="nav-container">
+--            <div class="logo">Homestay Booking</div>
+--            <div class="nav-links">
+--                <a href="#home" class="active">Trang chủ</a>
+--                <a href="#about">Giới thiệu</a>
+--                <a href="#gallery">Hình ảnh</a>
+--                <a href="#services">Dịch vụ</a>
+--                <a href="#food">Menu ẩm thực</a>
+--                <a href="#outdoor">Hoạt động ngoài trời</a>
+--                <a href="#news">Tin tức</a>
+--                <a href="#contact">Liên hệ</a>
+--            </div>
+--            <div class="language-dropdown">
+--                <select>
+--                    <option value="vi">Việt Nam</option>
+--                    <option value="en">English</option>
+--                </select>
+--            </div>
+--        </div>
+--    </nav>
+--
+--    <section class="hero">
+--        <div class="hero-content">
+--            <h2>Chào mừng bạn đến với</h2>
+--            <h1>Homestay Booking</h1>
+--            <p>Homestay - Camping - Coffee</p>
+--        </div>
+--    </section>
+--
+--    <section id="filterSection">
+--        <label for="location">Vị trí:</label>
+--        <select id="location">
+--            <option value="">Tất cả</option>
+--            <option value="dalat">Đà Lạt</option>
+--            <option value="sapa">Sapa</option>
+--        </select>
+--        <label for="price">Giá tối đa:</label>
+--        <input type="range" id="price" min="0" max="1000000" value="1000000">
+--        <span id="priceValue">1000000 VND</span>
+--        <button id="applyFilters">Áp dụng bộ lọc</button>
+--    </section>
+--<h2>Danh sách các homestay</h2> 
+--    <section id="gallery" class="homestay-list">
+--        <img src="Images/images (1).jpg" alt="Image 1">
+--        <img src="Images/images (2).jpg" alt="Image 2">
+--        <img src="Images/images (3).jpg" alt="Image 3">
+--        <img src="Images/images (4).jpg" alt="Image 4">
+--        <img src="Images/images (5).jpg" alt="Image 5">
+--        <img src="Images/images (6).jpg" alt="Image 6">
+--        <img src="Images/images (7).jpg" alt="Image 7">
+--        <img src="Images/images.jpg" alt="Image 8">
+--        <img src="Images/tải xuống (1).jpg" alt="Image 9">
+--        <img src="Images/tải xuống (2).jpg" alt="Image 10">
+--        <img src="Images/tải xuống (3).jpg" alt="Image 11">
+--        <img src="Images/tải xuống (4).jpg" alt="Image 12">
+--        <img src="Images/tải xuống (5).jpg" alt="Image 13">
+--        <img src="Images/tải xuống (6).jpg" alt="Image 14">
+--        <img src="Images/tải xuống (7).jpg" alt="Image 15">
+--        <img src="Images/tải xuống (8).jpg" alt="Image 16">
+--        <img src="Images/tải xuống (9).jpg" alt="Image 17">
+--        <img src="Images/tải xuống (10).jpg" alt="Image 18">
+--        <img src="Images/tải xuống (11).jpg" alt="Image 19">
+--        <img src="Images/tải xuống (12).jpg" alt="Image 20">
+--        <img src="Images/tải xuống (13).jpg" alt="Image 21">
+--        <img src="Images/tải xuống (14).jpg" alt="Image 22">
+--        <img src="Images/tải xuống (15).jpg" alt="Image 23">
+--        <img src="Images/tải xuống (16).jpg" alt="Image 24">
+--        <img src="Images/tải xuống (17).jpg" alt="Image 25">
+--        <img src="Images/tải xuống (18).jpg" alt="Image 26">
+--        <img src="Images/tải xuống (19).jpg" alt="Image 27">
+--        <img src="Images/tải xuống (20).jpg" alt="Image 28">
+--        <img src="Images/tải xuống (21).jpg" alt="Image 29">
+--        <img src="Images/tải xuống.jpg" alt="Image 30">
+--    </section>
+--
+--    <script src="NewPageScript.js"></script>
+--</body>
+--</html>
+-<h1>Danh Sách Homestay</h1>
+-    </header>
+-<h2>Danh sách các homestay</h2>
+-<section id="gallery" class="homestay-list">
+-
+-        <div id="homestayList">
+-            <div class="homestay-item">
+-                <img src="Images/images (1).jpg" alt="Homestay Đà Lạt 1">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 1</h3>
+-                    <p>Giá: 500.000 VND</p>
+-                    <p>Một homestay ấm cúng với cảnh đẹp, gần trung tâm thành phố Đà Lạt. Nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (2).jpg" alt="Homestay Sapa 1">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 1</h3>
+-                    <p>Giá: 300.000 VND</p>
+-                    <p>Nằm giữa khu vườn hoa rực rỡ, homestay mang đến không gian ấm cúng, gần gũi thiên nhiên.</p>
+-                    <p>Phòng nghỉ rộng rãi, có cửa sổ lớn với tầm nhìn ra rừng thông xanh mướt.</p>
+-                    <p>Du khách có thể thư giãn trên ban công riêng, thưởng thức cà phê sáng trong làn sương nhẹ.</p>
+-                    <p>Homestay được trang bị đầy đủ tiện nghi như:</p>
+-                    <ul>
+-                        <li>WiFi tốc độ cao</li>
+-                        <li>TV màn hình phẳng</li>
+-                        <li>Điều hòa không khí</li>
+-                        <li>Bếp nấu ăn</li>
+-                        <li>Phòng tắm riêng với nước nóng</li>
+-                    </ul>
+-                    <p>Ngoài ra, bạn có thể tận hưởng:</p>
+-                    <ul>
+-                        <li>Bể bơi ngoài trời</li>
+-                        <li>Khu BBQ</li>
+-                        <li>Xe đạp miễn phí để khám phá thành phố</li>
+-                        <li>Dịch vụ đưa đón sân bay tiện lợi</li>
+-                    </ul>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (3).jpg" alt="Homestay Đà Lạt 2">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 2</h3>
+-                    <p>Giá: 600.000 VND</p>
+-                    <p>Một homestay sang trọng với bể bơi, thích hợp cho các gia đình và nhóm bạn.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (4).jpg" alt="Homestay Sapa 2">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 2</h3>
+-                    <p>Giá: 400.000 VND</p>
+-                    <p>Thưởng thức cắm trại với BBQ ở Sapa, nơi có không khí trong lành và cảnh đẹp tuyệt vời.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (5).jpg" alt="Homestay Đà Lạt 3">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 3</h3>
+-                    <p>Giá: 550.000 VND</p>
+-                    <p>Một homestay với WiFi miễn phí, gần các điểm tham quan nổi tiếng của Đà Lạt.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (6).jpg" alt="Homestay Sapa 3">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 3</h3>
+-                    <p>Giá: 350.000 VND</p>
+-                    <p>Cắm trại với bể bơi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/images (7).jpg" alt="Homestay Đà Lạt 4">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 4</h3>
+-                    <p>Giá: 700.000 VND</p>
+-                    <p>Một homestay với BBQ và WiFi, thích hợp cho các buổi tiệc tùng và gặp gỡ bạn bè.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (9).jpg" alt="Homestay Sapa 4">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 4</h3>
+-                    <p>Giá: 450.000 VND</p>
+-                    <p>Cắm trại với WiFi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (10).jpg" alt="Homestay Đà Lạt 5">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 5</h3>
+-                    <p>Giá: 800.000 VND</p>
+-                    <p>Một homestay cao cấp với bể bơi, thích hợp cho các gia đình và nhóm bạn.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (8).jpg" alt="Homestay Sapa 5">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 5</h3>
+-                    <p>Giá: 500.000 VND</p>
+-                    <p>Trải nghiệm cắm trại BBQ, nơi có không khí trong lành và cảnh đẹp tuyệt vời.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (11).jpg" alt="Homestay Đà Lạt 6">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 6</h3>
+-                    <p>Giá: 650.000 VND</p>
+-                    <p>Một homestay với WiFi và bể bơi, gần các điểm tham quan nổi tiếng của Đà Lạt.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (12).jpg" alt="Homestay Sapa 6">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 6</h3>
+-                    <p>Giá: 370.000 VND</p>
+-                    <p>Cắm trại với WiFi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (13).jpg" alt="Homestay Đà Lạt 7">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 7</h3>
+-                    <p>Giá: 720.000 VND</p>
+-                    <p>Một homestay với tiện nghi BBQ, thích hợp cho các buổi tiệc tùng và gặp gỡ bạn bè.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (14).jpg" alt="Homestay Sapa 7">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 7</h3>
+-                    <p>Giá: 480.000 VND</p>
+-                    <p>Cắm trại với bể bơi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (15).jpg" alt="Homestay Đà Lạt 8">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 8</h3>
+-                    <p>Giá: 590.000 VND</p>
+-                    <p>Một homestay ấm cúng với WiFi và bể bơi, gần các điểm tham quan nổi tiếng của Đà Lạt.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (16).jpg" alt="Homestay Sapa 8">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 8</h3>
+-                    <p>Giá: 390.000 VND</p>
+-                    <p>Trải nghiệm cắm trại BBQ, nơi có không khí trong lành và cảnh đẹp tuyệt vời.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (17).jpg" alt="Homestay Đà Lạt 9">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 9</h3>
+-                    <p>Giá: 750.000 VND</p>
+-                    <p>Một homestay với WiFi miễn phí, gần các điểm tham quan nổi tiếng của Đà Lạt.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (18).jpg" alt="Homestay Sapa 9">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 9</h3>
+-                    <p>Giá: 420.000 VND</p>
+-                    <p>Cắm trại với bể bơi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (19).jpg" alt="Homestay Đà Lạt 10">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 10</h3>
+-                    <p>Giá: 680.000 VND</p>
+-                    <p>Một homestay với BBQ và WiFi, thích hợp cho các gia đình và nhóm bạn.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (20).jpg" alt="Homestay Sapa 10">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 10</h3>
+-                    <p>Giá: 460.000 VND</p>
+-                    <p>Cắm trại với WiFi, nơi lý tưởng để thư giãn và tận hưởng không khí trong lành.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống (21).jpg" alt="Homestay Đà Lạt 11">
+-                <div class="homestay-details">
+-                    <h3>Homestay Đà Lạt 11</h3>
+-                    <p>Giá: 710.000 VND</p>
+-                    <p>Một homestay với bể bơi, thích hợp cho các gia đình và nhóm bạn.</p>
+-                </div>
+-            </div>
+-            <div class="homestay-item">
+-                <img src="Images/tải xuống.jpg" alt="Homestay Sapa 11">
+-                <div class="homestay-details">
+-                    <h3>Homestay Sapa 11</h3>
+-                    <p>Giá: 530.000 VND</p>
+-                    <p>Trải nghiệm cắm trại BBQ, nơi có không khí trong lành và cảnh đẹp tuyệt vời.</p>
+-                </div>
+-            </div>
+-        </div>
+-    </section>
+-</body>
+-</html>
