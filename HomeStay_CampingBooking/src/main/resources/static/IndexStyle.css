@@ -1,0 +1,261 @@
+/* General layout */
+body {
+    background-color: #111; /* Dark background */
+    color: white; /* Default text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333; /* Dark background */
+    position: fixed; /* Fixed position */
+    width: 100%; /* Full width */
+    z-index: 1000; /* On top of other elements */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* Center the logo */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Space between menu items */
+}
+
+.nav-links a {
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    position: relative; /* For the active dot */
+}
+
+.nav-links a.active::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: gold; /* Active indicator */
+    border-radius: 50%; /* Circle */
+    position: absolute;
+    bottom: -5px; /* Position below the text */
+    left: 50%;
+    transform: translateX(-50%); /* Center the dot */
+}
+
+.language-dropdown {
+    margin-left: auto; /* Align to the right */
+}
+
+.language-dropdown select {
+    padding: 5px;
+    border-radius: 5px; /* Rounded edges */
+    border: 1px solid #ccc; /* Light border */
+}
+
+.hero {
+    background-image: url('Images/images (1).jpg'); /* Background image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+.hero-content {
+    position: relative; /* Position for text */
+    z-index: 1; /* On top of the overlay */
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Filter container */
+#filterSection {
+    padding: 1em;
+    background-color: #f1f1f1;
+}
+
+/* Filter title */
+.filter-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Price slider */
+.price-slider {
+    width: 100%; /* Full width for the slider */
+}
+
+.price-input {
+    background-color: #333; /* Dark background for input */
+    color: white; /* Text color */
+    border: 1px solid #444; /* Light border */
+    padding: 5px; /* Padding for input */
+    width: 100px; /* Width of the input */
+    text-align: center; /* Center text in input */
+}
+
+/* Checkbox */
+.filter-checkbox {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center vertically */
+    margin-bottom: 8px; /* Space between checkboxes */
+}
+
+.filter-checkbox input {
+    margin-right: 8px; /* Space between checkbox and label */
+    cursor: pointer; /* Pointer cursor for checkbox */
+}
+
+/* Accommodation type list */
+.filter-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.filter-list li {
+    margin-bottom: 6px; /* Space between list items */
+}
+
+/* Homestay item styles */
+.homestay-item {
+    display: flex; /* Use flexbox for side-by-side layout */
+    margin: 20px; /* Increased margin for better spacing */
+    padding: 15px; /* Increased padding for better content spacing */
+    border: 1px solid #ccc; /* Light border for items */
+    border-radius: 5px; /* Rounded corners for items */
+    background-color: #222; /* Dark background for items */
+    flex: 1 1 calc(30% - 40px); /* Allow items to take up space and wrap */
+}
+
+
+#homestayList {
+    display: flex; /* Enable horizontal layout */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+}
+
+
+#homestayList {
+    display: flex; /* Enable horizontal layout */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px; /* Increased margin for better spacing */
+    padding: 15px; /* Increased padding for better content spacing */
+    width: 100%; /* Full width for better layout */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow for better visibility */
+    background-color: #222; /* Dark background for items */
+}
+
+.homestay-details {
+    color: #ccc; /* Light gray text color for details */
+    font-size: 14px; /* Font size for details */
+}
+
+
+.hotel-title {
+    font-size: 18px; /* Increased font size for hotel title */
+    font-weight: bold;
+    color: #fff; /* White title color */
+}
+
+
+.hotel-location {
+    color: #4aa3df; /* Location color */
+    font-size: 14px;
+}
+
+.hotel-rating {
+    color: orange; /* Rating color */
+    font-size: 16px;
+}
+
+.homestay-item img {
+    width: 35%; /* Set image width to 35% for side-by-side layout */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for images */
+    transition: transform 0.3s ease-in-out; /* Transition for hover effect */
+    border: 2px solid #444; /* Light border for images */
+}
+
+.homestay-item img:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.original-price {
+    text-decoration: line-through; /* Strike through original price */
+    color: gray; /* Original price color */
+    font-size: 14px;
+}
+
+.discounted-price {
+    color: red; /* Discounted price color */
+    font-size: 20px;
+    font-weight: bold; /* Bold for emphasis */
+    background-color: #2d6cdf; /* Background color for emphasis */
+    padding: 5px; /* Padding for better visibility */
+    border-radius: 5px; /* Rounded corners for badge */
+}
+
+
+.discount-badge {
+    background-color: red; /* Badge background color */
+    color: white; /* Badge text color */
+    padding: 5px 10px; /* Padding for badge */
+    border-radius: 5px; /* Rounded corners for badge */
+    font-size: 14px;
+}
+
+.favorite-button {
+    background-color: transparent; /* Transparent background for button */
+    color: white; /* Button text color */
+    border: 2px solid #fff; /* White border for button */
+    border-radius: 50%; /* Circular button */
+    width: 30px; /* Button width */
+    height: 30px; /* Button height */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    transition: background-color 0.3s, border-color 0.3s; /* Transition for hover effect */
+}
+
+.favorite-button:hover {
+    background-color: #444; /* Darker background on hover */
+    border-color: #ccc; /* Change border color on hover */
+}
+
+
+.favorite-button:hover {
+    background-color: #444; /* Darker background on hover */
+}
