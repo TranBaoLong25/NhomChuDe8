@@ -1,5 +1,7 @@
 package uth.edu.homestay_campingbooking.services;
 import org.springframework.beans.factory.annotation.Autowired;
+import uth.edu.homestay_campingbooking.exception.AppException;
+import uth.edu.homestay_campingbooking.exception.ErrorCode;
 import uth.edu.homestay_campingbooking.models.User;
 import org.springframework.stereotype.Service;
 import uth.edu.homestay_campingbooking.repositories.IUserRepository;
@@ -17,7 +19,7 @@ public class UserService implements IUserService {
     public void save(User user) {
         for (User u : userRepository.findAll()) {
             if (u.getUsername().equals(user.getUsername())) {
-                throw new RuntimeException("Username is already in use");
+                throw new AppException(ErrorCode.USER_EXISTED);
             }
         }
         userRepository.save(user);

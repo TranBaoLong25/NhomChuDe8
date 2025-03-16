@@ -1,4 +1,5 @@
 package uth.edu.homestay_campingbooking.controllers;
 
-public class BookingController {
+public class BookedRoomController {
+
 }

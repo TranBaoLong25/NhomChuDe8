@@ -1,4 +1,4 @@
 package uth.edu.homestay_campingbooking.services;
 
-public class BookingService {
+public class BookedRoomService {
 }

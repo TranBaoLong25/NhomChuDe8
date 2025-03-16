@@ -1,26 +1,31 @@
 package uth.edu.homestay_campingbooking.models;
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "HomeStay")
 public class HomeStay {
     @Id
     private Long id;
-    private String roomType;
+    @Enumerated(EnumType.STRING)
+    private RoomType roomType;
+    @Min(value = 1, message = "PRICE_INVALID")
     private double roomPrice;
     private boolean booked = false;
-    @Lob
-    private Blob image;
+    @ElementCollection
+    private List<String> imageUrls = new ArrayList<>();
     public HomeStay() {}
-    public HomeStay(String roomType, double roomPrice, boolean booked) {
+    public HomeStay(Long id, RoomType roomType, double roomPrice, boolean booked, List<String> imageUrls) {
+        this.id = id;
         this.roomType = roomType;
         this.roomPrice = roomPrice;
         this.booked = booked;
+        this.imageUrls = imageUrls;
     }
-
     public Long getId() {
         return id;
     }
@@ -29,11 +34,11 @@ public class HomeStay {
         this.id = id;
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 
@@ -53,12 +58,12 @@ public class HomeStay {
         this.booked = booked;
     }
 
-    public Blob getImage() {
-        return image;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     @Override

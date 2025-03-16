@@ -4,6 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+import uth.edu.homestay_campingbooking.exception.AppException;
+import uth.edu.homestay_campingbooking.exception.ErrorCode;
 import uth.edu.homestay_campingbooking.models.User;
 
 import java.util.List;
@@ -17,7 +19,7 @@ public class UserRepository implements IUserRepository {
     }
     public User findById(long id) {
         if (entityManager.find(User.class, id) == null) {
-            throw new RuntimeException("id=" + id + " not found");
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
         return entityManager.find(User.class, id);
     }
@@ -30,7 +32,7 @@ public class UserRepository implements IUserRepository {
                     .setParameter("username", username)
                     .getSingleResult();
         } catch (Exception e) {
-            throw new RuntimeException("username: "+username+" not found"); // Trả về null nếu không tìm thấy
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
     public void deleteById(long id) {
@@ -38,7 +40,7 @@ public class UserRepository implements IUserRepository {
         if (user != null) {
             entityManager.remove(user);
         }else {
-            throw new RuntimeException("id: " + id + " not found");
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
     public void update(long id, User newData) {
@@ -49,7 +51,7 @@ public class UserRepository implements IUserRepository {
             user.setRole(newData.getRole());
             entityManager.merge(user); // Cập nhật user
         } else {
-            throw new RuntimeException("id: " + id + " not found");
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
 

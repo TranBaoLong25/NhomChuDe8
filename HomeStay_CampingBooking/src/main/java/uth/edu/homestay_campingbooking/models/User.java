@@ -1,16 +1,21 @@
 package uth.edu.homestay_campingbooking.models;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+
 @Entity
 @Table (name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Size(min = 4, message = "USERNAME_INVALID")
     private String username;
+    @Size(min = 8, message = "PASSWORD_INVALID")
     private String password;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -18,12 +23,11 @@ public class User {
 
     public User() {
     }
-
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

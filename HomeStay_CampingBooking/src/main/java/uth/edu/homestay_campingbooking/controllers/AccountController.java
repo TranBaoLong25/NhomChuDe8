@@ -1,5 +1,6 @@
 package uth.edu.homestay_campingbooking.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.homestay_campingbooking.models.User;
@@ -16,7 +17,7 @@ public class AccountController {
         return userService.findAll();
     }
     @PostMapping("/insert")
-    public void saveUser(@RequestBody User user){
+    public void saveUser(@RequestBody @Valid User user){
         userService.save(user);
     }
     @GetMapping("/id/{id}")
