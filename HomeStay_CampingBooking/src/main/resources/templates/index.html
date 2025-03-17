@@ -1,94 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/IndexStyle.css">
-    <title>Homestays and Camping</title>
-</head>
-<body>
-<nav>
-    <div class="nav-container">
-        <div class="logo">Homestay Booking</div>
-        <div class="nav-links">
-            <a href="#home" class="active">Trang chủ</a>
-            <a href="#about">Giới thiệu</a>
-            <a href="#gallery">Hình ảnh</a>
-            <a href="#services">Dịch vụ</a>
-            <a href="#food">Menu ẩm thực</a>
-            <a href="#outdoor">Hoạt động ngoài trời</a>
-            <a href="#news">Tin tức</a>
-            <a href="#contact">Liên hệ</a>
-        </div>
-        <div class="language-dropdown">
-            <select>
-                <option value="vi">Việt Nam</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-    </div>
-</nav>
-
-<section class="hero">
-    <div class="hero-content">
-        <h2>Chào mừng bạn đến với</h2>
-        <h1>Homestay Booking</h1>
-        <p>Homestay - Camping - Coffee</p>
-    </div>
-</section>
-
-<section id="filterSection">
-    <label for="location">Vị trí:</label>
-    <select id="location">
-        <option value="">Tất cả</option>
-        <option value="dalat">Đà Lạt</option>
-        <option value="sapa">Sapa</option>
-    </select>
-    <label for="price">Giá tối đa:</label>
-    <input type="range" id="price" min="0" max="1000000" value="1000000">
-    <span id="priceValue">1000000 VND</span>
-    <button id="applyFilters">Áp dụng bộ lọc</button>
-</section>
-<h2>Danh sách các homestay</h2>
-<section id="gallery" class="homestay-list">
-    <img src="/static/images/images (1).jpg" alt="Image 1">
-    <img src="/static/images/images (2).jpg" alt="Image 2">
-    <img src="/static/images/images (3).jpg" alt="Image 3">
-    <img src="/static/images/images (4).jpg" alt="Image 4">
-    <img src="/static/images/images (5).jpg" alt="Image 5">
-    <img src="/static/images/images (6).jpg" alt="Image 6">
-    <img src="/static/images/images (7).jpg" alt="Image 7">
-    <img src="/static/images/images.jpg" alt="Image 8">
-    <img src="/static/images/tải xuống (1).jpg" alt="Image 9">
-    <img src="/static/images/tải xuống (2).jpg" alt="Image 10">
-    <img src="/static/images/tải xuống (3).jpg" alt="Image 11">
-    <img src="/static/images/tải xuống (4).jpg" alt="Image 12">
-    <img src="/static/images/tải xuống (5).jpg" alt="Image 13">
-    <img src="/static/images/tải xuống (6).jpg" alt="Image 14">
-    <img src="/static/images/tải xuống (7).jpg" alt="Image 15">
-    <img src="/static/images/tải xuống (8).jpg" alt="Image 16">
-    <img src="/static/images/tải xuống (9).jpg" alt="Image 17">
-    <img src="/static/images/tải xuống (10).jpg" alt="Image 18">
-    <img src="/static/images/tải xuống (11).jpg" alt="Image 19">
-    <img src="/static/images/tải xuống (12).jpg" alt="Image 20">
-    <img src="/static/images/tải xuống (13).jpg" alt="Image 21">
-    <img src="/static/images/tải xuống (14).jpg" alt="Image 22">
-    <img src="/static/images/tải xuống (15).jpg" alt="Image 23">
-    <img src="/static/images/tải xuống (16).jpg" alt="Image 24">
-    <img src="/static/images/tải xuống (17).jpg" alt="Image 25">
-    <img src="/static/images/tải xuống (18).jpg" alt="Image 26">
-    <img src="/static/images/tải xuống (19).jpg" alt="Image 27">
-    <img src="/static/images/tải xuống (20).jpg" alt="Image 28">
-    <img src="/static/images/tải xuống (21).jpg" alt="Image 29">
-    <img src="/static/images/tải xuống.jpg" alt="Image 30">
-</section>
-
-<script src="NewPageScript.js"></script>
-</body>
-</html>
+@@ -1,292 +1,296 @@
+-@@ -1,88 +1,88 @@
+--<!DOCTYPE html>
+--<html lang="en">
+--<head>
+--    <meta charset="UTF-8">
+--    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+--    <link rel="stylesheet" href="style.css">
+--    <title>Homestays and Camping</title>
+--</head>
+--<body>
+--    <nav>
+--        <div class="nav-container">
+--            <div class="logo">Homestay Booking</div>
+--            <div class="nav-links">
+--                <a href="#home" class="active">Trang chủ</a>
+--                <a href="#about">Giới thiệu</a>
+--                <a href="#gallery">Hình ảnh</a>
+--                <a href="#services">Dịch vụ</a>
+--                <a href="#food">Menu ẩm thực</a>
+--                <a href="#outdoor">Hoạt động ngoài trời</a>
+--                <a href="#news">Tin tức</a>
+--                <a href="#contact">Liên hệ</a>
+--            </div>
+--            <div class="language-dropdown">
+--                <select>
+--                    <option value="vi">Việt Nam</option>
+--                    <option value="en">English</option>
+--                </select>
+--            </div>
+--        </div>
+--    </nav>
+--
+--    <section class="hero">
+--        <div class="hero-content">
+--            <h2>Chào mừng bạn đến với</h2>
+--            <h1>Homestay Booking</h1>
+--            <p>Homestay - Camping - Coffee</p>
+--        </div>
+--    </section>
+--
+--    <section id="filterSection">
+--        <label for="location">Vị trí:</label>
+--        <select id="location">
+--            <option value="">Tất cả</option>
+--            <option value="dalat">Đà Lạt</option>
+--            <option value="sapa">Sapa</option>
+--        </select>
+--        <label for="price">Giá tối đa:</label>
+--        <input type="range" id="price" min="0" max="1000000" value="1000000">
+--        <span id="priceValue">1000000 VND</span>
+--        <button id="applyFilters">Áp dụng bộ lọc</button>
+--    </section>
+--<h2>Danh sách các homestay</h2> 
+--    <section id="gallery" class="homestay-list">
+--        <img src="Images/images (1).jpg" alt="Image 1">
+--        <img src="Images/images (2).jpg" alt="Image 2">
+--        <img src="Images/images (3).jpg" alt="Image 3">
+--        <img src="Images/images (4).jpg" alt="Image 4">
+--        <img src="Images/images (5).jpg" alt="Image 5">
+--        <img src="Images/images (6).jpg" alt="Image 6">
+--        <img src="Images/images (7).jpg" alt="Image 7">
+--        <img src="Images/images.jpg" alt="Image 8">
+--        <img src="Images/tải xuống (1).jpg" alt="Image 9">
+--        <img src="Images/tải xuống (2).jpg" alt="Image 10">
+--        <img src="Images/tải xuống (3).jpg" alt="Image 11">
+--        <img src="Images/tải xuống (4).jpg" alt="Image 12">
+--        <img src="Images/tải xuống (5).jpg" alt="Image 13">
+--        <img src="Images/tải xuống (6).jpg" alt="Image 14">
+--        <img src="Images/tải xuống (7).jpg" alt="Image 15">
+--        <img src="Images/tải xuống (8).jpg" alt="Image 16">
+--        <img src="Images/tải xuống (9).jpg" alt="Image 17">
+--        <img src="Images/tải xuống (10).jpg" alt="Image 18">
+--        <img src="Images/tải xuống (11).jpg" alt="Image 19">
+--        <img src="Images/tải xuống (12).jpg" alt="Image 20">
+--        <img src="Images/tải xuống (13).jpg" alt="Image 21">
+--        <img src="Images/tải xuống (14).jpg" alt="Image 22">
+--        <img src="Images/tải xuống (15).jpg" alt="Image 23">
+--        <img src="Images/tải xuống (16).jpg" alt="Image 24">
+--        <img src="Images/tải xuống (17).jpg" alt="Image 25">
+--        <img src="Images/tải xuống (18).jpg" alt="Image 26">
+--        <img src="Images/tải xuống (19).jpg" alt="Image 27">
+--        <img src="Images/tải xuống (20).jpg" alt="Image 28">
+--        <img src="Images/tải xuống (21).jpg" alt="Image 29">
+--        <img src="Images/tải xuống.jpg" alt="Image 30">
+--    </section>
+--
+--    <script src="NewPageScript.js"></script>
+--</body>
+--</html>
+-<h1>Danh Sách Homestay</h1>
 -    </header>
 -<h2>Danh sách các homestay</h2>
--<section id="gallerya" class="homestay-list">
+-<section id="gallery" class="homestay-list">
 -
 -        <div id="homestayList">
 -            <div class="homestay-item">
@@ -105,7 +108,8 @@
 -                    <h3>Homestay Sapa 1</h3>
 -                    <p>Giá: 300.000 VND</p>
 -                    <p>Nằm giữa khu vườn hoa rực rỡ, homestay mang đến không gian ấm cúng, gần gũi thiên nhiên.</p>
--
+-                    <p>Phòng nghỉ rộng rãi, có cửa sổ lớn với tầm nhìn ra rừng thông xanh mướt.</p>
+-                    <p>Du khách có thể thư giãn trên ban công riêng, thưởng thức cà phê sáng trong làn sương nhẹ.</p>
 -                    <p>Homestay được trang bị đầy đủ tiện nghi như:</p>
 -                    <ul>
 -                        <li>WiFi tốc độ cao</li>
