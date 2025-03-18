@@ -1,0 +1,305 @@
+/* General layout */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    top: 0px;
+    background-color: #4CAF50;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: gold;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.language-dropdown {
+    margin-left: auto;
+}
+
+.language-dropdown select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.hero {
+    background-image: url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/Background.jpg');
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+/* Filter container */
+#filterSection {
+    padding: 1em;
+    background-color: #ffffff;
+}
+
+/* Filter title */
+.filter-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Price slider */
+.price-slider {
+    width: 100%;
+}
+
+.price-input {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+/* Checkbox */
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.filter-checkbox input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* Accommodation type list */
+.filter-list {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-list li {
+    margin-bottom: 6px;
+}
+
+/* Homestay item styles */
+.homestay-item {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: flex;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #222;
+    flex: 1 1 calc(30% - 40px);
+}
+
+#homestayList {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: #222;
+}
+
+.homestay-details {
+    color: #666;
+    font-size: 16px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: left;
+    padding: 10px;
+    box-sizing: border-box;
+    width: calc(100% - 300px);
+}
+
+.hotel-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
+
+.hotel-location,
+.hotel-rating,
+.original-price,
+.discounted-price,
+.discount-badge {
+    text-align: left;
+}
+
+.homestay-details p {
+    margin-bottom: 10px;
+}
+
+.homestay-item img {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, border-color 0.3s;
+    border: 2px solid #444;
+}
+
+.homestay-item img:hover {
+    transform: scale(1.05);
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 14px;
+}
+
+.discounted-price {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #2d6cdf;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.discount-badge {
+    background-color: #FF4500;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.favorite-button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.favorite-button:hover {
+    background-color: #444;
+    border-color: #ccc;
+}
+
+#gallerya {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    gap: 20px; /* Khoảng cách giữa hàng và cột */
+    padding: 15px;
+}
+
+#gallerya img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid #ccc; /* Thêm khung viền */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
+    transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển động */
+    margin: 10px; /* Thêm khoảng cách xung quanh ảnh */
+}
+
+#gallerya img:hover {
+    transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
+}
+
+.title h2 {
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+}
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #333; /* Màu nền menu */
+    z-index: 100; /* Đảm bảo menu nằm trên các phần tử khác */
+}
+
+/* Các kiểu dáng khác cho menu (nav-container, nav-links, v.v.) */
