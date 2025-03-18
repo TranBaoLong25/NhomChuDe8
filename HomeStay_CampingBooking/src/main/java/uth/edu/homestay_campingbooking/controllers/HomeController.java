@@ -23,5 +23,9 @@ public class HomeController {
     public String gioiThieu(){
         return "About";
     }
+    @GetMapping("/filter")
+    public String boLoc(){
+        return "filter";
+    }
 
 }

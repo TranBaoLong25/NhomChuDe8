@@ -1,5 +1,6 @@
 /* Kiểu dáng cho bộ lọc */
 #filter-container {
+    margin-top: 55px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;

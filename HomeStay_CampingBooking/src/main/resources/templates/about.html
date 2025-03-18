@@ -3,36 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Gioi thieu</title>
+    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
     <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
 
 <header>
 </header>
-
 <nav>
-    <ul class="menu">
-        <li><a href="/">Trang chủ</a></li>
-        <li><a href="/about">Giới thiệu</a></li>
-        <li><a href="/services">Dịch vụ</a></li>
-        <li><a href="/filter">Lọc Homestay</a></li>
-        <li><a href="/support">Hỗ trợ</a></li>
-        <li><a href="/booking">Đặt Chỗ</a></li>
-        <li><a href="/register">Đăng ký</a></li>
-        <li><a href="/login">Đăng nhập</a></li>
-        <li class="account">
-            <a href="javascript:void(0)">Tài khoản</a>
-            <div class="dropdown-content">
-                <a href="/login" id="loginLink">Đăng Nhập</a>
-                <a href="/register" id="registerLink">Đăng Ký</a>
-                <a href="" id="logoutLink">Đăng Xuất</a>
-            </div>
-        </li>
-    </ul>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới thiệu</a>
+            <a href="#">Dịch vụ</a>
+            <a href="filter">Lọc Homestay</a>
+            <a href="#">Hỗ trợ</a>
+            <a href="#">Đặt Chỗ</a>
+            <li class="account">
+                <a href="javascript:void(0)">Tài khoản ▼</a>
+                <div class="dropdown-content">
+                    <a href="/login" id="loginLink">Đăng Nhập</a>
+                    <a href="/register" id="registerLink">Đăng Ký</a>
+                    <a href="" id="logoutLink">Đăng Xuất</a>
+                </div>
+            </li>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
 </nav>
 
 <main>
-    <h1>Đây là trang Giới thiệu</h1>
+    <h1 style="margin-top: 50px">Đây là trang Giới thiệu</h1>
     <p>Nội dung chi tiết về trang giới thiệu...</p>
 </main>
 

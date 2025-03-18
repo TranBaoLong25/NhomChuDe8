@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/IndexStyle.css">
-    <link rel="stylesheet" href="../static/filterStyle.css">
+    <link rel="stylesheet" href="/IndexStyle.css">
+    <link rel="stylesheet" href="/header.css">
     <title>Trải nghiệm Homestay và Camping</title>
 </head>
 <body>
@@ -12,24 +12,30 @@
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-            <a href="#home" class="active">Trang Chủ</a>
-            <a href="#about">Giới thiệu</a>
-            <a href="#services">Dịch vụ</a>
-            <a href="filter.html">Lọc Homestay</a>
-            <a href="#support">Hỗ trợ</a>
-            <a href="#booking">Đặt Chỗ</a>
-            <a href="#register">Đăng ký</a>
-            <a href="#login">Đăng nhập</a>
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới thiệu</a>
+            <a href="#">Dịch vụ</a>
+            <a href="filter">Lọc Homestay</a>
+            <a href="#">Hỗ trợ</a>
+            <a href="#">Đặt Chỗ</a>
+            <li class="account">
+                <a href="javascript:void(0)">Tài khoản ▼</a>
+                <div class="dropdown-content">
+                    <a href="/login" id="loginLink">Đăng Nhập</a>
+                    <a href="/register" id="registerLink">Đăng Ký</a>
+                    <a href="" id="logoutLink">Đăng Xuất</a>
+                </div>
+            </li>
         </div>
         <div class="language-dropdown">
-            <label for="language-select">Ngôn ngữ:</label>
-            <select id="language-select">
+            <select>
                 <option value="vi">Việt Nam</option>
                 <option value="en">English</option>
             </select>
         </div>
     </div>
 </nav>
+
 
 <section class="hero">
     <div class="hero-content">
