@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+    <title>Bộ Lọc</title>
+    <link rel="stylesheet" href="../static/IndexStyle.css">
+    <link rel="stylesheet" href="../static/filterStyle.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="index.html#home" class="active">Trang Chủ</a>
+            <a href="index.html#about">Giới thiệu</a>
+            <a href="index.html#services">Dịch vụ</a>
+            <a href="filter.html">Lọc Homestay</a>
+            <a href="index.html#support">Hỗ trợ</a>
+            <a href="index.html#booking">Đặt Chỗ</a>
+            <a href="index.html#register">Đăng ký</a>
+            <a href="index.html#login">Đăng nhập</a>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</nav>
+<div id="filter-container">
+    <div class="filter-title">Bộ Lọc</div>
+    <div id="location-filter" class="filter-option">
+        <label for="location">Địa Điểm:</label>
+        <select id="location" name="location">
+            <option value="">Tất cả</option>
+            <option value="dalat">Đà Lạt</option>
+            <option value="sapa">Sapa</option>
+            <option value="vungtau">Vũng Tàu</option>
+            <option value="hanoi">Hà Nội</option>
+            <option value="hoian">Hội An</option>
+            <option value="phuquoc">Phú Quốc</option>
+        </select>
+    </div>
+    <div id="price-filter" class="filter-option">
+        <label for="price">Giá:</label>
+        <select id="price" name="price">
+            <option value="">Tất cả</option>
+            <option value="0-300">Dưới 300.000 VNĐ</option>
+            <option value="300-500">300.000 - 500.000 VNĐ</option>
+            <option value="500-700">500.000 - 700.000 VNĐ</option>
+            <option value="700-1000">700.000 - 1.000.000 VNĐ</option>
+            <option value="1000-1500">1.000.000 - 1.500.000 VNĐ</option>
+            <option value="1500+">Trên 1.500.000 VNĐ</option>
+        </select>
+    </div>
+    <div id="sort-filter" class="filter-option">
+        <label for="sort">Sắp Xếp Theo:</label>
+        <select id="sort" name="sort">
+            <option value="rating">Đánh Giá</option>
+            <option value="price-asc">Giá Tăng Dần</option>
+            <option value="price-desc">Giá Giảm Dần</option>
+        </select>
+    </div>
+    <button id="apply-filters">Lọc</button>
+</div>
+<script src="filterScript.js"></script>
+</body>
+</html>

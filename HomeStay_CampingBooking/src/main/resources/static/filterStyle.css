@@ -1,0 +1,85 @@
+/* Kiểu dáng cho bộ lọc */
+#filter-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Kiểu dáng cho tiêu đề bộ lọc */
+.filter-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Kiểu dáng cho các tùy chọn lọc */
+.filter-option {
+    margin-bottom: 15px;
+}
+
+/* Kiểu dáng cho nhãn của tùy chọn lọc */
+.filter-option label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Kiểu dáng cho khung chọn địa điểm */
+#location-filter select,
+#price-filter select,
+#sort-filter select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+#location-filter select:hover,
+#price-filter select:hover,
+#sort-filter select:hover {
+    border-color: #aaa;
+}
+
+#apply-filters {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+}
+
+#apply-filters:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng khi hover */
+}
+
+/* Kiểu dáng cho danh sách homestay & camping */
+#homestay-list {
+    margin-top: 20px; /* Thêm khoảng cách giữa bộ lọc và danh sách */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+body {
+    /* Các thuộc tính khác */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; /* Các font chữ phổ biến */
+}
+
+/* Hoặc một số font chữ tiếng Việt tốt hơn (nếu bạn có) */
+/* body {
+    font-family: "Roboto", sans-serif;
+} */
