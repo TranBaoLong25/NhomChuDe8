@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
+<html lang="en">
 <head>
-    <title>Bộ Lọc</title>
-    <link rel="stylesheet" href="../static/IndexStyle.css">
-    <link rel="stylesheet" href="../static/filterStyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <link rel="stylesheet" type="text/css" href="/filterStyle.css">
+    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-            <a href="index.html#home" class="active">Trang Chủ</a>
-            <a href="index.html#about">Giới thiệu</a>
-            <a href="index.html#services">Dịch vụ</a>
-            <a href="filter.html">Lọc Homestay</a>
-            <a href="index.html#support">Hỗ trợ</a>
-            <a href="index.html#booking">Đặt Chỗ</a>
-            <a href="index.html#register">Đăng ký</a>
-            <a href="index.html#login">Đăng nhập</a>
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới thiệu</a>
+            <a href="#">Dịch vụ</a>
+            <a href="filter">Lọc Homestay</a>
+            <a href="#">Hỗ trợ</a>
+            <a href="#">Đặt Chỗ</a>
+            <li class="account">
+                <a href="javascript:void(0)">Tài khoản ▼</a>
+                <div class="dropdown-content">
+                    <a href="/login" id="loginLink">Đăng Nhập</a>
+                    <a href="/register" id="registerLink">Đăng Ký</a>
+                    <a href="" id="logoutLink">Đăng Xuất</a>
+                </div>
+            </li>
         </div>
         <div class="language-dropdown">
             <select>
@@ -28,6 +36,7 @@
         </div>
     </div>
 </nav>
+
 <div id="filter-container">
     <div class="filter-title">Bộ Lọc</div>
     <div id="location-filter" class="filter-option">

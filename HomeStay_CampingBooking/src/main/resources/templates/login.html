@@ -8,19 +8,34 @@
   <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
-<header>
-  <ul class="menu">
-    <li><a href="/">Trang chủ</a></li>
-    <li class="account">
-      <a href="javascript:void(0)">Tài khoản</a>
-      <div class="dropdown-content">
-        <a href="/login" id="loginLink">Đăng Nhập</a>
-        <a href="/register" id="registerLink">Đăng Ký</a>
-        <a href="" id="logoutLink">Đăng Xuất</a>
-      </div>
-    </li>
-  </ul>
-</header>
+<nav>
+  <div class="nav-container">
+    <div class="logo">Homestay & Camping</div>
+    <div class="nav-links">
+      <a href="/" class="active">Trang Chủ</a>
+      <a href="About">Giới thiệu</a>
+      <a href="#">Dịch vụ</a>
+      <a href="filter">Lọc Homestay</a>
+      <a href="#">Hỗ trợ</a>
+      <a href="#">Đặt Chỗ</a>
+      <li class="account">
+        <a href="javascript:void(0)">Tài khoản ▼</a>
+        <div class="dropdown-content">
+          <a href="/login" id="loginLink">Đăng Nhập</a>
+          <a href="/register" id="registerLink">Đăng Ký</a>
+          <a href="" id="logoutLink">Đăng Xuất</a>
+        </div>
+      </li>
+    </div>
+    <div class="language-dropdown">
+      <select>
+        <option value="vi">Việt Nam</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
 <div class="wrapper">
   <form method="post" class="form" id="loginForm">
     <h1 class="title">Đăng Nhập</h1>

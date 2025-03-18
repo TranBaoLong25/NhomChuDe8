@@ -6,64 +6,90 @@ body {
     margin: 0;
     padding: 0;
 }
-
 nav {
-    top: 0px;
+    top: 0;
     background-color: #4CAF50;
     position: fixed;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 40px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .logo {
     color: white;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
-    text-align: center;
-    flex-grow: 1;
+    text-transform: uppercase;
 }
 
+/* ----- NAVIGATION LINKS ----- */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    align-items: center;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ----- ACTIVE LINK (Hiển thị trạng thái đang chọn) ----- */
+.nav-links a.active {
+    font-weight: bold;
+}
+
+/* ----- ACCOUNT DROPDOWN ----- */
+.account {
     position: relative;
 }
 
-.nav-links a.active::after {
-    content: '';
+.account > a {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 16px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 16px;
     display: block;
-    width: 8px;
-    height: 8px;
-    background-color: gold;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.language-dropdown {
-    margin-left: auto;
+.dropdown-content a:hover {
+    background-color: #4CAF50;
+    color: white;
 }
 
+/* ----- LANGUAGE DROPDOWN ----- */
 .language-dropdown select {
-    padding: 5px;
+    padding: 6px 12px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer;
 }
-
 .hero {
     background-image: url('images/Background.jpg');
     background-size: cover;
@@ -301,5 +327,31 @@ header {
     background-color: #333; /* Màu nền menu */
     z-index: 100; /* Đảm bảo menu nằm trên các phần tử khác */
 }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    min-width: 180px;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 999; /* Đảm bảo hiển thị trên các phần khác */
+}
 
-/* Các kiểu dáng khác cho menu (nav-container, nav-links, v.v.) */
+.account:hover .dropdown-content {
+    display: block;
+}
+/* Ngăn chặn lướt ngang */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Đảm bảo mọi phần tử con không tràn ra ngoài */
+* {
+    max-width: 100%;
+}
