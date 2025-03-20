@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Gioi thieu</title>
-    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
-    <link rel="stylesheet" type="text/css" href="/header.css">
+    <link rel="stylesheet" type="text/css" href="../static/IndexStyle.css">
+    <link rel="stylesheet" type="text/css" href="../static/header.css">
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
 </header>
-<nav>
+<nav id="mainNav">
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-            <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới thiệu</a>
+            <a href="index.html" class="active">Trang Chủ</a>
+            <a href="about.html">Giới thiệu</a>
             <a href="#">Dịch vụ</a>
-            <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ trợ</a>
+            <a href="filter.html">Lọc Homestay</a>
             <a href="#">Đặt Chỗ</a>
-            <li class="account">
+            <li class="account" id="accountDropdown">
                 <a href="javascript:void(0)">Tài khoản ▼</a>
                 <div class="dropdown-content">
                     <a href="/login" id="loginLink">Đăng Nhập</a>
@@ -29,7 +28,7 @@
                 </div>
             </li>
         </div>
-        <div class="language-dropdown">
+        <div class="language-dropdown" id="languageSelect">
             <select>
                 <option value="vi">Việt Nam</option>
                 <option value="en">English</option>
@@ -38,9 +37,97 @@
     </div>
 </nav>
 
-<main>
-    <h1 style="margin-top: 50px">Đây là trang Giới thiệu</h1>
-    <p>Nội dung chi tiết về trang giới thiệu...</p>
+<main id="mainContent">
+    <h1 id="pageTitle" style="margin-top: 50px">Chào mừng bạn đến với Homestay & Camping</h1>
+    <section id="aboutUsSection">
+        <h2 id="aboutUsTitle">Về chúng tôi</h2>
+        <p id="aboutUsText">Homestay & Camping là trang web chuyên cung cấp các dịch vụ homestay và camping độc đáo, mang đến cho bạn những trải nghiệm du lịch đáng nhớ. Chúng tôi tin rằng du lịch không chỉ là việc khám phá những địa điểm mới, mà còn là cơ hội để kết nối với thiên nhiên, văn hóa địa phương và những người bạn đồng hành.</p>
+        <p id="aboutUsMission">Với đội ngũ nhân viên giàu kinh nghiệm và đam mê, chúng tôi cam kết mang đến cho bạn những dịch vụ chất lượng, tận tâm và chuyên nghiệp. Hãy cùng Homestay & Camping khám phá những vẻ đẹp tiềm ẩn của Việt Nam!</p>
+    </section>
+    <section id="servicesSection">
+        <h2 id="servicesTitle">Dịch vụ của chúng tôi</h2>
+        <article id="homestayService">
+            <h3 id="homestayTitle">Homestay</h3>
+            <p id="homestayDescription">
+                Trải nghiệm không gian ấm cúng, gần gũi với văn hóa địa phương tại các homestay độc đáo của chúng tôi. Chúng tôi cung cấp nhiều loại hình homestay khác nhau:
+            <ul>
+                <li>Homestay gia đình ấm cúng: trải nghiệm cuộc sống hàng ngày của người dân địa phương.</li>
+                <li>Homestay sinh thái: tận hưởng không gian xanh mát và tham gia các hoạt động bảo vệ môi trường.</li>
+                <li>Homestay nghệ thuật: chiêm ngưỡng và tham gia các hoạt động sáng tạo của các nghệ sĩ địa phương.</li>
+            </ul>
+            Tiện nghi tại homestay:
+            <ul>
+                <li>Phòng ngủ thoải mái, sạch sẽ, đầy đủ tiện nghi.</li>
+                <li>Khu vực sinh hoạt chung ấm cúng.</li>
+                <li>Bữa ăn sáng/tối với các món ăn đặc sản địa phương.</li>
+            </ul>
+            </p>
+        </article>
+        <article id="campingService">
+            <h3 id="campingTitle">Camping</h3>
+            <p id="campingDescription">
+                Hòa mình vào thiên nhiên hoang sơ tại các khu cắm trại tuyệt đẹp của chúng tôi. Chúng tôi cung cấp các dịch vụ cắm trại đa dạng:
+            <ul>
+                <li>Khu cắm trại ven hồ: tận hưởng không gian yên bình và hoạt động dưới nước.</li>
+                <li>Khu cắm trại trong rừng: khám phá vẻ đẹp hoang sơ và tham gia trekking.</li>
+                <li>Khu cắm trại trên núi: ngắm nhìn toàn cảnh và tận hưởng không khí trong lành.</li>
+            </ul>
+            Hoạt động trải nghiệm khi camping:
+            <ul>
+                <li>Đốt lửa trại, nướng BBQ, ca hát.</li>
+                <li>Ngắm sao đêm, tận hưởng không gian yên tĩnh.</li>
+                <li>Tham gia leo núi, chèo thuyền kayak, v.v.</li>
+            </ul>
+            </p>
+        </article>
+    </section>
+    <section id="locationsSection">
+        <h2 id="locationsTitle">Địa điểm nổi bật</h2>
+        <article id="sapaHomestay">
+            <h3>Homestay Sapa</h3>
+            <p>Khám phá văn hóa dân tộc thiểu số và ngắm nhìn ruộng bậc thang.</p>
+        </article>
+        <article id="dalatHomestay">
+            <h3>Homestay Đà Lạt</h3>
+            <p>Tận hưởng không khí se lạnh và ngắm nhìn đồi hoa.</p>
+        </article>
+        <article id="cattienCamping">
+            <h3>Camping Cát Tiên</h3>
+            <p>Khám phá hệ sinh thái rừng nhiệt đới.</p>
+        </article>
+        <article id="beachCamping">
+            <h3>Camping Biển</h3>
+            <p>Tận hưởng vẻ đẹp của các vùng biển đẹp.</p>
+        </article>
+    </section>
+    <section id="commitmentsSection">
+        <h2 id="commitmentsTitle">Cam kết và chính sách</h2>
+        <p id="commitmentsText">Chúng tôi cam kết mang đến dịch vụ chất lượng, an toàn và sự hài lòng cho khách hàng. Các chính sách hỗ trợ:</p>
+        <ul>
+            <li>Chính sách hoàn hủy đặt phòng.</li>
+            <li>Chính sách bảo mật thông tin khách hàng.</li>
+            <li>Hỗ trợ khách hàng 24/7.</li>
+        </ul>
+    </section>
+    <section id="mediaSection">
+        <h2 id="mediaTitle">Hình ảnh và video</h2>
+        <div id="imageGallery">
+                <p><a href="duong_dan_den_video_da_lat.mp4">Video giới thiệu Homestay Đà Lạt</a></p>
+                <p><a href="duong_dan_den_video_vung_tau.mp4">Video Giới thiệu Vũng Tàu</a></p>
+            </div>
+        </div>
+        <div id="videoGallery">
+            <video src="../static/video/GioiThieuHomestay.mp4" controls></video>
+            <video src="../static/video/GioiThieuHomestay2.mp4" controls></video>
+        </div>
+    </section>
+    <section id="contactSection">
+        <h2 id="contactTitle">Liên hệ</h2>
+        <p id="contactAddress">Địa chỉ: [Địa chỉ]</p>
+        <p id="contactPhone">Điện thoại: [Số điện thoại]</p>
+        <p id="contactEmail">Email: [Email]</p>
+        <p id="contactSocial">Mạng xã hội: [Các trang mạng xã hội]</p>
+    </section>
 </main>
 
 </body>
