@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/login.css">
-    <link rel="stylesheet" type="text/css" href="/header.css">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="../static/register.css">
+    <link rel="stylesheet" href="../static/header.css">
+
 </head>
 <body>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-            <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới thiệu</a>
-            <a href="#">Dịch vụ</a>
-            <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ trợ</a>
+            <a href="index.html" class="active">Trang Chủ</a>
+            <a href="about.html">Giới thiệu</a>
+            <a href="service.html">Dịch vụ</a>
+            <a href="filter.html">Lọc Homestay</a>
             <a href="#">Đặt Chỗ</a>
             <li class="account">
                 <a href="javascript:void(0)">Tài khoản ▼</a>
@@ -36,36 +36,28 @@
     </div>
 </nav>
 
-<div class="wrapper">
-    <form id="registerForm" method="post" class="form">
-        <h1 class="title">Đăng Ký</h1>
-        <div class="inp">
-            <input asp-for="Users.Username" class="input" type="text" placeholder="Username" />
+<div class="container">
+    <div class="form-container">
+        <h1>Đăng ký</h1>
+        <input type="text" placeholder="Tên người dùng">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Mật khẩu">
+        <button>Đăng ký</button>
+        <p class="social-text">Hoặc đăng ký bằng nền tảng xã hội</p>
+        <div class="social-icons">
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
-
-        <div class="inp">
-            <input asp-for="Users.Password" class="input" type="password" placeholder="Password" />
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Chào mừng bạn trở lại!</h1>
+                <p>Bạn đã có tài khoản?</p>
+                <button class="ghost" id="login">Đăng nhập</button>
+            </div>
         </div>
-
-        <div class="inp">
-            <input asp-for="Users.Password" class="input" type="password" placeholder="confirmPassword" />
-        </div>
-        <div class="inp">
-            <select class="input" style="width: 400px">
-                <option>Student</option>
-                <option>Parent</option>
-            </select>
-        </div>
-        <button type="submit" class="submit">Đăng ký</button>
-
-        <p class="footer">
-            Đã có tài khoản? <a href="/login" class="link">Đăng nhập</a>
-        </p>
-    </form>
-
-    <div class="banner">
-        <h1 class="wel_text">HomeStay</h1>
-        <p class="para"></p>
     </div>
 </div>
 </body>

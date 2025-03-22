@@ -9,42 +9,72 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Kiểu dáng cho tiêu đề bộ lọc */
+@keyframes colorChange {
+    0% { color: #333; }
+    50% { color: #007bff; }
+    100% { color: #333; }
+}
+
 .filter-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Kiểu dáng cho các tùy chọn lọc */
 .filter-option {
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Khoảng cách giữa các bộ lọc */
 }
 
-/* Kiểu dáng cho nhãn của tùy chọn lọc */
 .filter-option label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
-/* Kiểu dáng cho khung chọn địa điểm */
-#location-filter select,
+.filter-option > div {
+    margin-left: 20px; /* Thụt lề phần select và checkbox */
+}
+
+.filter-option label:hover {
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Kiểu dáng cho khung chọn địa điểm, giá, sắp xếp, loại phòng, số người ở */
+#room-type-filter select,
 #price-filter select,
-#sort-filter select {
+#sort-filter select,
+#capacity-filter select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
-    transition: border-color 0.3s ease; /* Hiệu ứng chuyển màu */
+    transition: border-color 0.3s ease;
 }
 
-#location-filter select:hover,
+#room-type-filter select:hover,
 #price-filter select:hover,
-#sort-filter select:hover {
+#sort-filter select:hover,
+#capacity-filter select:hover {
     border-color: #aaa;
+}
+
+/* Kiểu dáng cho checkbox tiện nghi và loại hình du lịch */
+#amenities-filter label,
+#travel-type-filter label {
+    display: block; /* Hiển thị trên các dòng riêng biệt */
+    margin-bottom: 5px; /* Khoảng cách giữa các checkbox */
 }
 
 #apply-filters {
@@ -59,28 +89,23 @@
     font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #apply-filters:hover {
     background-color: #45a049;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Kiểu dáng cho danh sách homestay & camping */
 #homestay-list {
-    margin-top: 20px; /* Thêm khoảng cách giữa bộ lọc và danh sách */
+    margin-top: 20px;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-body {
-    /* Các thuộc tính khác */
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; /* Các font chữ phổ biến */
-}
 
-/* Hoặc một số font chữ tiếng Việt tốt hơn (nếu bạn có) */
-/* body {
-    font-family: "Roboto", sans-serif;
-} */
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}

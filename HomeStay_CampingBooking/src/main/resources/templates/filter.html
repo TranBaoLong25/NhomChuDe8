@@ -37,38 +37,74 @@
 </nav>
 
 <div id="filter-container">
-    <div class="filter-title">Bộ Lọc</div>
-    <div id="location-filter" class="filter-option">
-        <label for="location">Địa Điểm:</label>
-        <select id="location" name="location">
-            <option value="">Tất cả</option>
-            <option value="dalat">Đà Lạt</option>
-            <option value="sapa">Sapa</option>
-            <option value="vungtau">Vũng Tàu</option>
-            <option value="hanoi">Hà Nội</option>
-            <option value="hoian">Hội An</option>
-            <option value="phuquoc">Phú Quốc</option>
-        </select>
+    <div class="filter-title">Bộ Lọc Homestay </div>
+    <div id="room-type-filter" class="filter-option">
+        <label>Loại Phòng:</label>
+        <div>
+            <select id="roomType" name="roomType">
+                <option value="">Tất cả</option>
+                <option value="StandardRoom">Phòng tiêu chuẩn</option>
+                <option value="DeluxeRoom">Phòng cao cấp</option>
+                <option value="SuiteRoom">Phòng lớn (Suite)</option>
+                <option value="DormitoryRoom">Phòng tập thể</option>
+                <option value="Bungalow">Phòng gần thiên nhiên</option>
+            </select>
+        </div>
+    </div>
+    <div id="capacity-filter" class="filter-option">
+        <label>Số Người Ở:</label>
+        <div>
+            <select id="capacity" name="capacity">
+                <option value="">Tất cả</option>
+                <option value="1-2">1-2 người</option>
+                <option value="3-5">3-5 người</option>
+                <option value="5-7">5-7 người</option>
+                <option value="7-10">7-10 người</option>
+            </select>
+        </div>
+    </div>
+    <div id="amenities-filter" class="filter-option">
+        <label>Tiện Nghi:</label>
+        <div>
+            <label><input type="checkbox" name="amenities" value="view"> View đẹp</label><br>
+            <label><input type="checkbox" name="amenities" value="livingRoom"> Phòng khách riêng</label><br>
+            <label><input type="checkbox" name="amenities" value="Seaview"> View Hướng biển </label><br>
+            <label><input type="checkbox" name="amenities" value="CoupleRoom"> Phòng giường đôi</label><br>
+        </div>
+    </div>
+    <div id="travel-type-filter" class="filter-option">
+        <label>Loại Hình Du Lịch:</label>
+        <div>
+            <label><input type="checkbox" name="travelType" value="family"> Du lịch Gia đình</label><br>
+            <label><input type="checkbox" name="travelType" value="group"> Du lịch Nhóm bạn</label><br>
+            <label><input type="checkbox" name="travelType" value="eco"> Du lịch sinh thái</label><br>
+            <label><input type="checkbox" name="travelType" value="team"> Du lịch theo đoàn</label><br>
+            <label><input type="checkbox" name="travelType" value="adventure"> Du lịch Thám Hiểm</label><br>
+        </div>
     </div>
     <div id="price-filter" class="filter-option">
-        <label for="price">Giá:</label>
-        <select id="price" name="price">
-            <option value="">Tất cả</option>
-            <option value="0-300">Dưới 300.000 VNĐ</option>
-            <option value="300-500">300.000 - 500.000 VNĐ</option>
-            <option value="500-700">500.000 - 700.000 VNĐ</option>
-            <option value="700-1000">700.000 - 1.000.000 VNĐ</option>
-            <option value="1000-1500">1.000.000 - 1.500.000 VNĐ</option>
-            <option value="1500+">Trên 1.500.000 VNĐ</option>
-        </select>
+        <label>Giá:</label>
+        <div>
+            <select id="price" name="price">
+                <option value="">Tất cả</option>
+                <option value="0-300">Dưới 300.000 VNĐ</option>
+                <option value="300-500">300.000 - 500.000 VNĐ</option>
+                <option value="500-700">500.000 - 700.000 VNĐ</option>
+                <option value="700-1000">700.000 - 1.000.000 VNĐ</option>
+                <option value="1000-1500">1.000.000 - 1.500.000 VNĐ</option>
+                <option value="1500+">Trên 1.500.000 VNĐ</option>
+            </select>
+        </div>
     </div>
     <div id="sort-filter" class="filter-option">
-        <label for="sort">Sắp Xếp Theo:</label>
-        <select id="sort" name="sort">
-            <option value="rating">Đánh Giá</option>
-            <option value="price-asc">Giá Tăng Dần</option>
-            <option value="price-desc">Giá Giảm Dần</option>
-        </select>
+        <label>Sắp Xếp Theo:</label>
+        <div>
+            <select id="sort" name="sort">
+                <option value="rating">Đánh Giá</option>
+                <option value="price-asc">Giá Tăng Dần</option>
+                <option value="price-desc">Giá Giảm Dần</option>
+            </select>
+        </div>
     </div>
     <button id="apply-filters">Lọc</button>
 </div>

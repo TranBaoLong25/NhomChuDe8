@@ -1,16 +1,22 @@
 /* General layout */
 body {
-    background-color: #f0f0f0;
-    color: #333;
-    font-family: Arial, sans-serif;
+    height: 100vh;
     margin: 0;
     padding: 0;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Giữ ảnh nền cố định khi cuộn trang */
+    overflow-y: auto; /* Đảm bảo trang có thể cuộn */
 }
+
+
 nav {
-    top: 0;
-    background-color: #4CAF50;
     position: fixed;
+    top: 0;
     width: 100%;
+    background-color: #4CAF50;
     z-index: 1000;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -31,7 +37,6 @@ nav {
     text-transform: uppercase;
 }
 
-/* ----- NAVIGATION LINKS ----- */
 .nav-links {
     display: flex;
     gap: 25px;
@@ -53,12 +58,10 @@ nav {
     transform: translateY(-2px);
 }
 
-/* ----- ACTIVE LINK (Hiển thị trạng thái đang chọn) ----- */
 .nav-links a.active {
     font-weight: bold;
 }
 
-/* ----- ACCOUNT DROPDOWN ----- */
 .account {
     position: relative;
 }
@@ -69,39 +72,36 @@ nav {
     padding: 8px 16px;
 }
 
-.dropdown-content a {
-    color: #333;
-    padding: 10px 16px;
+.account:hover .dropdown-content {
     display: block;
-    font-size: 14px;
-    transition: background-color 0.3s, color 0.3s;
 }
 
-.dropdown-content a:hover {
-    background-color: #4CAF50;
-    color: white;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    min-width: 180px;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 999;
 }
 
-/* ----- LANGUAGE DROPDOWN ----- */
-.language-dropdown select {
-    padding: 6px 12px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    cursor: pointer;
-}
 .hero {
-    background-image: url('images/Background.jpg');
-    background-size: cover;
-    background-position: center;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/Background.jpg');
+    background-size: cover;
+    background-position: center;
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/Background.jpg');
 }
 
 .hero::before {
@@ -123,8 +123,7 @@ nav {
     font-size: 48px;
     font-weight: bold;
     color: white;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 header {
@@ -134,20 +133,13 @@ header {
     padding: 1em 0;
 }
 
-/* Filter container */
+/* Filter Section */
 #filterSection {
     padding: 1em;
     background-color: #ffffff;
 }
 
-/* Filter title */
-.filter-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 
-/* Price slider */
 .price-slider {
     width: 100%;
 }
@@ -161,7 +153,6 @@ header {
     text-align: center;
 }
 
-/* Checkbox */
 .filter-checkbox {
     display: flex;
     align-items: center;
@@ -173,7 +164,6 @@ header {
     cursor: pointer;
 }
 
-/* Accommodation type list */
 .filter-list {
     list-style: none;
     padding: 0;
@@ -183,72 +173,38 @@ header {
     margin-bottom: 6px;
 }
 
-/* Homestay item styles */
+/* Homestay Item */
 .homestay-item {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
     display: flex;
-    margin: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #222;
-    flex: 1 1 calc(30% - 40px);
-}
-
-#homestayList {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 20px;
-    padding: 15px;
-    width: 100%;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    background-color: #222;
-}
-
-.homestay-details {
-    color: #666;
-    font-size: 16px;
-    margin-left: 15px;
-    margin-right: 15px;
-    text-align: left;
-    padding: 10px;
-    box-sizing: border-box;
-    width: calc(100% - 300px);
-}
-
-.hotel-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    text-align: left;
-}
-
-.hotel-location,
-.hotel-rating,
-.original-price,
-.discounted-price,
-.discount-badge {
-    text-align: left;
-}
-
-.homestay-details p {
-    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Đây chính là phần thiết lập màu nền đen */
 }
 
 .homestay-item img {
-    width: 300px;
-    height: 200px;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out, border-color 0.3s;
-    border: 2px solid #444;
+    width: 25%; /* Giữ nguyên kích thước */
+    height: auto;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 10px; /* Bo tròn góc ảnh */
+    border: 3px solid #ccc; /* Viền màu xám */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng đổ bóng nhẹ */
 }
 
-.homestay-item img:hover {
-    transform: scale(1.05);
+
+.homestay-details {
+    width: 60%;
+    padding: 20px;
+    color: #666;
+    text-align: left;
+}
+
+.homestay-details h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .original-price {
@@ -295,7 +251,7 @@ header {
 #gallerya {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
-    gap: 20px; /* Khoảng cách giữa hàng và cột */
+    gap: 20px;
     padding: 15px;
 }
 
@@ -303,55 +259,131 @@ header {
     width: 300px;
     height: 200px;
     object-fit: cover;
-    border: 2px solid #ccc; /* Thêm khung viền */
-    border-radius: 8px; /* Bo tròn góc */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ */
-    transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển động */
-    margin: 10px; /* Thêm khoảng cách xung quanh ảnh */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    margin: 10px;
 }
 
 #gallerya img:hover {
-    transform: scale(1.05); /* Hiệu ứng phóng to khi di chuột qua */
+    transform: scale(1.05);
 }
 
-.title h2 {
-    font-size: 36px;
-    text-align: center;
+.title-container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 20px;
     font-weight: bold;
-    color: #333;
-    margin: 20px 0;
-}
-.sticky-nav {
-    position: sticky;
-    top: 0;
-    background-color: #333; /* Màu nền menu */
-    z-index: 100; /* Đảm bảo menu nằm trên các phần tử khác */
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    color: black; /* Chữ màu đen */
+    border: 2px solid green; /* Khung màu xanh lá */
     border-radius: 8px;
-    min-width: 180px;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 999; /* Đảm bảo hiển thị trên các phần khác */
+    padding: 5px 10px;
+    background-color: #f9f9f9; /* Nền màu sáng để làm nổi chữ */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+}
+.intro {
+    /* Khung tổng thể */
+    max-width: 800px;            /* Độ rộng tối đa */
+    margin: 30px auto;           /* Căn giữa ngang trang */
+    background: rgba(173, 216, 230, 0.6); /* Xanh da trời nhạt với độ trong suốt */
+    backdrop-filter: blur(5px);   /* Làm mờ nền phía sau */
+    padding: 25px;               /* Khoảng cách bên trong */
+    border-radius: 15px;         /* Bo tròn góc khung */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng rõ hơn một chút */
+    text-align: center;          /* Căn giữa chữ */
+    font-family: Arial, sans-serif; /* Phông chữ chung */
+    color: #333;                 /* Chữ màu tối để dễ đọc */
 }
 
-.account:hover .dropdown-content {
-    display: block;
-}
-/* Ngăn chặn lướt ngang */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
+.intro h2 {
+    /* Tiêu đề chính */
+    font-size: 32px;             /* Kích thước chữ lớn hơn */
+    color: #2d6cdf;              /* Màu xanh dương nhạt */
+    margin-bottom: 15px;         /* Khoảng cách dưới */
+    text-transform: uppercase;   /* In hoa toàn bộ */
+    letter-spacing: 1px;         /* Giãn chữ nhẹ */
 }
 
-/* Đảm bảo mọi phần tử con không tràn ra ngoài */
-* {
-    max-width: 100%;
+.intro p {
+    /* Đoạn văn */
+    font-size: 18px;             /* Kích thước chữ vừa phải */
+    line-height: 1.6;            /* Khoảng cách dòng giúp dễ đọc */
+    color: #333;                 /* Màu chữ đậm hơn */
+    margin-bottom: 15px;         /* Khoảng cách dưới */
+}
+
+.intro ul {
+    /* Danh sách nội dung */
+    list-style: none;            /* Loại bỏ ký hiệu đầu dòng */
+    padding: 0;
+    margin: 0 auto;              /* Căn giữa nếu cần */
+    max-width: 600px;            /* Giới hạn độ rộng của danh sách */
+    text-align: left;            /* Căn trái nội dung bên trong */
+}
+
+.intro li {
+    /* Mỗi mục trong danh sách */
+    background: rgba(173, 216, 230, 0.6); /* Xanh nhạt trong suốt */
+    border: 1px solid rgba(144, 200, 180, 0.9); /* Viền rõ hơn */
+    border-radius: 8px;          /* Bo tròn góc */
+    padding: 12px;               /* Khoảng cách bên trong */
+    margin: 8px 0;               /* Khoảng cách giữa các mục */
+    font-size: 16px;             /* Kích thước chữ trong danh sách */
+    line-height: 1.4;            /* Dễ đọc hơn */
+    backdrop-filter: blur(5px);   /* Làm mờ nền phía sau */
+}
+
+
+.intro li strong {
+    color: #2d6cdf;              /* Làm nổi bật phần chữ in đậm */
+}
+.commitment {
+    /* Khung tổng thể */
+    max-width: 800px;            /* Độ rộng tối đa */
+    margin: 30px auto;           /* Căn giữa ngang trang */
+    background: rgba(173, 216, 230, 0.7); /* Xanh da trời nhạt với độ trong suốt nhẹ hơn */
+    backdrop-filter: blur(5px);   /* Làm mờ nền phía sau */
+    padding: 25px;               /* Khoảng cách bên trong */
+    border-radius: 15px;         /* Bo tròn góc khung */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng rõ hơn một chút */
+    text-align: center;          /* Căn giữa chữ */
+    font-family: Arial, sans-serif; /* Phông chữ chung */
+    color: #333;                 /* Chữ màu tối để dễ đọc */
+}
+
+.commitment h2 {
+    font-size: 28px;
+    color: #2d6cdf;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2d6cdf;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.commitment ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+commitment li {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px;
+    background: white;
+    border-left: 5px solid #2d6cdf;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.commitment li strong {
+    color: #2d6cdf;
 }
