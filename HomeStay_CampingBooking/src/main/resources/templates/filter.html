@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filter</title>
     <link rel="stylesheet" type="text/css" href="/filterStyle.css">
-    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
     <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
@@ -14,19 +13,23 @@
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới thiệu</a>
-            <a href="#">Dịch vụ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="#">Dịch Vụ</a>
             <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ trợ</a>
+            <a href="#">Hỗ Trợ</a>
             <a href="#">Đặt Chỗ</a>
-            <li class="account">
-                <a href="javascript:void(0)">Tài khoản ▼</a>
-                <div class="dropdown-content">
-                    <a href="/login" id="loginLink">Đăng Nhập</a>
-                    <a href="/register" id="registerLink">Đăng Ký</a>
-                    <a href="" id="logoutLink">Đăng Xuất</a>
-                </div>
-            </li>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
+
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
         </div>
         <div class="language-dropdown">
             <select>
@@ -37,7 +40,7 @@
     </div>
 </nav>
 
-<div id="filter-container">
+<div id="filter-container" style="margin-top: 70px;">
     <div class="filter-title">Bộ Lọc</div>
     <div id="location-filter" class="filter-option">
         <label for="location">Địa Điểm:</label>

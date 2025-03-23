@@ -13,15 +13,18 @@ public class HomeStay {
     private Long id;
     @Enumerated(EnumType.STRING)
     private RoomType roomType;
+    @Enumerated(EnumType.STRING)
+    private Location location;
     @Min(value = 1, message = "PRICE_INVALID")
     private double roomPrice;
     private boolean booked = false;
     @ElementCollection
     private List<String> imageUrls = new ArrayList<>();
     public HomeStay() {}
-    public HomeStay(Long id, RoomType roomType, double roomPrice, boolean booked, List<String> imageUrls) {
+    public HomeStay(Long id, RoomType roomType, Location location, double roomPrice, boolean booked, List<String> imageUrls) {
         this.id = id;
         this.roomType = roomType;
+        this.location = location;
         this.roomPrice = roomPrice;
         this.booked = booked;
         this.imageUrls = imageUrls;
@@ -66,8 +69,16 @@ public class HomeStay {
         this.imageUrls = imageUrls;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
-        return "id: "+id+" roomType: "+roomType+" roomPrice: "+roomPrice+" booked: "+booked;
+        return "id: "+id+" roomType: "+roomType+"location: "+location+roomPrice+" booked: "+booked;
     }
 }

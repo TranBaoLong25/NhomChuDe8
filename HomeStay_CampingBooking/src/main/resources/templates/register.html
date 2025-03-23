@@ -13,19 +13,22 @@
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới thiệu</a>
-            <a href="#">Dịch vụ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="#">Dịch Vụ</a>
             <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ trợ</a>
+            <a href="#">Hỗ Trợ</a>
             <a href="#">Đặt Chỗ</a>
-            <li class="account">
-                <a href="javascript:void(0)">Tài khoản ▼</a>
-                <div class="dropdown-content">
-                    <a href="/login" id="loginLink">Đăng Nhập</a>
-                    <a href="/register" id="registerLink">Đăng Ký</a>
-                    <a href="" id="logoutLink">Đăng Xuất</a>
-                </div>
-            </li>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
         </div>
         <div class="language-dropdown">
             <select>
@@ -35,38 +38,40 @@
         </div>
     </div>
 </nav>
-
-<div class="wrapper">
-    <form id="registerForm" method="post" class="form">
-        <h1 class="title">Đăng Ký</h1>
-        <div class="inp">
-            <input asp-for="Users.Username" class="input" type="text" placeholder="Username" />
-        </div>
-
-        <div class="inp">
-            <input asp-for="Users.Password" class="input" type="password" placeholder="Password" />
-        </div>
-
-        <div class="inp">
-            <input asp-for="Users.Password" class="input" type="password" placeholder="confirmPassword" />
-        </div>
-        <div class="inp">
-            <select class="input" style="width: 400px">
-                <option>Student</option>
-                <option>Parent</option>
-            </select>
-        </div>
-        <button type="submit" class="submit">Đăng ký</button>
-
-        <p class="footer">
-            Đã có tài khoản? <a href="/login" class="link">Đăng nhập</a>
-        </p>
-    </form>
-
-    <div class="banner">
-        <h1 class="wel_text">HomeStay</h1>
-        <p class="para"></p>
+<th:block th:if="${session.loggedInUser}">
+    <div>
+        <p>Bạn đã đăng nhập. <a href="/">Trang chủ</a></p>
     </div>
+</th:block>
+<th:block th:unless="${session.loggedInUser}">
+<div class="wrapper" style="margin-top: 70px;">
+        <form id="registerForm" action="/register" method="post" class="form">
+            <h1 class="title">Đăng Ký</h1>
+            <div class="inp">
+                <input name="username" class="input" type="text" placeholder="Username" required />
+            </div>
+            <div class="inp">
+                <input name="password" class="input" type="password" placeholder="Password" required />
+            </div>
+            <div class="inp">
+                <input name="confirmPassword" class="input" type="password" placeholder="Confirm Password" required />
+            </div>
+            <div class="inp">
+                <select name="role" class="input" style="width: 400px">
+                    <option value="student">Student</option>
+                    <option value="parent">Parent</option>
+                </select>
+            </div>
+            <button type="submit" class="submit">Đăng ký</button>
+            <p class="footer">
+                Đã có tài khoản? <a href="/login" class="link">Đăng nhập</a>
+            </p>
+        </form>
+        <div class="banner">
+            <h1 class="wel_text">HomeStay</h1>
+            <p class="para"></p>
+        </div>
+    </th:block>
 </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.homestay_campingbooking.models.HomeStay;
+import uth.edu.homestay_campingbooking.models.Location;
 import uth.edu.homestay_campingbooking.models.RoomType;
 import uth.edu.homestay_campingbooking.services.HomeStayService;
 
@@ -37,6 +38,10 @@ public class HomeStayController {
     @GetMapping("/byType/{type}")
     public List<HomeStay> findHomeStayByType(@PathVariable RoomType type) {
         return homeStayService.findByType(type);
+    }
+    @GetMapping("/byLocation/{location}")
+    public List<HomeStay> findHomeStayByLocation(@PathVariable Location location) {
+        return homeStayService.findByLocation(location);
     }
     @GetMapping
     public List<HomeStay> findAllHomeStay() {
