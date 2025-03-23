@@ -39,4 +39,8 @@ public class HomeController {
     public String caNhan(){
         return "myProfile";
     }
+    @GetMapping("/service")
+    public String service(){
+        return "service";
+    }
 }

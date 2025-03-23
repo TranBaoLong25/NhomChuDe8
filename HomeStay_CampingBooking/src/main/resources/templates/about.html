@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Gioi thieu</title>
+    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
     <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
+
+<header>
+</header>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
-            <a href="#">Dịch Vụ</a>
+            <a href="service">Dịch Vụ</a>
             <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ Trợ</a>
+            <a href="support">Hỗ Trợ</a>
             <a href="#">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
@@ -37,8 +41,7 @@
         </div>
     </div>
 </nav>
-
-<main style="margin-top: 80px">
+<main>
     <h1 style="margin-top: 50px">Đây là trang Giới thiệu</h1>
     <p>Nội dung chi tiết về trang giới thiệu...</p>
 </main>

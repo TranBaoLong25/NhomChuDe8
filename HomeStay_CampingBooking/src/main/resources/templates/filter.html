@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filter</title>
     <link rel="stylesheet" type="text/css" href="/filterStyle.css">
+    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
     <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
@@ -14,9 +15,9 @@
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
-            <a href="#">Dịch Vụ</a>
+            <a href="service">Dịch Vụ</a>
             <a href="filter">Lọc Homestay</a>
-            <a href="#">Hỗ Trợ</a>
+            <a href="support">Hỗ Trợ</a>
             <a href="#">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
@@ -39,8 +40,7 @@
         </div>
     </div>
 </nav>
-
-<div id="filter-container" style="margin-top: 70px;">
+<div id="filter-container">
     <div class="filter-title">Bộ Lọc</div>
     <div id="location-filter" class="filter-option">
         <label for="location">Địa Điểm:</label>

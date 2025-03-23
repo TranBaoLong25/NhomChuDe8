@@ -14,16 +14,17 @@
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
-            <a href="#">Dịch Vụ</a>
+            <a href="service">Dịch Vụ</a>
             <a href="filter">Lọc Homestay</a>
             <a href="support">Hỗ Trợ</a>
-            <a href="bookedroom">Đặt Chỗ</a>
+            <a href="#">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
-                <a href="profile">Trang Cá Nhân</a>
-                <form action="/login/logout" method="post" style="display:inline;">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
                     <button type="submit">Đăng Xuất</button>
                 </form>
             </th:block>
+
             <!-- Nếu chưa đăng nhập -->
             <th:block th:unless="${session.loggedInUser}">
                 <a href="/login">Đăng Nhập</a>
@@ -38,8 +39,6 @@
         </div>
     </div>
 </nav>
-
-
 <section class="hero">
     <div class="hero-content">
         <h2>Chào mừng bạn đến với Homestay & Camping</h2>
