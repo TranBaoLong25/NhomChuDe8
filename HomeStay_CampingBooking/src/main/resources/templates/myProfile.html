@@ -4,64 +4,8 @@
   <meta charset="UTF-8">
   <title>MyProfile</title>
   <link rel="stylesheet" type="text/css" href="/header.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
+  <link rel="stylesheet" type="text/css" href="/myProfile.css">
 
-    .profile-container {
-      max-width: 450px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .profile-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #ddd;
-      margin-bottom: 15px;
-    }
-
-    .profile-info {
-      text-align: left;
-      padding: 10px 20px;
-    }
-
-    .profile-info p {
-      font-size: 16px;
-      color: #333;
-      margin: 10px 0;
-    }
-
-    .profile-info strong {
-      color: #555;
-    }
-
-    .btn-edit {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-
-    .btn-edit:hover {
-      background-color: #0056b3;
-    }
-
-  </style>
 </head>
 <body>
 <nav>
@@ -73,7 +17,7 @@
       <a href="service">Dịch Vụ</a>
       <a href="filter">Lọc Homestay</a>
       <a href="support">Hỗ Trợ</a>
-      <a href="#">Đặt Chỗ</a>
+      <a href="bookedroom">Đặt Chỗ</a>
       <th:block th:if="${session.loggedInUser}">
         <a href="/profile">Trang Cá Nhân</a>
         <form action="login/logout" method="post" style="display:inline;">
@@ -98,7 +42,6 @@
 <!-- Nội dung chính -->
 <main style="margin-top: 80px;">
   <h2 style="text-align: center; color: #333;">Thông Tin Cá Nhân</h2>
-
   <div class="profile-container">
     <th:block th:if="${session.loggedInUser}">
       <img class="profile-avatar" src="/images/Background.jpg" alt="Ảnh đại diện">
@@ -106,9 +49,8 @@
         <p><strong>👤 Username:</strong> <span th:text="${session.loggedInUser.username}"></span></p>
         <p><strong>🎭 Vai trò:</strong> <span th:text="${session.loggedInUser.role}"></span></p>
       </div>
-      <a href="/edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
+      <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
     </th:block>
-
     <th:block th:unless="${session.loggedInUser}">
       <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
     </th:block>

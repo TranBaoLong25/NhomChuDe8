@@ -8,9 +8,10 @@ public enum ErrorCode {
     USERNAME_INVALID(1002, "Username must be at least 4 character"),
     PASSWORD_INVALID(1003, "Password must be at least 8 character"),
     PASSWORD_ERROR(1004, "Password and confirm password do not match"),
-    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized Exception"),
+    PASSWORD_ERROR2(1004, "Password false"),
     USER_NOT_EXISTED(1006, "User not existed"),
-    USER_EXISTED(1001, "User existed");
+    USER_EXISTED(1001, "User existed"),
+    UNCATEGORIZED_EXCEPTION(9999, "Uncategorized Exception");
     ErrorCode(int code, String message) {
         this.code = code;
         this.message = message;

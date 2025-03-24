@@ -43,4 +43,9 @@ public class HomeController {
     public String service(){
         return "service";
     }
+    @GetMapping("/edit-profile")
+    public String editProfile(){
+        return "edit-profile";
+    }
+
 }

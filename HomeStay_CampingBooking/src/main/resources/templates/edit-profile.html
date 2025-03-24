@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ho tro</title>
+    <title>edit-profile</title>
     <link rel="stylesheet" type="text/css" href="/header.css">
+    <link rel="stylesheet" type="text/css" href="/edit.css">
 </head>
 <body>
 <nav>
@@ -37,10 +38,28 @@
         </div>
     </div>
 </nav>
-<main style="margin-top: 70px;">
-    <p><a href="bookedroom">Đặt phòng</a></p>
-    <botton>Hỗ trợ thanh toán</botton>
-    <botton>Hỗ trợ dịch vụ</botton>
+<main style="margin-top: 80px;">
+    <h2 style="text-align: center; color: #333;">Cập Nhật Thông Tin Cá Nhân</h2>
+    <div>
+        <th:block th:if="${session.loggedInUser}">
+            <div>
+                <form action="/edit-profile" method="post">
+                    <label><strong>👤 Username:</strong></label>
+                    <input type="text" name="username" th:value="${session.loggedInUser.username}" required>
+
+                    <label><strong>🔑 Password:</strong></label>
+                    <input type="password" name="password" required>
+                    <label><strong>🔑 OldPassword:</strong></label>
+                    <input type="password" name="confirmPassword" required>
+                    <button type="submit" class="btn-edit">Lưu thay đổi</button>
+
+                </form>
+            </div>
+        </th:block>
+        <th:block th:unless="${session.loggedInUser}">
+            <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+        </th:block>
+    </div>
 </main>
 
 </body>
