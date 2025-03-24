@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/IndexStyle.css">
-    <link rel="stylesheet" href="../static/header.css">
-    <title>Dịch vụ Homestay</title>
+    <link rel="stylesheet" href="../static/service.css">
+    <title>Dịch vụ</title>
 </head>
 <body>
 <nav>
@@ -20,8 +20,8 @@
             <li class="account">
                 <a href="javascript:void(0)">Tài khoản ▼</a>
                 <div class="dropdown-content">
-                    <a href="/login" id="loginLink">Đăng Nhập</a>
-                    <a href="/register" id="registerLink">Đăng Ký</a>
+                    <a href="/login.html" id="loginLink">Đăng Nhập</a>
+                    <a href="/register.html" id="registerLink">Đăng Ký</a>
                     <a href="" id="logoutLink">Đăng Xuất</a>
                 </div>
             </li>
@@ -35,94 +35,102 @@
     </div>
 </nav>
 
-<section id="homestayServices">
-    <h2>Dịch vụ Homestay của chúng tôi</h2>
-    <div class="homestay-container">
-        <div class="homestay-item">
-            <img src="../static/images/homestay_balcony.jpg" alt="Homestay Ban Công Đà Lạt">
-            <h3>Homestay Ban Công Đà Lạt</h3>
-            <p class="price">Giá: 500.000 VND/đêm</p>
-            <p class="note">Tận hưởng không gian ban công riêng tư với tầm nhìn tuyệt đẹp.</p>
+<section class="service-section">
+    <h1>Dịch vụ của chúng tôi</h1>
+
+    <div class="service-category">
+        <h2>Chỗ ở và tiện nghi</h2>
+        <div class="service-item">
+            <h3>Ở trọ</h3>
+            <p>Các phòng sạch sẽ, thoải mái, đầy đủ tiện nghi:</p>
+            <ul>
+                <li>Máy lạnh/quạt hiện đại</li>
+                <li>Bồn tắm hoặc vòi sen với nước nóng lạnh</li>
+                <li>Wifi tốc độ cao miễn phí</li>
+                <li>TV màn hình phẳng với các kênh truyền hình đa dạng</li>
+                <li>Minibar với đồ uống và đồ ăn nhẹ</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_breakfast.jpg" alt="Homestay Bữa Sáng Sapa">
-            <h3>Homestay Bữa Sáng Sapa</h3>
-            <p class="price">Giá: 300.000 VND/đêm</p>
-            <p class="note">Thưởng thức bữa sáng ngon miệng với đặc sản địa phương.</p>
+        <div class="service-item">
+            <h3>Cắm trại</h3>
+            <p>Trải nghiệm cắm trại tuyệt vời với:</p>
+            <ul>
+                <li>Lều trại chất lượng cao, chống thấm nước</li>
+                <li>Túi ngủ ấm áp, thoải mái</li>
+                <li>Nệm hơi êm ái</li>
+                <li>Nhà chòi tiện nghi (tùy chọn)</li>
+                <li>Khu vực cắm trại an toàn, có đèn chiếu sáng</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_couple.jpg" alt="Homestay Cặp Đôi Đà Lạt">
-            <h3>Homestay Cặp Đôi Đà Lạt</h3>
-            <p class="price">Giá: 600.000 VND/đêm</p>
-            <p class="note">Không gian lãng mạn, lý tưởng cho các cặp đôi.</p>
+    </div>
+
+    <div class="service-category">
+        <h2>Dịch vụ ăn uống</h2>
+        <div class="service-item">
+            <h3>Nhà trọ</h3>
+            <p>Thực đơn đa dạng, phong phú:</p>
+            <ul>
+                <li>Bữa sáng tự chọn với các món ăn địa phương và quốc tế</li>
+                <li>Bữa trưa và bữa tối với thực đơn theo ngày hoặc gọi món</li>
+                <li>Dịch vụ phòng ăn tại phòng (room service)</li>
+                <li>Quầy bar với các loại đồ uống hấp dẫn</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_cozy.jpg" alt="Homestay Ấm Cúng Sapa">
-            <h3>Homestay Ấm Cúng Sapa</h3>
-            <p class="price">Giá: 400.000 VND/đêm</p>
-            <p class="note">Không gian ấm cúng, mang đến cảm giác như ở nhà.</p>
+        <div class="service-item">
+            <h3>Cắm trại</h3>
+            <p>Trải nghiệm ẩm thực ngoài trời độc đáo:</p>
+            <ul>
+                <li>Tiệc BBQ nướng ngoài trời với các loại thịt, hải sản tươi ngon</li>
+                <li>Bếp nướng và dụng cụ nấu ăn được cung cấp sẵn</li>
+                <li>Dịch vụ chuẩn bị và giao đồ ăn tận nơi cắm trại (tùy chọn)</li>
+                <li>Lớp học nấu ăn ngoài trời (tùy chọn)</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_dinner.jpg" alt="Homestay Bữa Tối Đà Lạt">
-            <h3>Homestay Bữa Tối Đà Lạt</h3>
-            <p class="price">Giá: 550.000 VND/đêm</p>
-            <p class="note">Thưởng thức bữa tối ấm cúng với các món ăn đặc sắc.</p>
+    </div>
+
+    <div class="service-category">
+        <h2>Vệ sinh và tiện ích cơ bản</h2>
+        <div class="service-item">
+            <h3>Nhà trọ</h3>
+            <p>Tiện nghi vệ sinh sạch sẽ, hiện đại:</p>
+            <ul>
+                <li>Nhà vệ sinh riêng biệt trong từng phòng</li>
+                <li>Vòi sen nước nóng lạnh với áp lực nước mạnh</li>
+                <li>Dịch vụ dọn phòng hàng ngày</li>
+                <li>Đồ dùng vệ sinh cá nhân miễn phí</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_family.jpg" alt="Homestay Gia Đình Sapa">
-            <h3>Homestay Gia Đình Sapa</h3>
-            <p class="price">Giá: 350.000 VND/đêm</p>
-            <p class="note">Không gian rộng rãi, phù hợp cho gia đình và nhóm bạn.</p>
+        <div class="service-item">
+            <h3>Cắm trại</h3>
+            <p>Tiện nghi vệ sinh đảm bảo:</p>
+            <ul>
+                <li>Khu vực vệ sinh chung sạch sẽ, có nước sạch</li>
+                <li>Vòi sen ngoài trời hoặc phòng tắm di động (tùy chọn)</li>
+                <li>Nguồn điện dự phòng cho các thiết bị cá nhân</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_garden.jpg" alt="Homestay Vườn Đà Lạt">
-            <h3>Homestay Vườn Đà Lạt</h3>
-            <p class="price">Giá: 700.000 VND/đêm</p>
-            <p class="note">Tận hưởng không gian xanh mát với khu vườn xinh xắn.</p>
+    </div>
+
+    <div class="service-category">
+        <h2>Giải trí và hoạt động ngoài trời</h2>
+        <div class="service-item">
+            <h3>Nhà trọ</h3>
+            <p>Các hoạt động giải trí đa dạng:</p>
+            <ul>
+                <li>Tour tham quan các địa điểm du lịch nổi tiếng</li>
+                <li>Thuê xe đạp/xe máy để khám phá khu vực</li>
+                <li>Trekking/đi bộ đường dài với hướng dẫn viên chuyên nghiệp</li>
+                <li>Lớp học nấu ăn, làm đồ thủ công (tùy chọn)</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_garden2.jpg" alt="Homestay Vườn 2 Sapa">
-            <h3>Homestay Vườn 2 Sapa</h3>
-            <p class="price">Giá: 450.000 VND/đêm</p>
-            <p class="note">Khu vườn rộng lớn, thích hợp cho các hoạt động ngoài trời.</p>
+        <div class="service-item">
+            <h3>Cắm trại</h3>
+            <p>Trải nghiệm thiên nhiên hoang dã:</p>
+            <ul>
+                <li>Đốt lửa trại, nướng BBQ, ca hát, kể chuyện</li>
+                <li>Bơi lội, chèo thuyền kayak, câu cá tại các hồ, sông gần đó</li>
+                <li>Đi bộ đường dài, khám phá rừng núi</li>
+                <li>Ngắm sao đêm, chụp ảnh thiên nhiên</li>
+            </ul>
         </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_J98.jpg" alt="Homestay J98 Đà Lạt">
-            <h3>Homestay J98 Đà Lạt</h3>
-            <p class="price">Giá: 800.000 VND/đêm</p>
-            <p class="note">Homestay cao cấp với đầy đủ tiện nghi hiện đại.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_kitchen.jpg" alt="Homestay Bếp Sapa">
-            <h3>Homestay Bếp Sapa</h3>
-            <p class="price">Giá: 500.000 VND/đêm</p>
-            <p class="note">Bếp đầy đủ tiện nghi, cho phép bạn tự do nấu nướng.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/Homestay_meomeo.jpg" alt="Homestay Mèo Đà Lạt">
-            <h3>Homestay Mèo Đà Lạt</h3>
-            <p class="price">Giá: 650.000 VND/đêm</p>
-            <p class="note">Homestay thân thiện với thú cưng, đặc biệt là mèo.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_pool.jpg" alt="Homestay Hồ Bơi Sapa">
-            <h3>Homestay Hồ Bơi Sapa</h3>
-            <p class="price">Giá: 370.000 VND/đêm</p>
-            <p class="note">Tận hưởng làn nước mát lạnh tại hồ bơi của homestay.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_relax.jpg" alt="Homestay Thư Giãn Đà Lạt">
-            <h3>Homestay Thư Giãn Đà Lạt</h3>
-            <p class="price">Giá: 720.000 VND/đêm</p>
-            <p class="note">Không gian yên tĩnh, lý tưởng để thư giãn và nghỉ ngơi.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_room.jpg" alt="Homestay Phòng Sapa">
-            <h3>Homestay Phòng Sapa</h3>
-            <p class="price">Giá: 480.000 VND/đêm</p>
-            <p class="note">Phòng ngủ ấm cúng, được trang bị đầy đủ tiện nghi.</p>
-        </div>
-        <div class="homestay-item">
-            <img src="../static/images/homestay_view.jpg" alt="Homestay View Đà Lạt">
-            <h3>Homestay View Đà Lạt</h3>
-            <p class="price">Giá: 590.000 VND/đêm</p>
+    </div>

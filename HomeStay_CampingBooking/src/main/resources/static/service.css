@@ -1,63 +1,104 @@
-/* CSS cho header và nav giống index.html */
+/* Trong IndexStyle.css hoặc một file CSS riêng cho service.html */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: #fff; /* Đặt màu chữ trắng để tương phản với nền đen */
+    background-color: #000; /* Đặt background màu đen */
+    margin: 0;
+    padding: 0;
+}
+
+/* Kiểu dáng cho phần menu (nav) - SỬA ĐỔI ĐỂ GIỐNG HÌNH ẢNH */
 nav {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
+    position: fixed; /* Thay đổi từ sticky thành fixed */
+    top: 0;
+    width: 100%;
+    background-color: #4CAF50; /* Màu nền xanh lá cây như trong ảnh */
+    z-index: 1000; /* Tăng z-index để đảm bảo nằm trên các phần tử khác */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 40px; /* Tăng padding để phù hợp với mẫu */
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin: auto; /* Thay đổi từ 0 auto thành auto để căn giữa */
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 26px; /* Tăng kích thước logo */
     font-weight: bold;
+    text-transform: uppercase; /* In hoa logo */
+    color: #fff; /* Màu chữ trắng cho logo */
 }
 
 .nav-links {
     display: flex;
+    gap: 25px; /* Thêm gap để tạo khoảng cách giữa các liên kết */
     align-items: center;
 }
 
 .nav-links a {
-    color: white;
+    color: #fff; /* Màu chữ trắng cho liên kết */
     text-decoration: none;
-    margin-left: 20px;
+    font-size: 16px; /* Tăng kích thước chữ liên kết */
+    font-weight: 500;
+    padding: 8px 12px; /* Thêm padding cho liên kết */
+    border-radius: 5px; /* Thêm border-radius cho liên kết */
+    transition: background-color 0.3s, transform 0.2s; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Thêm màu nền khi hover */
+    transform: translateY(-2px); /* Thêm hiệu ứng di chuyển lên khi hover */
 }
 
 .nav-links a.active {
-    border-bottom: 2px solid white;
+    font-weight: bold; /* Thêm độ đậm cho liên kết active */
 }
 
 .account {
     position: relative;
-    list-style: none;
 }
 
-.account a {
-    color: white;
-    text-decoration: none;
+.account > a { /* Thay đổi từ .account a thành .account > a */
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 16px; /* Thêm padding cho liên kết tài khoản */
+    color: #fff; /* Màu chữ trắng cho liên kết tài khoản */
+}
+
+.account:hover .dropdown-content {
+    display: block;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9); /* Thay đổi màu nền dropdown */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    min-width: 180px; /* Tăng chiều rộng dropdown */
+    text-align: center;
+    padding: 10px 0;
+    z-index: 999;
 }
 
 .dropdown-content a {
-    color: black;
+    color: #fff; /* Màu chữ trắng cho dropdown */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Thêm màu nền khi hover dropdown */
 }
 
 .account:hover .dropdown-content {
@@ -65,76 +106,79 @@ nav {
 }
 
 .language-dropdown select {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 5px 10px;
+    padding: 10px 15px;
+    border: none; /* Loại bỏ viền */
+    border-radius: 5px;
+    background-color: #fff; /* Nền trắng cho select */
+    color: #333; /* Màu chữ đen cho select */
     cursor: pointer;
 }
 
-/* CSS cho phần dịch vụ homestay */
-#homestayServices {
-    padding: 50px 0;
-    text-align: center;
-}
-
-#homestayServices h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    color: white; /* Đổi màu tiêu đề thành trắng */
-}
-
-.homestay-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+/* Kiểu dáng cho phần nội dung dịch vụ (service-section) */
+.service-section {
+    width: 85%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền trong suốt hơn */
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08); /* Bóng đổ trắng hơn */
 }
 
-.homestay-item {
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
-    flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
-    background-color: #333; /* Đặt nền tối hơn để chữ trắng nổi bật */
+.service-section h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #007bff;
+    font-size: 2.2em;
+    font-weight: 600;
 }
 
-.homestay-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.service-category {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333; /* Viền tối hơn */
+    padding-bottom: 30px;
 }
 
-.homestay-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.service-category h2 {
+    color: #fff; /* Màu chữ trắng */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+.service-item h3 {
+    color: #007bff;
     margin-bottom: 15px;
+    font-size: 1.4em;
+    font-weight: 500;
 }
 
-.homestay-item .homestay-details {
-    background-color: transparent; /* Đặt nền trong suốt */
-    padding: 15px;
-}
-
-.homestay-item h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: white; /* Đổi màu chữ thành trắng */
-}
-
-.homestay-item .price {
-    font-weight: bold;
-    color: white; /* Đổi màu chữ thành trắng */
-    margin-bottom: 5px;
-}
-
-.homestay-item .note {
+.service-item p {
+    margin-bottom: 20px;
+    color: #ddd; /* Màu chữ xám nhạt */
     font-size: 1em;
-    color: white; /* Đổi màu chữ thành trắng */
-    line-height: 1.6;
+}
+
+.service-item ul {
+    list-style-type: disc;
+    margin-left: 25px;
+}
+
+.service-item li {
+    margin-bottom: 10px;
+    color: #ddd; /* Màu chữ xám nhạt */
+    font-size: 1em;
+}
+
+.service-item ul li {
+    margin-bottom: 8px;
+}
+
+.service-item:last-child {
+    margin-bottom: 0;
 }
