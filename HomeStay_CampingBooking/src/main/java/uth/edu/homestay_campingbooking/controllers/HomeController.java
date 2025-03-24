@@ -27,5 +27,25 @@ public class HomeController {
     public String boLoc(){
         return "filter";
     }
+    @GetMapping("/support")
+    public String hoTro(){
+        return "support";
+    }
+    @GetMapping("/bookedroom")
+    public String datPhong(){
+        return "bookedroom";
+    }
+    @GetMapping("/profile")
+    public String caNhan(){
+        return "myProfile";
+    }
+    @GetMapping("/service")
+    public String service(){
+        return "service";
+    }
+    @GetMapping("/edit-profile")
+    public String editProfile(){
+        return "edit-profile";
+    }
 
 }

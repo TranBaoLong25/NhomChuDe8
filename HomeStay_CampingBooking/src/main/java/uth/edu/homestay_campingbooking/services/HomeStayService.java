@@ -3,6 +3,7 @@ package uth.edu.homestay_campingbooking.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uth.edu.homestay_campingbooking.models.HomeStay;
+import uth.edu.homestay_campingbooking.models.Location;
 import uth.edu.homestay_campingbooking.models.RoomType;
 import uth.edu.homestay_campingbooking.repositories.HomeStayRepository;
 import uth.edu.homestay_campingbooking.repositories.IHomeStayRepository;
@@ -43,6 +44,11 @@ public class HomeStayService implements IHomeStayService {
     @Override
     public List<HomeStay> findByType(RoomType type) {
         return homeStayRepository.findByType(type);
+    }
+
+    @Override
+    public List<HomeStay> findByLocation(Location location) {
+        return homeStayRepository.findByLocation(location);
     }
 
     @Override

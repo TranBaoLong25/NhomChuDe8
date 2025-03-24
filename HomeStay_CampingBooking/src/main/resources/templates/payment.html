@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="/login.css">
+  <title>Payment</title>
   <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
@@ -39,29 +37,9 @@
     </div>
   </div>
 </nav>
-<th:block th:if="${session.loggedInUser}">
-  <div style="">
-    <p>Bạn đã đăng nhập. <a href="/" class="active">Trang chủ</a></p>
-  </div>
-</th:block>
-<th:block th:unless="${session.loggedInUser}">
-<div class="wrapper" style="margin-top: 70px;">
-    <form method="post" action="/login" class="form" id="loginForm">
-      <h1 class="title">Đăng Nhập</h1>
-      <div class="inp">
-        <input type="text" name="username" id="loginUsername" class="input" placeholder="Username" required />
-      </div>
-      <div class="inp">
-        <input type="password" name="password" id="loginPassword" class="input" placeholder="Password" required />
-      </div>
-      <button type="submit" class="submit">Đăng nhập</button>
-      <p class="footer">Chưa có tài khoản? <a href="/register" class="link">Đăng ký</a></p>
-    </form>
-    <div class="banner">
-      <h1 class="wel_text">HomeStay</h1>
-      <p class="para"></p>
-    </div>
-  </th:block>
-</div>
+<main style="margin-top: 70px;">
+
+</main>
+
 </body>
 </html>

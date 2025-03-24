@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" type="text/css" href="/login.css">
+  <title>MyProfile</title>
   <link rel="stylesheet" type="text/css" href="/header.css">
+  <link rel="stylesheet" type="text/css" href="/myProfile.css">
+
 </head>
 <body>
 <nav>
@@ -39,29 +39,24 @@
     </div>
   </div>
 </nav>
-<th:block th:if="${session.loggedInUser}">
-  <div style="">
-    <p>Bạn đã đăng nhập. <a href="/" class="active">Trang chủ</a></p>
+<!-- Nội dung chính -->
+<main style="margin-top: 80px;">
+  <h2 style="text-align: center; color: #333;">Thông Tin Cá Nhân</h2>
+  <div class="profile-container">
+    <th:block th:if="${session.loggedInUser}">
+      <img class="profile-avatar" src="/images/Background.jpg" alt="Ảnh đại diện">
+      <div class="profile-info">
+        <p><strong>👤 Username:</strong> <span th:text="${session.loggedInUser.username}"></span></p>
+        <p><strong>🎭 Vai trò:</strong> <span th:text="${session.loggedInUser.role}"></span></p>
+      </div>
+      <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
+    </th:block>
+    <th:block th:unless="${session.loggedInUser}">
+      <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+    </th:block>
   </div>
-</th:block>
-<th:block th:unless="${session.loggedInUser}">
-<div class="wrapper" style="margin-top: 70px;">
-    <form method="post" action="/login" class="form" id="loginForm">
-      <h1 class="title">Đăng Nhập</h1>
-      <div class="inp">
-        <input type="text" name="username" id="loginUsername" class="input" placeholder="Username" required />
-      </div>
-      <div class="inp">
-        <input type="password" name="password" id="loginPassword" class="input" placeholder="Password" required />
-      </div>
-      <button type="submit" class="submit">Đăng nhập</button>
-      <p class="footer">Chưa có tài khoản? <a href="/register" class="link">Đăng ký</a></p>
-    </form>
-    <div class="banner">
-      <h1 class="wel_text">HomeStay</h1>
-      <p class="para"></p>
-    </div>
-  </th:block>
-</div>
+
+</main>
+
 </body>
 </html>

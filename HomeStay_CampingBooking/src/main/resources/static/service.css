@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Trong IndexStyle.css hoặc một file CSS riêng cho service.html */
 
 body {
@@ -113,6 +114,8 @@ nav {
     color: #333; /* Màu chữ đen cho select */
     cursor: pointer;
 }
+=======
+>>>>>>> d2c0cf8b5c067db010e63b9be1097b3fb94b483d
 
 /* Kiểu dáng cho phần nội dung dịch vụ (service-section) */
 .service-section {

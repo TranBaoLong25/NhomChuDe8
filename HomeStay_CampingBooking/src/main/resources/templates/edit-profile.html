@@ -2,14 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gioi thieu</title>
-    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
+    <title>edit-profile</title>
     <link rel="stylesheet" type="text/css" href="/header.css">
+    <link rel="stylesheet" type="text/css" href="/edit.css">
 </head>
 <body>
-
-<header>
-</header>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
@@ -41,9 +38,28 @@
         </div>
     </div>
 </nav>
-<main>
-    <h1 style="margin-top: 50px">Đây là trang Giới thiệu</h1>
-    <p>Nội dung chi tiết về trang giới thiệu...</p>
+<main style="margin-top: 80px;">
+    <h2 style="text-align: center; color: #333;">Cập Nhật Thông Tin Cá Nhân</h2>
+    <div>
+        <th:block th:if="${session.loggedInUser}">
+            <div>
+                <form action="/edit-profile" method="post">
+                    <label><strong>👤 Username:</strong></label>
+                    <input type="text" name="username" th:value="${session.loggedInUser.username}" required>
+
+                    <label><strong>🔑 Password:</strong></label>
+                    <input type="password" name="password" required>
+                    <label><strong>🔑 OldPassword:</strong></label>
+                    <input type="password" name="confirmPassword" required>
+                    <button type="submit" class="btn-edit">Lưu thay đổi</button>
+
+                </form>
+            </div>
+        </th:block>
+        <th:block th:unless="${session.loggedInUser}">
+            <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+        </th:block>
+    </div>
 </main>
 
 </body>

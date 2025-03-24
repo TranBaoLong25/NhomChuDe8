@@ -49,4 +49,5 @@ public class UserService implements IUserService {
     public void update(long id, User user) {
         userRepository.update(id, user);
     }
+
 }

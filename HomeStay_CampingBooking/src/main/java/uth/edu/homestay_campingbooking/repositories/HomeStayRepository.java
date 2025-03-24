@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import uth.edu.homestay_campingbooking.exception.AppException;
 import uth.edu.homestay_campingbooking.exception.ErrorCode;
 import uth.edu.homestay_campingbooking.models.HomeStay;
+import uth.edu.homestay_campingbooking.models.Location;
 import uth.edu.homestay_campingbooking.models.RoomType;
 import uth.edu.homestay_campingbooking.models.User;
 
@@ -71,6 +72,21 @@ public class HomeStayRepository implements IHomeStayRepository {
         }
         return result;
     }
+
+    @Override
+    public List<HomeStay> findByLocation(Location location) {
+        List<HomeStay> result = new ArrayList<>();
+        for (HomeStay hs : findAllHomeStays()) {
+            if (hs.getLocation().equals(location)) {
+                result.add(hs);
+            }
+        }
+        if (result.isEmpty()) {
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
+        }
+        return result;
+    }
+
     @Override
     public List<HomeStay> findByPrice(double min, double max) {
         List<HomeStay> ds = new ArrayList<>();
