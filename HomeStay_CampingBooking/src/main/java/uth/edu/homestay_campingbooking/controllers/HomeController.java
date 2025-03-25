@@ -47,5 +47,9 @@ public class HomeController {
     public String editProfile(){
         return "edit-profile";
     }
+    @GetMapping("/payment")
+    public String payment(){
+        return "payment";
+    }
 
 }

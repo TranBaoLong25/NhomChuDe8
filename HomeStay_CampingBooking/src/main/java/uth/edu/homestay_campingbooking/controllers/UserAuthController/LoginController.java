@@ -28,7 +28,6 @@ public class LoginController {
             throw new AppException(ErrorCode.USER_NOT_EXISTED);
         }
 
-        // Lưu user vào session
         session.setAttribute("loggedInUser", user);
         return "redirect:/";
     }

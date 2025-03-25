@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/IndexStyle.css">
-    <link rel="stylesheet" href="../static/service.css">
-    <title>Dịch vụ</title>
+    <title>Service</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-            <a href="index.html">Trang Chủ</a>
-            <a href="about.html">Giới thiệu</a>
-            <a href="service.html" class="active">Dịch vụ</a>
-            <a href="filter.html">Lọc Homestay</a>
-            <a href="#">Đặt Chỗ</a>
-            <li class="account">
-                <a href="javascript:void(0)">Tài khoản ▼</a>
-                <div class="dropdown-content">
-                    <a href="/login.html" id="loginLink">Đăng Nhập</a>
-                    <a href="/register.html" id="registerLink">Đăng Ký</a>
-                    <a href="" id="logoutLink">Đăng Xuất</a>
-                </div>
-            </li>
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="service">Dịch Vụ</a>
+            <a href="filter">Lọc Homestay</a>
+            <a href="support">Hỗ Trợ</a>
+            <a href="bookedroom">Đặt Chỗ</a>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
+
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
         </div>
         <div class="language-dropdown">
             <select>
@@ -34,7 +39,6 @@
         </div>
     </div>
 </nav>
-
 <section class="service-section">
     <h1>Dịch vụ của chúng tôi</h1>
 
@@ -158,3 +162,5 @@
         </div>
     </div>
 </section>
+</body>
+</html>

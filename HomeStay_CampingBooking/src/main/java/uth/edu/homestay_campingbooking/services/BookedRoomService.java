@@ -30,13 +30,14 @@ public class BookedRoomService implements IBookedRoomService {
         return bookedRoomRepository.checkByDate(check_in, check_out);
     }
     @Override
-    public void saveBookedRoom(BookedRoom bookedRoom) {
-        bookedRoomRepository.saveBookedRoom(bookedRoom);
+    public void saveBookedRoom(Long homeStayId, BookedRoom bookedRoom) {
+        bookedRoomRepository.saveBookedRoom(homeStayId, bookedRoom);
     }
     @Override
     public void deleteBookedRoom(String phone) {
         bookedRoomRepository.deleteBookedRoom(phone);
     }
+
     @Override
     public void updateBookedRoom(String phone, BookedRoom bookedRoom) {
         bookedRoomRepository.updateBookedRoom(phone, bookedRoom);
