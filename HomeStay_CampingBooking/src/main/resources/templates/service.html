@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/IndexStyle.css">
     <link rel="stylesheet" href="../static/service.css">
     <title>Dịch vụ</title>
-=======
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/header.css">
-  <link rel="stylesheet" href="/service.css">
-  <title>Dịch vụ Homestay</title>
->>>>>>> d2c0cf8b5c067db010e63b9be1097b3fb94b483d
 </head>
 <body>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
-<<<<<<< HEAD
             <a href="index.html">Trang Chủ</a>
             <a href="about.html">Giới thiệu</a>
             <a href="service.html" class="active">Dịch vụ</a>
@@ -34,26 +25,6 @@
                     <a href="" id="logoutLink">Đăng Xuất</a>
                 </div>
             </li>
-=======
-            <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới Thiệu</a>
-            <a href="service">Dịch Vụ</a>
-            <a href="filter">Lọc Homestay</a>
-            <a href="support">Hỗ Trợ</a>
-            <a href="bookedroom">Đặt Chỗ</a>
-            <th:block th:if="${session.loggedInUser}">
-                <a href="/profile">Trang Cá Nhân</a>
-                <form action="login/logout" method="post" style="display:inline;">
-                    <button type="submit">Đăng Xuất</button>
-                </form>
-            </th:block>
-
-            <!-- Nếu chưa đăng nhập -->
-            <th:block th:unless="${session.loggedInUser}">
-                <a href="/login">Đăng Nhập</a>
-                <a href="/register">Đăng Ký</a>
-            </th:block>
->>>>>>> d2c0cf8b5c067db010e63b9be1097b3fb94b483d
         </div>
         <div class="language-dropdown">
             <select>
@@ -63,208 +34,127 @@
         </div>
     </div>
 </nav>
-<<<<<<< HEAD
 
 <section class="service-section">
     <h1>Dịch vụ của chúng tôi</h1>
 
     <div class="service-category">
-        <h2>Chỗ ở và tiện nghi</h2>
-        <div class="service-item">
-            <h3>Ở trọ</h3>
-            <p>Các phòng sạch sẽ, thoải mái, đầy đủ tiện nghi:</p>
-            <ul>
-                <li>Máy lạnh/quạt hiện đại</li>
-                <li>Bồn tắm hoặc vòi sen với nước nóng lạnh</li>
-                <li>Wifi tốc độ cao miễn phí</li>
-                <li>TV màn hình phẳng với các kênh truyền hình đa dạng</li>
-                <li>Minibar với đồ uống và đồ ăn nhẹ</li>
-            </ul>
-        </div>
-        <div class="service-item">
-            <h3>Cắm trại</h3>
-            <p>Trải nghiệm cắm trại tuyệt vời với:</p>
-            <ul>
-                <li>Lều trại chất lượng cao, chống thấm nước</li>
-                <li>Túi ngủ ấm áp, thoải mái</li>
-                <li>Nệm hơi êm ái</li>
-                <li>Nhà chòi tiện nghi (tùy chọn)</li>
-                <li>Khu vực cắm trại an toàn, có đèn chiếu sáng</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="service-category">
         <h2>Dịch vụ ăn uống</h2>
         <div class="service-item">
-            <h3>Nhà trọ</h3>
-            <p>Thực đơn đa dạng, phong phú:</p>
+            <h3>Bữa sáng</h3>
+            <p>Bữa sáng miễn phí hoặc có phụ phí hợp lý:</p>
             <ul>
-                <li>Bữa sáng tự chọn với các món ăn địa phương và quốc tế</li>
-                <li>Bữa trưa và bữa tối với thực đơn theo ngày hoặc gọi món</li>
-                <li>Dịch vụ phòng ăn tại phòng (room service)</li>
-                <li>Quầy bar với các loại đồ uống hấp dẫn</li>
+                <li>Các món ăn địa phương và quốc tế</li>
+                <li>Bữa sáng tự chọn hoặc theo thực đơn</li>
             </ul>
         </div>
         <div class="service-item">
-            <h3>Cắm trại</h3>
+            <h3>BBQ & lẩu ngoài trời</h3>
             <p>Trải nghiệm ẩm thực ngoài trời độc đáo:</p>
             <ul>
-                <li>Tiệc BBQ nướng ngoài trời với các loại thịt, hải sản tươi ngon</li>
-                <li>Bếp nướng và dụng cụ nấu ăn được cung cấp sẵn</li>
-                <li>Dịch vụ chuẩn bị và giao đồ ăn tận nơi cắm trại (tùy chọn)</li>
-                <li>Lớp học nấu ăn ngoài trời (tùy chọn)</li>
+                <li>Cung cấp nguyên liệu, bếp nướng, bàn ghế</li>
+                <li>Dịch vụ nấu sẵn (tùy chọn)</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Đồ uống & cà phê</h3>
+            <p>Thưởng thức các loại đồ uống đa dạng:</p>
+            <ul>
+                <li>Nước suối, trà, cà phê</li>
+                <li>Nước ép, rượu vang, bia</li>
             </ul>
         </div>
     </div>
 
     <div class="service-category">
-        <h2>Vệ sinh và tiện ích cơ bản</h2>
+        <h2>Dịch vụ tiện ích</h2>
         <div class="service-item">
-            <h3>Nhà trọ</h3>
-            <p>Tiện nghi vệ sinh sạch sẽ, hiện đại:</p>
+            <h3>Wi-Fi & ổ cắm sạc</h3>
+            <p>Đảm bảo kết nối và năng lượng cho thiết bị của bạn:</p>
             <ul>
-                <li>Nhà vệ sinh riêng biệt trong từng phòng</li>
-                <li>Vòi sen nước nóng lạnh với áp lực nước mạnh</li>
-                <li>Dịch vụ dọn phòng hàng ngày</li>
-                <li>Đồ dùng vệ sinh cá nhân miễn phí</li>
+                <li>Wi-Fi tốc độ cao miễn phí</li>
+                <li>Ổ cắm sạc tiện lợi</li>
             </ul>
         </div>
         <div class="service-item">
-            <h3>Cắm trại</h3>
-            <p>Tiện nghi vệ sinh đảm bảo:</p>
+            <h3>Cho thuê xe đạp, xe máy</h3>
+            <p>Khám phá khu vực xung quanh dễ dàng:</p>
             <ul>
-                <li>Khu vực vệ sinh chung sạch sẽ, có nước sạch</li>
-                <li>Vòi sen ngoài trời hoặc phòng tắm di động (tùy chọn)</li>
-                <li>Nguồn điện dự phòng cho các thiết bị cá nhân</li>
+                <li>Xe đạp, xe máy chất lượng tốt</li>
+                <li>Dịch vụ cho thuê linh hoạt</li>
             </ul>
         </div>
-    </div>
-
-    <div class="service-category">
-        <h2>Giải trí và hoạt động ngoài trời</h2>
         <div class="service-item">
-            <h3>Nhà trọ</h3>
+            <h3>Bể bơi hoặc suối tự nhiên</h3>
+            <p>Thư giãn và tận hưởng thiên nhiên (nếu có):</p>
+            <ul>
+                <li>Bể bơi sạch sẽ, thoáng mát</li>
+                <li>Suối tự nhiên trong lành</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Khu vui chơi, giải trí</h3>
             <p>Các hoạt động giải trí đa dạng:</p>
             <ul>
-                <li>Tour tham quan các địa điểm du lịch nổi tiếng</li>
-                <li>Thuê xe đạp/xe máy để khám phá khu vực</li>
-                <li>Trekking/đi bộ đường dài với hướng dẫn viên chuyên nghiệp</li>
-                <li>Lớp học nấu ăn, làm đồ thủ công (tùy chọn)</li>
+                <li>Võng, xích đu, bàn cờ</li>
+                <li>Đàn guitar, sách báo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-category">
+        <h2>Dịch vụ trải nghiệm & hoạt động ngoài trời</h2>
+        <div class="service-item">
+            <h3>Tour khám phá thiên nhiên</h3>
+            <p>Khám phá vẻ đẹp thiên nhiên hoang sơ:</p>
+            <ul>
+                <li>Trekking, chèo thuyền kayak, câu cá, leo núi</li>
+                <li>Hướng dẫn viên chuyên nghiệp</li>
             </ul>
         </div>
         <div class="service-item">
-            <h3>Cắm trại</h3>
-            <p>Trải nghiệm thiên nhiên hoang dã:</p>
+            <h3>Lửa trại & giao lưu văn hóa</h3>
+            <p>Trải nghiệm văn hóa địa phương độc đáo:</p>
             <ul>
-                <li>Đốt lửa trại, nướng BBQ, ca hát, kể chuyện</li>
-                <li>Bơi lội, chèo thuyền kayak, câu cá tại các hồ, sông gần đó</li>
-                <li>Đi bộ đường dài, khám phá rừng núi</li>
-                <li>Ngắm sao đêm, chụp ảnh thiên nhiên</li>
+                <li>Đốt lửa trại, âm nhạc, trò chơi nhóm</li>
+                <li>Giao lưu văn hóa với người dân địa phương</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Workshop & trải nghiệm địa phương</h3>
+            <p>Học hỏi và trải nghiệm các hoạt động truyền thống:</p>
+            <ul>
+                <li>Học làm gốm, pha cà phê, trồng rau</li>
+                <li>Các lớp học thủ công mỹ nghệ</li>
             </ul>
         </div>
     </div>
-=======
-<section id="homestayServices">
-  <h2>Dịch vụ Homestay của chúng tôi</h2>
-  <div class="homestay-container">
-    <div class="homestay-item">
-      <img src="../static/images/homestay_balcony.jpg" alt="Homestay Ban Công Đà Lạt">
-      <h3>Homestay Ban Công Đà Lạt</h3>
-      <p class="price">Giá: 500.000 VND/đêm</p>
-      <p class="note">Tận hưởng không gian ban công riêng tư với tầm nhìn tuyệt đẹp.</p>
+
+    <div class="service-category">
+        <h2>Dịch vụ hỗ trợ khách hàng</h2>
+        <div class="service-item">
+            <h3>Hỗ trợ đặt xe & hướng dẫn đường đi</h3>
+            <p>Hỗ trợ di chuyển thuận tiện:</p>
+            <ul>
+                <li>Đặt xe taxi, xe ôm</li>
+                <li>Hướng dẫn đường đi chi tiết</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Cứu hộ khẩn cấp</h3>
+            <p>Đảm bảo an toàn cho khách hàng:</p>
+            <ul>
+                <li>Sơ cứu y tế</li>
+                <li>Hỗ trợ gọi xe cấp cứu</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Nhân viên thân thiện, tư vấn nhiệt tình</h3>
+            <p>Đội ngũ nhân viên chuyên nghiệp và tận tâm:</p>
+            <ul>
+                <li>Tư vấn thông tin du lịch</li>
+                <li>Hỗ trợ giải đáp thắc mắc</li>
+            </ul>
+        </div>
     </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_breakfast.jpg" alt="Homestay Bữa Sáng Sapa">
-      <h3>Homestay Bữa Sáng Sapa</h3>
-      <p class="price">Giá: 300.000 VND/đêm</p>
-      <p class="note">Thưởng thức bữa sáng ngon miệng với đặc sản địa phương.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_couple.jpg" alt="Homestay Cặp Đôi Đà Lạt">
-      <h3>Homestay Cặp Đôi Đà Lạt</h3>
-      <p class="price">Giá: 600.000 VND/đêm</p>
-      <p class="note">Không gian lãng mạn, lý tưởng cho các cặp đôi.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_cozy.jpg" alt="Homestay Ấm Cúng Sapa">
-      <h3>Homestay Ấm Cúng Sapa</h3>
-      <p class="price">Giá: 400.000 VND/đêm</p>
-      <p class="note">Không gian ấm cúng, mang đến cảm giác như ở nhà.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_dinner.jpg" alt="Homestay Bữa Tối Đà Lạt">
-      <h3>Homestay Bữa Tối Đà Lạt</h3>
-      <p class="price">Giá: 550.000 VND/đêm</p>
-      <p class="note">Thưởng thức bữa tối ấm cúng với các món ăn đặc sắc.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_family.jpg" alt="Homestay Gia Đình Sapa">
-      <h3>Homestay Gia Đình Sapa</h3>
-      <p class="price">Giá: 350.000 VND/đêm</p>
-      <p class="note">Không gian rộng rãi, phù hợp cho gia đình và nhóm bạn.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_garden.jpg" alt="Homestay Vườn Đà Lạt">
-      <h3>Homestay Vườn Đà Lạt</h3>
-      <p class="price">Giá: 700.000 VND/đêm</p>
-      <p class="note">Tận hưởng không gian xanh mát với khu vườn xinh xắn.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_garden2.jpg" alt="Homestay Vườn 2 Sapa">
-      <h3>Homestay Vườn 2 Sapa</h3>
-      <p class="price">Giá: 450.000 VND/đêm</p>
-      <p class="note">Khu vườn rộng lớn, thích hợp cho các hoạt động ngoài trời.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_J98.jpg" alt="Homestay J98 Đà Lạt">
-      <h3>Homestay J98 Đà Lạt</h3>
-      <p class="price">Giá: 800.000 VND/đêm</p>
-      <p class="note">Homestay cao cấp với đầy đủ tiện nghi hiện đại.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_kitchen.jpg" alt="Homestay Bếp Sapa">
-      <h3>Homestay Bếp Sapa</h3>
-      <p class="price">Giá: 500.000 VND/đêm</p>
-      <p class="note">Bếp đầy đủ tiện nghi, cho phép bạn tự do nấu nướng.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/Homestay_meomeo.jpg" alt="Homestay Mèo Đà Lạt">
-      <h3>Homestay Mèo Đà Lạt</h3>
-      <p class="price">Giá: 650.000 VND/đêm</p>
-      <p class="note">Homestay thân thiện với thú cưng, đặc biệt là mèo.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_pool.jpg" alt="Homestay Hồ Bơi Sapa">
-      <h3>Homestay Hồ Bơi Sapa</h3>
-      <p class="price">Giá: 370.000 VND/đêm</p>
-      <p class="note">Tận hưởng làn nước mát lạnh tại hồ bơi của homestay.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_relax.jpg" alt="Homestay Thư Giãn Đà Lạt">
-      <h3>Homestay Thư Giãn Đà Lạt</h3>
-      <p class="price">Giá: 720.000 VND/đêm</p>
-      <p class="note">Không gian yên tĩnh, lý tưởng để thư giãn và nghỉ ngơi.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_room.jpg" alt="Homestay Phòng Sapa">
-      <h3>Homestay Phòng Sapa</h3>
-      <p class="price">Giá: 480.000 VND/đêm</p>
-      <p class="note">Phòng ngủ ấm cúng, được trang bị đầy đủ tiện nghi.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_view.jpg" alt="Homestay View Đà Lạt">
-      <h3>Homestay View Đà Lạt</h3>
-      <p class="price">Giá: 590.000 VND/đêm</p>
-      <p class="note">Tầm nhìn tuyệt đẹp ra khung cảnh thiên nhiên hùng vĩ.</p>
-    </div>
-    <div class="homestay-item">
-      <img src="../static/images/homestay_view2.jpg" alt="Homestay View 2 Sapa">
-      <h3>Homestay View 2 Sapa</h3>
-      <p class="price">Giá: 390.000 VND/</p>
-    </div>
-  </div>
 </section>
-</body>
-</html>
->>>>>>> d2c0cf8b5c067db010e63b9be1097b3fb94b483d
