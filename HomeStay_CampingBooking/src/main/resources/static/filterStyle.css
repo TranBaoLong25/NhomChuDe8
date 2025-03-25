@@ -2,10 +2,10 @@
 #filter-container {
     margin-top: 55px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(204, 204, 204, 0.5); /* Viền cũng trong suốt nhẹ */
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: #f9f9f9;
+    background-color: rgba(249, 249, 249, 0.7); /* Màu nền trong suốt 30% */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -28,7 +28,6 @@
     margin: 0 auto 10px auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 .filter-option {
     margin-bottom: 15px; /* Khoảng cách giữa các bộ lọc */
 }
@@ -37,18 +36,29 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 16px;
-    color: #333;
+    font-size: 17px; /* Tăng kích thước chữ một chút */
+    color: #222; /* Màu chữ tối hơn để dễ nhìn */
+    letter-spacing: 0.5px; /* Giãn chữ nhẹ giúp dễ đọc hơn */
+    text-transform: capitalize; /* Viết hoa chữ cái đầu tiên */
 }
 
 .filter-option > div {
-    margin-left: 20px; /* Thụt lề phần select và checkbox */
+    margin-left: 15px; /* Thụt lề phần select và checkbox */
 }
 
 .filter-option label:hover {
-    color: #007bff;
+    color: #0056b3; /* Màu xanh đậm hơn khi hover */
     cursor: pointer;
+    text-decoration: underline; /* Gạch chân khi hover */
 }
+
+/* Định dạng chữ trong select box */
+.filter-option select {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
 
 /* Kiểu dáng cho khung chọn địa điểm, giá, sắp xếp, loại phòng, số người ở */
 #room-type-filter select,
