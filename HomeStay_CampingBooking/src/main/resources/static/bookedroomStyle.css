@@ -1,0 +1,149 @@
+/* ===================== */
+/*  🎨 Kiểu dáng chung  */
+/* ===================== */
+
+#filter-container {
+    margin-top: 55px;
+    padding: 20px;
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(249, 249, 249, 0.85);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề bộ lọc */
+.filter-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: #007bff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================== */
+/*  📌 Kiểu dáng bộ lọc  */
+/* ===================== */
+
+.filter-option {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Label chung */
+.filter-option label {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+/* Hover hiệu ứng */
+.filter-option label:hover {
+    color: #0056b3;
+    cursor: pointer;
+}
+
+/* ========================== */
+/*  ✅ Căn chỉnh Checkbox    */
+/* ========================== */
+
+/* Bố cục nhóm checkbox */
+#room-features-filter,
+#room-type-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Căn chỉnh checkbox & label */
+#room-features-filter label,
+#room-type-filter label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: background 0.2s ease-in-out;
+}
+
+/* Ẩn checkbox mặc định */
+#room-features-filter input[type="checkbox"],
+#room-type-filter input[type="checkbox"] {
+    display: none;
+}
+
+/* Thiết kế checkbox tùy chỉnh */
+#room-features-filter label::before,
+#room-type-filter label::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+}
+
+/* Khi checkbox được chọn */
+#room-features-filter input[type="checkbox"]:checked + label::before,
+#room-type-filter input[type="checkbox"]:checked + label::before {
+    background-color: #007bff;
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+/* Hover hiệu ứng */
+#room-features-filter label:hover::before,
+#room-type-filter label:hover::before {
+    border-color: #0056b3;
+}
+
+/* ========================== */
+/*  🔎 Nút Tìm Kiếm           */
+/* ========================== */
+
+#apply-filters {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#apply-filters:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#filter-container label,
+.filter-option label {
+    font-size: 16px;
+    font-weight: bold;
+}

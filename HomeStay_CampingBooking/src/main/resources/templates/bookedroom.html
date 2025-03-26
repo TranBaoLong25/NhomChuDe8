@@ -1,45 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Đặt phòng</title>
-  <link rel="stylesheet" type="text/css" href="/header.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <link rel="stylesheet" type="text/css" href="/bookedroomStyle.css">
+    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
 </head>
 <body>
 <nav>
-  <div class="nav-container">
-    <div class="logo">Homestay & Camping</div>
-    <div class="nav-links">
-      <a href="/" class="active">Trang Chủ</a>
-      <a href="About">Giới Thiệu</a>
-      <a href="service">Dịch Vụ</a>
-      <a href="filter">Lọc Homestay</a>
-      <a href="support">Hỗ Trợ</a>
-      <a href="bookedroom">Đặt Chỗ</a>
-      <th:block th:if="${session.loggedInUser}">
-        <a href="/profile">Trang Cá Nhân</a>
-        <form action="login/logout" method="post" style="display:inline;">
-          <button type="submit">Đăng Xuất</button>
-        </form>
-      </th:block>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="service">Dịch Vụ</a>
+            <a href="bookedroom">Đặt Phòng</a>
+            <a href="support">Hỗ Trợ</a>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
 
-      <!-- Nếu chưa đăng nhập -->
-      <th:block th:unless="${session.loggedInUser}">
-        <a href="/login">Đăng Nhập</a>
-        <a href="/register">Đăng Ký</a>
-      </th:block>
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
     </div>
-    <div class="language-dropdown">
-      <select>
-        <option value="vi">Việt Nam</option>
-        <option value="en">English</option>
-      </select>
-    </div>
-  </div>
 </nav>
-<main style="margin-top: 70px;">
+<div id="filter-container">
+    <div class="filter-title"> Tìm Kiếm</div>
 
-</main>
+            <!-- Bộ lọc loại phòng -->
+    <label for="room-type">Loại Phòng:</label>
+            <div id="room-type-filter" class="filter-option">
+                <select id="room-type" name="room-type">
+                    <option value="">Tất cả</option>
+                    <option value="standard">Phòng Tiêu Chuẩn</option>
+                    <option value="deluxe">Phòng Cao Cấp</option>
+                    <option value="suite">Phòng Suite</option>
+                    <option value="dormitory">Phòng Tập Thể</option>
+                    <option value="bungalow">Bungalow</option>
+                </select>
+            </div>
 
+            <!-- Bộ lọc giá cả -->
+            <div id="price-filter" class="filter-option">
+                <label for="price">Giá:</label>
+                <select id="price" name="price">
+                    <option value="">Tất cả</option>
+                    <option value="0-300">Dưới 300.000 VNĐ</option>
+                    <option value="300-500">300.000 - 500.000 VNĐ</option>
+                    <option value="500-700">500.000 - 700.000 VNĐ</option>
+                    <option value="700-1000">700.000 - 1.000.000 VNĐ</option>
+                    <option value="1000-1500">1.000.000 - 1.500.000 VNĐ</option>
+                    <option value="1500-2000">1.500.000 - 2.000.000 VNĐ</option>
+                    <option value="2000+">Trên 2.000.000 VNĐ</option>
+                </select>
+            </div>
+
+            <!-- Bộ lọc số người ở -->
+            <div id="guest-filter" class="filter-option">
+                <label for="guests">Số Người Ở:</label>
+                <select id="guests" name="guests">
+                    <option value="">Tất cả</option>
+                    <option value="1-2">1 - 2 người</option>
+                    <option value="3-4">3 - 4 người</option>
+                    <option value="5-6">5 - 6 người</option>
+                    <option value="7+">Trên 7 người</option>
+                </select>
+            </div>
+
+            <!-- Bộ lọc tiêu chí phòng -->
+    <!-- Bộ lọc tiêu chí phòng -->
+    <label>Tiêu Chí Phòng:</label>
+    <div id="room-features-filter" class="filter-option">
+
+        <div>
+            <input type="checkbox" id="sea-view" name="features" value="sea-view">
+            <label for="sea-view">Hướng biển</label>
+        </div>
+        <div>
+            <input type="checkbox" id="mountain-view" name="features" value="mountain-view">
+            <label for="mountain-view">Hướng núi</label>
+        </div>
+        <div>
+            <input type="checkbox" id="private-bathroom" name="features" value="private-bathroom">
+            <label for="private-bathroom">Phòng tắm riêng</label>
+        </div>
+        <div>
+            <input type="checkbox" id="balcony" name="features" value="balcony">
+            <label for="balcony">Ban công</label>
+        </div>
+        <div>
+            <input type="checkbox" id="soundproof" name="features" value="soundproof">
+            <label for="soundproof">Phòng cách âm</label>
+        </div>
+        <div>
+            <input type="checkbox" id="king-bed" name="features" value="king-bed">
+            <label for="king-bed">Giường King Size</label>
+        </div>
+        <div>
+            <input type="checkbox" id="large-window" name="features" value="large-window">
+            <label for="large-window">Cửa sổ lớn / View đẹp</label>
+        </div>
+        <div>
+            <input type="checkbox" id="kitchenette" name="features" value="kitchenette">
+            <label for="kitchenette">Có bếp nhỏ</label>
+        </div>
+    </div>
+
+    <!-- Bộ lọc tiện ích -->
+
+    <label>Tiêu Ích Phòng:</label>
+    <div id="room-features-filter" class="filter-option">
+            <div>
+                <input type="checkbox" id="basic-amenity" name="Phòng 1" value="BasicAmenity">
+                <label for="basic-amenity">Dành cho 1-2 người, tiện nghi cơ bản.</label>
+            </div>
+            <div>
+                <input type="checkbox" id="beautiful-view" name="Phòng 2" value="BeautifulView">
+                <label for="beautiful-view">Có view đẹp, tiện ích đầy đủ.</label>
+            </div>
+            <div>
+                <input type="checkbox" id="vip-room" name="Phòng 3" value="VipRoom">
+                <label for="vip-room">Có phòng khách riêng, dành cho gia đình hoặc khách VIP.</label>
+            </div>
+            <div>
+                <input type="checkbox" id="bunk-bed" name="Phòng 4" value="BunkBed">
+                <label for="bunk-bed">Giường tầng, phù hợp nhóm bạn hoặc khách du lịch.</label>
+            </div>
+            <div>
+                <input type="checkbox" id="nature-lodge" name="Phòng 5" value="NatureLodge">
+                <label for="nature-lodge">Nhà nhỏ riêng biệt, gần thiên nhiên, thường gặp ở khu du lịch sinh thái.</label>
+            </div>
+        </div>
+
+        <!-- Nút áp dụng bộ lọc -->
+        <button id="apply-filters">Tìm Kiếm</button>
+
+        <script></script>
+        <div/>
 </body>
+
 </html>

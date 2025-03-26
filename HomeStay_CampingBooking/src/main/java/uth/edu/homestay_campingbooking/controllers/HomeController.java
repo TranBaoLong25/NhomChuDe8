@@ -25,7 +25,7 @@ public class HomeController {
     }
     @GetMapping("/filter")
     public String boLoc(){
-        return "filter";
+        return "bookedroom";
     }
     @GetMapping("/support")
     public String hoTro(){

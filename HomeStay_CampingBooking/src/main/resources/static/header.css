@@ -13,9 +13,11 @@ nav {
     top: 0;
     position: fixed;
     width: 100%;
-    background-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.10); /* Màu nền trong suốt hơn */
+    backdrop-filter: blur(10px); /* Hiệu ứng làm mờ nền */
     z-index: 1000;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: backdrop-filter 0.3s ease-in-out; /* Hiệu ứng chuyển đổi */
 }
 
 .nav-container {
@@ -29,7 +31,7 @@ nav {
 
 .logo {
     text-align: center;
-    color: white;
+    color: black;
     font-size: 22px;
     font-weight: bold;
     text-transform: uppercase;
@@ -42,11 +44,11 @@ nav {
     align-items: center;
 }
 
+/* ----- Chỉnh màu & độ đậm chữ trên menu ----- */
 .nav-links a {
-    color: white;
-    text-decoration: none;
+    color: black;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700; /* Đậm hơn */
     padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.2s;

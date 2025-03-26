@@ -1,15 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gioi thieu</title>
-    <link rel="stylesheet" type="text/css" href="/IndexStyle.css">
-    <link rel="stylesheet" type="text/css" href="/header.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/IndexStyle.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/About.css">
+    <title>Trải nghiệm Homestay và Camping</title>
 </head>
 <body>
-
-<header>
-</header>
 <nav>
     <div class="nav-container">
         <div class="logo">Homestay & Camping</div>
@@ -17,9 +17,8 @@
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
             <a href="service">Dịch Vụ</a>
-            <a href="filter">Lọc Homestay</a>
+            <a href="bookedroom">Đặt Phòng</a>
             <a href="support">Hỗ Trợ</a>
-            <a href="bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
                 <form action="login/logout" method="post" style="display:inline;">
@@ -42,8 +41,62 @@
     </div>
 </nav>
 <main>
-    <h1 style="margin-top: 50px">Đây là trang Giới thiệu</h1>
-    <p>Nội dung chi tiết về trang giới thiệu...</p>
+    <h2 class="title-center">Homestay & Camping - Trải Nghiệm Nhiên Nhiên Tuyệt Vời</h2>
+
+    <h2>Điểm đến lý tưởng cho người yêu thiên nhiên</h2>
+    <p>Homestay & Camping là điểm đến tuyệt vời dành cho những ai yêu thích sự gần gũi với thiên nhiên và muốn trải nghiệm không gian nghỉ dưỡng độc đáo tại Bảo Lộc, Lâm Đồng. Nằm giữa vùng núi cao nguyên hùng vĩ, nơi đây mang đến cho du khách cơ hội chiêm ngưỡng khung cảnh thiên nhiên tuyệt đẹp với đồi núi xanh ngát, mây trôi lững lờ và bầu không khí trong lành, mát mẻ.</p>
+
+    <h2>Dịch vụ tại Homestay & Camping</h2>
+    <h3>1. Homestay & Camping</h3>
+    <ul>
+        <li><strong>Standard Room</strong>: Phòng tiêu chuẩn dành cho 1-2 người, tiện nghi cơ bản.</li>
+        <li><strong>Deluxe Room</strong>: Phòng cao cấp hơn với view đẹp, tiện ích đầy đủ.</li>
+        <li><strong>Suite Room</strong>: Phòng rộng rãi, có phòng khách riêng, phù hợp với gia đình hoặc khách VIP.</li>
+        <li><strong>Dormitory Room</strong>: Phòng tập thể với giường tầng, thích hợp cho nhóm bạn hoặc khách du lịch.</li>
+        <li><strong>Bungalow</strong>: Nhà nhỏ riêng biệt gần thiên nhiên, mang lại không gian yên bình.</li>
+    </ul>
+
+    <h3>2. Cà phê & Thưởng thức thiên nhiên</h3>
+    <p>Bên cạnh dịch vụ lưu trú, Homestay & Camping còn có không gian cà phê độc đáo, mang đậm bản sắc vùng miền. Tại đây, du khách có thể thưởng thức những ly cà phê đậm đà giữa thiên nhiên hoang sơ, săn mây vào sáng sớm hoặc thư giãn với khung cảnh thơ mộng của núi rừng.</p>
+
+    <h3>3. Hoạt động ngoài trời thú vị</h3>
+    <ul>
+        <li>Tắm thác, khám phá thiên nhiên</li>
+        <li>Trải nghiệm bản sắc văn hóa địa phương</li>
+        <li>Cắm trại, nấu ăn ngoài trời</li>
+        <li>Tham gia các buổi giao lưu văn hóa</li>
+    </ul>
+
+    <h2>Hướng dẫn sử dụng dịch vụ</h2>
+    <h3><a href="/bookedroom">Hướng dẫn Đặt phòng</a></h3>
+    <ul>
+        <li>Nhấn vào chức năng đặt phòng.</li>
+        <li>Lọc phòng theo nhu cầu bằng bộ lọc.</li>
+        <li>Xác nhận kết quả lọc.</li>
+        <li>Chọn phòng muốn đặt.</li>
+        <li>Điền thông tin vào bảng thông tin và xác nhận đặt phòng.</li>
+    </ul>
+
+    <h3><a href="/payment">Hướng dẫn Thanh toán</a></h3>
+    <p>Chức năng chưa hoạt động.</p>
+
+    <h3><a href="/service">Hướng dẫn Dịch vụ</a></h3>
+    <ul>
+        <li>Nhấn vào chức năng dịch vụ.</li>
+        <li>Chọn dịch vụ muốn đặt.</li>
+        <li>Điền thông tin vào bảng thông tin và xác nhận.</li>
+    </ul>
+
+    <h2>Liên hệ & Đặt phòng</h2>
+    <p>Homestay & Camping là lựa chọn hoàn hảo cho những ai muốn trốn khỏi thành phố, tận hưởng không gian yên bình giữa thiên nhiên và trải nghiệm những dịch vụ tuyệt vời. Hãy liên hệ ngay để đặt chỗ trước và có được trải nghiệm tốt nhất!</p>
+
+    <h3>Thông tin liên hệ:</h3>
+    <ul>
+        <li><strong>Địa chỉ:</strong> Thôn 16, Xã Lộc Thành, Bảo Lâm, Lâm Đồng</li>
+        <li><strong>Số điện thoại:</strong> 0862 666 551</li>
+        <li><strong>Email:</strong> booking@homestaycamping.vn</li>
+        <li><strong>Website:</strong> <a href="https://homestaycamping.vn">https://homestaycamping.vn</a></li>
+    </ul>
 </main>
 
 </body>
