@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ho tro</title>
+    <link rel="stylesheet " type="text/css" href="/IndexStyle.css">
+    <link rel="stylesheet" type="text/css" href="/support.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="service">Dịch Vụ</a>
+            <a href="filter">Lọc Homestay</a>
+            <a href="support">Hỗ Trợ</a>
+            <a href="bookedroom">Đặt Chỗ</a>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
 
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</nav>
+<main>
+    <h2>Trung Tâm Hỗ Trợ</h2>
+    <p class="intro-text">Chúng tôi luôn sẵn sàng giúp đỡ bạn trong mọi tình huống.</p>
+
+    <div class="button-group">
+        <a href="bookedroom">
+            <button class="green-btn">Đặt Phòng</button>
+        </a>
+        <button class="yellow-btn">Hỗ Trợ Thanh Toán</button>
+        <button class="red-btn">Hỗ Trợ Dịch Vụ</button>
+    </div>
+
+    <section class="faq-section">
+        <h3>Câu Hỏi Thường Gặp (FAQ)</h3>
+        <p><strong>❓ Làm sao để đặt phòng?</strong></p>
+        <p>Truy cập trang <a href="bookedroom" class="faq-link">Đặt Phòng</a>, chọn phòng mong muốn, nhập thông tin và hoàn tất thanh toán.</p>
+
+        <p><strong>💳 Tôi có thể thanh toán bằng phương thức nào?</strong></p>
+        <p>Chúng tôi hỗ trợ thanh toán qua thẻ tín dụng, chuyển khoản ngân hàng và ví điện tử.</p>
+
+        <p><strong>📞 Tôi cần liên hệ hỗ trợ thì làm sao?</strong></p>
+        <p>Bạn có thể liên hệ qua số <strong>1900 123 456</strong> hoặc gửi email đến <strong>support@homestaybooking.com</strong>.</p>
+    </section>
+</main>
+</body>
+</html>
