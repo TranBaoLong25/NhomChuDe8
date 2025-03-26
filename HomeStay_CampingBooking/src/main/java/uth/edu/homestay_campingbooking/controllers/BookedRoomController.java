@@ -2,6 +2,8 @@ package uth.edu.homestay_campingbooking.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uth.edu.homestay_campingbooking.exception.AppException;
+import uth.edu.homestay_campingbooking.exception.ErrorCode;
 import uth.edu.homestay_campingbooking.models.BookedRoom;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
 
@@ -23,12 +25,13 @@ public class BookedRoomController {
         return bookedRoomService.info(phone);
     }
     @GetMapping("/check")
-    public Boolean checkBookedRoom(LocalDate check_in, LocalDate check_out) {
+    public Boolean checkBookedRoom(@RequestParam("check_in") LocalDate check_in,
+                                   @RequestParam("check_out") LocalDate check_out) {
         return bookedRoomService.checkByDate(check_in, check_out);
     }
-    @PostMapping("/insert")
-    public void insertBookedRoom(@RequestBody BookedRoom bookedRoom) {
-        bookedRoomService.saveBookedRoom(bookedRoom);
+    @PostMapping("/insert/{homeStayId}")
+    public void insertBookedRoom(@PathVariable Long homeStayId, @RequestBody BookedRoom bookedRoom) {
+            bookedRoomService.saveBookedRoom(homeStayId, bookedRoom);
     }
     @PutMapping("/update/{phone}")
     public void updateBookedRoom(@PathVariable String phone, @RequestBody BookedRoom bookedRoom) {

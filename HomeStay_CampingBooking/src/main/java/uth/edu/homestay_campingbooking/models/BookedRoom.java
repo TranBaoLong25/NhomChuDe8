@@ -1,5 +1,6 @@
 package uth.edu.homestay_campingbooking.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,13 +16,18 @@ public class BookedRoom {
     private RoomType roomType;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
+    @ManyToOne
+    @JoinColumn(name = "homestay_id", nullable = false)
+    @JsonIgnore
+    private HomeStay homeStay;
 
-    public BookedRoom(String guestName, String guestPhone, RoomType roomType, LocalDate checkInDate, LocalDate checkOutDate) {
+    public BookedRoom(String guestName, String guestPhone, RoomType roomType, LocalDate checkInDate, LocalDate checkOutDate, HomeStay homeStay) {
         this.guestName = guestName;
         this.guestPhone = guestPhone;
         this.roomType = roomType;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
+        this.homeStay = homeStay;
     }
     public BookedRoom() {}
 
@@ -71,5 +77,15 @@ public class BookedRoom {
 
     public void setCheckOutDate(LocalDate checkOutDate) {
         this.checkOutDate = checkOutDate;
+    }
+    public HomeStay getHomeStay() {
+        return homeStay;
+    }
+
+    public void setHomeStay(HomeStay homeStay) {
+        this.homeStay = homeStay;
+    }
+    public Long getHomeStayId() {
+        return homeStay != null ? homeStay.getId() : null;
     }
 }
