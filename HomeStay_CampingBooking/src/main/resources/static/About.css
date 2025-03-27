@@ -44,7 +44,7 @@ h2 {
 
 h3 {
     font-size: 1.6em;
-    color: #1abc9c; /* Xanh lá nhạt */
+    color: black; /* Xanh lá nhạt */
     margin-bottom: 10px;
 }
 
@@ -78,14 +78,14 @@ a {
     display: inline-block;
     text-align: left;
     font-size: 1.2em;
-    color: #1abc9c;
+    color: black;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #1abc9c;
+    color: black;
 }
 
 /* Responsive: Điều chỉnh trên màn hình nhỏ */
@@ -120,4 +120,3 @@ a:hover {
     height: 10vh; /* Hoặc đặt chiều cao theo ý muốn */
     font-size: 39px; /* Tăng cỡ chữ */
 }
-
