@@ -22,7 +22,7 @@ public class HomeStayService implements IHomeStayService {
     }
 
     @Override
-    public HomeStay findHomeStay(long id) {
+    public HomeStay findHomeStay(Long id) {
         return homeStayRepository.findHomeStay(id);
     }
 
@@ -32,7 +32,7 @@ public class HomeStayService implements IHomeStayService {
     }
 
     @Override
-    public void deleteHomeStay(long id) {
+    public void deleteHomeStay(Long id) {
         homeStayRepository.deleteHomeStay(id);
     }
 

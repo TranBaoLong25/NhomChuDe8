@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Người dùng</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/admincss/manageruser.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="manageruser">Users</a>
+            <a href="managerservice">Service</a>
+            <a href="managerhomestay">Homestay</a>
+            <a href="managerbookedroom">BookedRoom</a>
+        </div>
+    </div>
+</nav>
+<th:block th:if="${session.loggedInUser}">
+<th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+<div class="container" >
+    <!-- Danh sách người dùng -->
+    <div class="user-list">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="userTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Form Thêm/Sửa -->
+    <div class="user-form">
+        <h3>Thêm/Sửa Người dùng</h3>
+        <form id="userForm">
+            <input type="hidden" id="userId">
+            <label>Username:</label>
+            <input type="text" id="username" style="width: 93%" required><br>
+            <label>Password:</label>
+            <input type="password" id="password" style="width: 93%" required><br>
+            <label>Role:</label>
+            <select id="role">
+                <option value="student">Student</option>
+                <option value="parent">Parent</option>
+                <option value="manager">Manager</option>
+                <option value="staff">Staff</option>
+                <option value="admin">Admin</option>
+            </select><br>
+            <button type="submit">Lưu</button>
+        </form>
+    </div>
+</div>
+</th:block>
+<th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+    <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+</th:block>
+</th:block>
+<th:block th:unless="${session.loggedInUser}">
+    <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+</th:block>
+<script>
+    $(document).ready(function() {
+        loadUsers();
+
+        $('#userForm').submit(function(event) {
+            event.preventDefault();
+            let id = $('#userId').val();
+            let user = {
+                username: $('#username').val(),
+                password: $('#password').val(),
+                role: $('#role').val()
+            };
+
+            if (id) {
+                updateUser(id, user);
+            } else {
+                addUser(user);
+            }
+        });
+    });
+
+    function loadUsers() {
+        $.get("/accounts", function(users) {
+            $('#userTable').empty();
+            users.forEach(user => {
+                $('#userTable').append(`
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.username}</td>
+                            <td>${user.role}</td>
+                            <td>
+                                <button onclick="editUser(${user.id})">Sửa</button>
+                                <button onclick="deleteUser(${user.id})">Xóa</button>
+                            </td>
+                        </tr>
+                    `);
+            });
+        });
+    }
+
+    function addUser(user) {
+        $.ajax({
+            url: "/accounts/insert",
+            type: "POST",
+            data: JSON.stringify(user),
+            contentType: "application/json",
+            success: function() {
+                alert("Thêm người dùng thành công!");
+                loadUsers();
+                $('#userForm')[0].reset();
+            },
+            error: function() {
+                alert("Lỗi khi thêm người dùng!");
+            }
+        });
+
+    }
+
+    function editUser(id) {
+        $.get(`/accounts/id/${id}`, function(user) {
+            $('#userId').val(user.id);
+            $('#username').val(user.username);
+            $('#password').val('');
+            $('#role').val(user.role);
+        });
+    }
+
+    function updateUser(id, user) {
+        $.ajax({
+            url: `/accounts/update/${id}`,
+            type: "PUT",
+            data: JSON.stringify(user),
+            contentType: "application/json",
+            success: function() {
+                alert("Cập nhật thành công!");
+                loadUsers();
+                $('#userForm')[0].reset();
+            }
+        }).fail(() => alert("Lỗi khi cập nhật!"));
+    }
+
+    function deleteUser(id) {
+        if (confirm("Bạn có chắc muốn xóa không?")) {
+            $.ajax({
+                url: `/accounts/delete/${id}`,
+                type: "DELETE",
+                success: function() {
+                    alert("Xóa thành công!");
+                    loadUsers();
+                }
+            }).fail(() => alert("Lỗi khi xóa!"));
+        }
+    }
+</script>
+</body>
+</html>

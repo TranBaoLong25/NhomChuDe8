@@ -54,3 +54,48 @@ body {
 .btn-edit:hover {
     background-color: #0056b3;
 }
+/* Container cho admin panel */
+.admin-panel {
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 400px;
+    background: #f8d7da; /* Màu nền nhạt */
+    border: 2px solid #dc3545; /* Viền đỏ */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+.admin-panel h3 {
+    color: #dc3545;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Danh sách quản lý */
+.admin-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-panel ul li {
+    margin: 8px 0;
+}
+
+/* Link */
+.admin-panel ul li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    background: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.admin-panel ul li a:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}

@@ -13,4 +13,6 @@ public interface IBookedRoomRepository {
     void saveBookedRoom(Long homeStayId, BookedRoom bookedRoom);
     void updateBookedRoom(String phone, BookedRoom bookedRoom);
     void deleteBookedRoom(String phone);
+    List<BookedRoom> info2(Long userId);
+    BookedRoom findBooked(String phone);
 }

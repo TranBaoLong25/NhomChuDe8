@@ -14,7 +14,6 @@
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
             <a href="service">Dịch Vụ</a>
-            <a href="filter">Lọc Homestay</a>
             <a href="support">Hỗ Trợ</a>
             <a href="bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
@@ -46,7 +45,10 @@
                 <form action="/edit-profile" method="post">
                     <label><strong>👤 Username:</strong></label>
                     <input type="text" name="username" th:value="${session.loggedInUser.username}" required>
-
+                    <label><strong>📝 Họ Tên:</strong> </label>
+                    <input type="text" name="guestName" required>
+                    <label><strong>📞 Số Điện Thoại:</strong></label>
+                    <input type="text" name="guestPhone" required>
                     <label><strong>🔑 Password:</strong></label>
                     <input type="password" name="password" required>
                     <label><strong>🔑 OldPassword:</strong></label>

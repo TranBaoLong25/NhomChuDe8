@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Size(min = 4, message = "USERNAME_INVALID")
     private String username;
     @Size(min = 8, message = "PASSWORD_INVALID")
@@ -31,7 +31,7 @@ public class User {
         this.role = role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

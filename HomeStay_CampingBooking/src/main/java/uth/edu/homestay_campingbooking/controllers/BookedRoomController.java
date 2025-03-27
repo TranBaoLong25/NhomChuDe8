@@ -1,6 +1,7 @@
 package uth.edu.homestay_campingbooking.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.homestay_campingbooking.exception.AppException;
 import uth.edu.homestay_campingbooking.exception.ErrorCode;
@@ -20,13 +21,17 @@ public class BookedRoomController {
     public List<BookedRoom> getAllBookedRooms() {
         return bookedRoomService.findAllBookedRoom();
     }
-    @GetMapping("/info")
+    @GetMapping("/info") //http://localhost:8080/booked/info?phone=0987654321
     public List<BookedRoom> getBookedRoomInfo(@RequestParam("phone") String phone) {
         return bookedRoomService.info(phone);
     }
-    @GetMapping("/check")
-    public Boolean checkBookedRoom(@RequestParam("check_in") LocalDate check_in,
-                                   @RequestParam("check_out") LocalDate check_out) {
+    @GetMapping("/info2")
+    public List<BookedRoom> getBookedRoomInfo2(@RequestParam("userId") Long userId) {
+        return bookedRoomService.info2(userId);
+    }
+    @GetMapping("/check")//http://localhost:8080/booked/check?check_in=2025-03-01&check_out=2025-03-05
+    public Boolean checkBookedRoom(@RequestParam("check_in") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_in,
+                                   @RequestParam("check_out") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_out) {
         return bookedRoomService.checkByDate(check_in, check_out);
     }
     @PostMapping("/insert/{homeStayId}")
@@ -40,5 +45,9 @@ public class BookedRoomController {
     @DeleteMapping("/delete/{phone}")
     public void deleteBookedRoom(@PathVariable String phone) {
         bookedRoomService.deleteBookedRoom(phone);
+    }
+    @GetMapping("/phone/{phone}")
+    public BookedRoom findBookedRoomByPhone(@PathVariable String phone) {
+        return bookedRoomService.findBooked(phone);
     }
 }

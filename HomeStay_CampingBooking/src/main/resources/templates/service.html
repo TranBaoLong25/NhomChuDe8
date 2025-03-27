@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service</title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+    <link rel="stylesheet" type="text/css" href="/header.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="service">Dịch Vụ</a>
+            <a href="support">Hỗ Trợ</a>
+            <a href="bookedroom">Đặt Chỗ</a>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
+
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</nav>
+<section class="service-section">
+    <h1>Dịch vụ của chúng tôi</h1>
+
+    <div class="service-category">
+        <h2>Dịch vụ ăn uống</h2>
+        <div class="service-item">
+            <h3>Bữa sáng</h3>
+            <p>Bữa sáng miễn phí hoặc có phụ phí hợp lý:</p>
+            <ul>
+                <li>Các món ăn địa phương và quốc tế</li>
+                <li>Bữa sáng tự chọn hoặc theo thực đơn</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>BBQ & lẩu ngoài trời</h3>
+            <p>Trải nghiệm ẩm thực ngoài trời độc đáo:</p>
+            <ul>
+                <li>Cung cấp nguyên liệu, bếp nướng, bàn ghế</li>
+                <li>Dịch vụ nấu sẵn (tùy chọn)</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Đồ uống & cà phê</h3>
+            <p>Thưởng thức các loại đồ uống đa dạng:</p>
+            <ul>
+                <li>Nước suối, trà, cà phê</li>
+                <li>Nước ép, rượu vang, bia</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-category">
+        <h2>Dịch vụ tiện ích</h2>
+        <div class="service-item">
+            <h3>Wi-Fi & ổ cắm sạc</h3>
+            <p>Đảm bảo kết nối và năng lượng cho thiết bị của bạn:</p>
+            <ul>
+                <li>Wi-Fi tốc độ cao miễn phí</li>
+                <li>Ổ cắm sạc tiện lợi</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Cho thuê xe đạp, xe máy</h3>
+            <p>Khám phá khu vực xung quanh dễ dàng:</p>
+            <ul>
+                <li>Xe đạp, xe máy chất lượng tốt</li>
+                <li>Dịch vụ cho thuê linh hoạt</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Bể bơi hoặc suối tự nhiên</h3>
+            <p>Thư giãn và tận hưởng thiên nhiên (nếu có):</p>
+            <ul>
+                <li>Bể bơi sạch sẽ, thoáng mát</li>
+                <li>Suối tự nhiên trong lành</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Khu vui chơi, giải trí</h3>
+            <p>Các hoạt động giải trí đa dạng:</p>
+            <ul>
+                <li>Võng, xích đu, bàn cờ</li>
+                <li>Đàn guitar, sách báo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-category">
+        <h2>Dịch vụ trải nghiệm & hoạt động ngoài trời</h2>
+        <div class="service-item">
+            <h3>Tour khám phá thiên nhiên</h3>
+            <p>Khám phá vẻ đẹp thiên nhiên hoang sơ:</p>
+            <ul>
+                <li>Trekking, chèo thuyền kayak, câu cá, leo núi</li>
+                <li>Hướng dẫn viên chuyên nghiệp</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Lửa trại & giao lưu văn hóa</h3>
+            <p>Trải nghiệm văn hóa địa phương độc đáo:</p>
+            <ul>
+                <li>Đốt lửa trại, âm nhạc, trò chơi nhóm</li>
+                <li>Giao lưu văn hóa với người dân địa phương</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Workshop & trải nghiệm địa phương</h3>
+            <p>Học hỏi và trải nghiệm các hoạt động truyền thống:</p>
+            <ul>
+                <li>Học làm gốm, pha cà phê, trồng rau</li>
+                <li>Các lớp học thủ công mỹ nghệ</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="service-category">
+        <h2>Dịch vụ hỗ trợ khách hàng</h2>
+        <div class="service-item">
+            <h3>Hỗ trợ đặt xe & hướng dẫn đường đi</h3>
+            <p>Hỗ trợ di chuyển thuận tiện:</p>
+            <ul>
+                <li>Đặt xe taxi, xe ôm</li>
+                <li>Hướng dẫn đường đi chi tiết</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Cứu hộ khẩn cấp</h3>
+            <p>Đảm bảo an toàn cho khách hàng:</p>
+            <ul>
+                <li>Sơ cứu y tế</li>
+                <li>Hỗ trợ gọi xe cấp cứu</li>
+            </ul>
+        </div>
+        <div class="service-item">
+            <h3>Nhân viên thân thiện, tư vấn nhiệt tình</h3>
+            <p>Đội ngũ nhân viên chuyên nghiệp và tận tâm:</p>
+            <ul>
+                <li>Tư vấn thông tin du lịch</li>
+                <li>Hỗ trợ giải đáp thắc mắc</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</body>
+</html>

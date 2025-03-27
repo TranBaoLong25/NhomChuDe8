@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Dịch vụ</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/admincss/managerservice.css">
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <div class="nav-links">
+      <a href="/" class="active">Trang Chủ</a>
+      <a href="manageruser">Users</a>
+      <a href="managerservice">Service</a>
+      <a href="managerhomestay">Homestay</a>
+      <a href="managerbookedroom">BookedRoom</a>
+    </div>
+  </div>
+</nav>
+<th:block th:if="${session.loggedInUser}">
+<th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+<div class="container">
+  <!-- Danh sách dịch vụ -->
+  <div class="service-list">
+    <table border="1">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên Dịch Vụ</th>
+        <th>Mô Tả</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+      </tr>
+      </thead>
+      <tbody id="serviceTable"></tbody>
+    </table>
+  </div>
+
+  <!-- Form Thêm/Sửa -->
+  <div class="service-form">
+    <h3>Thêm/Sửa Dịch vụ</h3>
+    <form id="serviceForm">
+      <input type="hidden" id="serviceId">
+      <label>Tên dịch vụ:</label>
+      <input type="text" id="serviceName" style="width: 93%" required><br>
+      <label>Mô tả:</label>
+      <input type="text" id="serviceDescription" style="width: 93%" required><br>
+      <label>Giá:</label>
+      <input type="number" id="servicePrice" style="width: 93%" required><br>
+      <button type="submit">Lưu</button>
+    </form>
+  </div>
+</div>
+</th:block>
+<th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+  <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+</th:block>
+</th:block>
+<th:block th:unless="${session.loggedInUser}">
+  <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+</th:block>
+<script>
+  $(document).ready(function() {
+    loadServices();
+
+    $('#serviceForm').submit(function(event) {
+      event.preventDefault();
+      let id = $('#serviceId').val();
+      let service = {
+        serviceName: $('#serviceName').val(),
+        serviceDescription: $('#serviceDescription').val(),
+        servicePrice: $('#servicePrice').val()
+      };
+
+      if (id) {
+        updateService(id, service);
+      } else {
+        addService(service);
+      }
+    });
+  });
+
+  function loadServices() {
+    $.get("/services", function(services) {
+      $('#serviceTable').empty();
+      services.forEach(service => {
+        $('#serviceTable').append(`
+                    <tr>
+                        <td>${service.id}</td>
+                        <td>${service.serviceName}</td>
+                        <td>${service.serviceDescription}</td>
+                        <td>${service.servicePrice}</td>
+                        <td>
+                            <button onclick="editService(${service.id})">Sửa</button>
+                            <button onclick="deleteService(${service.id})">Xóa</button>
+                        </td>
+                    </tr>
+                `);
+      });
+    });
+  }
+  function addService(service) {
+    $.ajax({
+      url: "/services/insert",
+      type: "POST",
+      data: JSON.stringify(service),
+      contentType: "application/json",
+      success: function () {
+        alert("Thêm dịch vụ thành công!");
+        loadServices();
+        $('#serviceForm')[0].reset();
+      },
+      error: function () {
+        alert("Lỗi khi thêm dịch vụ!");
+      }
+    });
+  }
+  function editService(id) {
+    if (!id) {
+      alert("ID dịch vụ không hợp lệ!");
+      return;
+    }
+    $.get(`/services/id/${id}`, function(service) {
+      if (!service) {
+        alert("Không tìm thấy dịch vụ!");
+        return;
+      }
+      $('#serviceId').val(service.id);
+      $('#serviceName').val(service.serviceName);
+      $('#serviceDescription').val(service.serviceDescription);
+      $('#servicePrice').val(service.servicePrice);
+    }).fail(() => alert("Lỗi khi lấy dữ liệu dịch vụ!"));
+  }
+
+  function updateService(id, service) {
+    $.ajax({
+      url: `/services/update/${id}`,
+      type: "PUT",
+      data: JSON.stringify(service),
+      contentType: "application/json",
+      success: function () {
+        alert("Cập nhật thành công!");
+        loadServices();
+        $('#serviceForm')[0].reset();
+      }
+    }).fail(() => alert("Lỗi khi cập nhật!"));
+  }
+  function deleteService(id) {
+    if (confirm("Bạn có chắc muốn xóa không?")) {
+      $.ajax({
+        url: `/services/delete/${id}`,
+        type: "DELETE",
+        success: function () {
+          alert("Xóa thành công!");
+          loadServices();
+        }
+      }).fail(() => alert("Lỗi khi xóa!"));
+    }
+  }
+
+</script>
+</body>
+</html>

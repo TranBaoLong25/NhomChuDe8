@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Phòng Đã Đặt</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/admincss/managerbookedroom.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="manageruser">Users</a>
+            <a href="managerservice">Service</a>
+            <a href="managerhomestay">Homestay</a>
+            <a href="managerbookedroom">BookedRoom</a>
+        </div>
+    </div>
+</nav>
+<th:block th:if="${session.loggedInUser}">
+<th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+    <div class="container">
+        <div class="bookedroom-list">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên khách</th>
+                    <th>Số điện thoại</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Mã phòng</th>
+                    <th>Mã người dùng</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody id="bookedroomTable"></tbody>
+            </table>
+        </div>
+
+        <!-- Form Thêm/Sửa -->
+        <div class="bookedroom-form">
+            <h3>Thêm/Sửa Đặt Phòng</h3>
+            <form id="bookedroomForm">
+                <input type="hidden" id="bookedroomId">
+                <label>Tên khách:</label>
+                <input type="text" id="guestName" style="width: 93%" required><br>
+                <label>Số điện thoại:</label>
+                <input type="number" id="guestPhone" style="width: 93%" required><br>
+                <label>Check-in:</label>
+                <input type="date" id="checkin" required><br>
+                <label>Check-out:</label>
+                <input type="date" id="checkout" required><br>
+                <label>Mã phòng:</label>
+                <input type="number" id="homeStayId" required><br>
+                <label>Mã người dùng:</label>
+                <input type="number" id="userID" required><br>
+                <button type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+</th:block>
+<th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+    <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+</th:block>
+</th:block>
+<th:block th:unless="${session.loggedInUser}">
+    <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+</th:block>
+<script>
+    $(document).ready(function() {
+        loadBookedRooms();
+
+        $('#bookedroomForm').submit(function(event) {
+            event.preventDefault();
+            let phone = $('#guestPhone').val();
+            let id = $('#bookedroomId').val();
+            let bookedroom = {
+                guestName: $('#guestName').val(),
+                guestPhone: $('#guestPhone').val(),
+                checkInDate: $('#checkin').val(),
+                checkOutDate: $('#checkout').val(),
+                homeStay: { id: $('#homeStayId').val() },
+                user: { id: $('#userID').val() }
+            };
+
+            if (id) {
+                updateBookedRoom(phone, bookedroom);
+            } else {
+                addBookedRoom(bookedroom);
+            }
+        });
+    });
+    function loadBookedRooms() {
+        $.get("/booked", function(data) {
+            $('#bookedroomTable').empty();
+            data.forEach(room => {
+                $('#bookedroomTable').append(`
+                <tr>
+                    <td>${room.id}</td>
+                    <td>${room.guestName}</td>
+                    <td>${room.guestPhone}</td>
+                    <td>${room.checkInDate || "Không có dữ liệu"}</td>
+                    <td>${room.checkOutDate || "Không có dữ liệu"}</td>
+                    <td>${room.homeStay ? room.homeStay.id : "Không có"}</td>
+                    <td>${room.user ? room.user.id : "Không có"}</td>
+                    <td>
+                        <button onclick="editBookedRoom('${room.guestPhone}')">Sửa</button>
+                        <button onclick="deleteBookedRoom('${room.guestPhone}')">Xóa</button>
+                    </td>
+                </tr>
+            `);
+            });
+        });
+    }
+    function addBookedRoom(bookedroom) {
+        let homeStayId = $('#homeStayId').val().trim();
+
+        // Kiểm tra nếu homeStayId bị rỗng hoặc không phải số
+        if (!homeStayId || isNaN(homeStayId)) {
+            alert("Vui lòng nhập mã phòng hợp lệ!");
+            return;
+        }
+
+        $.ajax({
+            url: `/booked/insert/${homeStayId}`,
+            type: "POST",
+            data: JSON.stringify(bookedroom),
+            contentType: "application/json",
+            success: function () {
+                alert("Thêm đặt phòng thành công!");
+                loadBookedRooms();
+                $('#bookedroomForm')[0].reset();
+            },
+            error: function () {
+                alert("Lỗi khi thêm đặt phòng!");
+            }
+        });
+    }
+
+    function editBookedRoom(guestPhone) {
+        $.get(`/booked/phone/${guestPhone}`, function(room) {
+            if (!room) {
+                alert("Không tìm thấy đặt phòng!");
+                return;
+            }
+            $('#bookedroomId').val(room.id);
+            $('#guestName').val(room.guestName);
+            $('#guestPhone').val(room.guestPhone);
+            $('#checkin').val(room.checkInDate);
+            $('#checkout').val(room.checkOutDate);
+            $('#homeStayId').val(room.homeStay ? room.homeStay.id : "");
+            $('#userID').val(room.user ? room.user.id : "");
+        }).fail(() => alert("Lỗi khi lấy dữ liệu đặt phòng!"));
+    }
+    function updateBookedRoom(guestPhone, bookedroom) {
+        $.ajax({
+            url: `/booked/update/${guestPhone}`,
+            type: "PUT",
+            data: JSON.stringify(bookedroom),
+            contentType: "application/json",
+            success: function () {
+                alert("Cập nhật thành công!");
+                loadBookedRooms();
+                $('#bookedroomForm')[0].reset();
+            },
+            error: function () {
+                alert("Lỗi khi cập nhật!");
+            }
+        });
+    }
+    function deleteBookedRoom(guestPhone) {
+        if (confirm("Bạn có chắc muốn xóa không?")) {
+            $.ajax({
+                url: `/booked/delete/${guestPhone}`,
+                type: "DELETE",
+                success: function () {
+                    alert("Xóa thành công!");
+                    loadBookedRooms();
+                },
+                error: function () {
+                    alert("Lỗi khi xóa!");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

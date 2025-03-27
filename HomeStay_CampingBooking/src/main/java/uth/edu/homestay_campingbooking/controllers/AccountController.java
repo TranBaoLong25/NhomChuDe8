@@ -21,7 +21,7 @@ public class AccountController {
         userService.save(user);
     }
     @GetMapping("/id/{id}")
-    public User getUserById(@PathVariable long id) {
+    public User getUserById(@PathVariable Long id) {
         return userService.findById(id)  ;
     }
     @GetMapping("/username/{username}")
@@ -29,11 +29,11 @@ public class AccountController {
         return userService.findByUser(username);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteUserById(@PathVariable long id) {
+    public void deleteUserById(@PathVariable Long id) {
         userService.deleteById(id);
     }
     @PutMapping("/update/{id}")
-    public void updateUser(@PathVariable long id, @RequestBody User user) {
+    public void updateUser(@PathVariable Long id, @RequestBody User user) {
         userService.update(id, user);
     }
 

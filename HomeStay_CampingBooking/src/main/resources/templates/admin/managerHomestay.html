@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý HomeStay</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/admincss/managerhomestay.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="manageruser">Users</a>
+            <a href="managerservice">Service</a>
+            <a href="managerhomestay">Homestay</a>
+            <a href="managerbookedroom">BookedRoom</a>
+        </div>
+    </div>
+</nav>
+<th:block th:if="${session.loggedInUser}">
+<th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+<div class="container">
+    <div class="homestay-list">
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kiểu phòng</th>
+                <th>Vị trí</th>
+                <th>Giá</th>
+                <th>Tình trạng</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="homestayTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Form Thêm/Sửa -->
+    <div class="homestay-form">
+        <h3>Thêm/Sửa Homestay</h3>
+        <form id="homestayForm">
+            <input type="hidden" id="homestayId">
+            <label>Kiểu phòng:</label>
+            <input type="text" id="roomType" style="width: 93%" required><br>
+            <label>Vị trí:</label>
+            <input type="text" id="location" style="width: 93%" required><br>
+            <label>Giá:</label>
+            <input type="number" id="roomPrice" style="width: 93%" required><br>
+            <div>
+                <label for="booked">Tình trạng(Đã đặt):</label>
+                <input type="checkbox" id="booked">
+            </div>
+            <button type="submit">Lưu</button>
+        </form>
+    </div>
+</div>
+</th:block>
+<th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+    <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+</th:block>
+</th:block>
+<th:block th:unless="${session.loggedInUser}">
+    <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+</th:block>
+<script>
+    $(document).ready(function() {
+        loadHomestay();
+
+        $('#homestayForm').submit(function(event) {
+            event.preventDefault();
+            let id = $('#homestayId').val();
+            let homestay = {
+                roomType: $('#roomType').val(),
+                location: $('#location').val(),
+                roomPrice: $('#roomPrice').val(),
+                booked: $('#booked').prop('checked') // Lấy giá trị boolean đúng
+            };
+
+            if (id) {
+                updateHomestay(id, homestay);
+            } else {
+                addHomestay(homestay);
+            }
+        });
+    });
+
+    function loadHomestay() {
+        $.get("/homestay", function(data) {
+            $('#homestayTable').empty();
+            data.forEach(homestay => {
+                $('#homestayTable').append(`
+                <tr>
+                    <td>${homestay.id}</td>
+                    <td>${homestay.roomType}</td>
+                    <td>${homestay.location}</td>
+                    <td>${homestay.roomPrice}</td>
+                    <td>${homestay.booked ? 'Đã đặt' : 'Trống'}</td>
+                    <td>
+                        <button onclick="editHomestay(${homestay.id})">Sửa</button>
+                        <button onclick="deleteHomestay(${homestay.id})">Xóa</button>
+                    </td>
+                </tr>
+            `);
+            });
+        });
+    }
+
+    function addHomestay(homestay) {
+        $.ajax({
+            url: "/homestay/insert",
+            type: "POST",
+            data: JSON.stringify(homestay),
+            contentType: "application/json",
+            success: function () {
+                alert("Thêm Homestay thành công!");
+                loadHomestay();
+                $('#homestayForm')[0].reset();
+            },
+            error: function () {
+                alert("Lỗi khi thêm Homestay!");
+            }
+        });
+    }
+
+    function editHomestay(id) {
+        $.get(`/homestay/id/${id}`, function(homestay) {
+            if (!homestay) {
+                alert("Không tìm thấy Homestay!");
+                return;
+            }
+            $('#homestayId').val(homestay.id);
+            $('#roomType').val(homestay.roomType);
+            $('#location').val(homestay.location);
+            $('#roomPrice').val(homestay.roomPrice);
+            $('#booked').prop('checked', homestay.booked); // Sửa lỗi lấy checkbox
+        }).fail(() => alert("Lỗi khi lấy dữ liệu Homestay!"));
+    }
+
+    function updateHomestay(id, homestay) {
+        $.ajax({
+            url: `/homestay/update/${id}`,
+            type: "PUT",
+            data: JSON.stringify(homestay),
+            contentType: "application/json",
+            success: function () {
+                alert("Cập nhật thành công!");
+                loadHomestay();
+                $('#homestayForm')[0].reset();
+            },
+            error: function () {
+                alert("Lỗi khi cập nhật!");
+            }
+        });
+    }
+
+    function deleteHomestay(id) {
+        if (confirm("Bạn có chắc muốn xóa không?")) {
+            $.ajax({
+                url: `/homestay/delete/${id}`,
+                type: "DELETE",
+                success: function () {
+                    alert("Xóa thành công!");
+                    loadHomestay();
+                },
+                error: function () {
+                    alert("Lỗi khi xóa!");
+                }
+            });
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -23,10 +23,6 @@ public class HomeController {
     public String gioiThieu(){
         return "About";
     }
-    @GetMapping("/filter")
-    public String boLoc(){
-        return "bookedroom";
-    }
     @GetMapping("/support")
     public String hoTro(){
         return "support";
@@ -35,21 +31,32 @@ public class HomeController {
     public String datPhong(){
         return "bookedroom";
     }
-    @GetMapping("/profile")
-    public String caNhan(){
-        return "myProfile";
-    }
     @GetMapping("/service")
     public String service(){
         return "service";
+    }
+    @GetMapping("/profile")
+    public String profile(){
+        return "myProfile";
     }
     @GetMapping("/edit-profile")
     public String editProfile(){
         return "edit-profile";
     }
-    @GetMapping("/payment")
-    public String payment(){
-        return "payment";
+    @GetMapping("/managerservice")
+    public String managerService(){
+        return "admin/managerservice";
     }
-
+    @GetMapping("/manageruser")
+    public String managerUser(){
+        return "admin/manageruser";
+    }
+    @GetMapping("/managerhomestay")
+    public String managerHomestay(){
+        return "admin/managerhomestay";
+    }
+    @GetMapping("/managerbookedroom")
+    public String managerBookedRoom(){
+        return "admin/managerbookedroom";
+    }
 }

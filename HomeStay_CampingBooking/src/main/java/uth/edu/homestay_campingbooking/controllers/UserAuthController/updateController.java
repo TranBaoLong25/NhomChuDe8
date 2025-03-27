@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import uth.edu.homestay_campingbooking.exception.AppException;
 import uth.edu.homestay_campingbooking.exception.ErrorCode;
+import uth.edu.homestay_campingbooking.models.BookedRoom;
 import uth.edu.homestay_campingbooking.models.User;
 import uth.edu.homestay_campingbooking.services.UserService;
 
@@ -18,7 +19,8 @@ public class updateController {
     private UserService userService;
 
     @PostMapping
-    public String updateProfile(@RequestParam String username, @RequestParam String password,
+    public String updateProfile(@RequestParam String username,  @RequestParam String guestName,
+                                @RequestParam String guestPhone,@RequestParam String password,
                                 @RequestParam String confirmPassword, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser != null) {

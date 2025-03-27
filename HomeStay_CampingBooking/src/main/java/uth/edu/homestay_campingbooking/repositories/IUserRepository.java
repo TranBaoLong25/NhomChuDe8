@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface IUserRepository {
     void save(User user);
-    User findById(long id);
+    User findById(Long id);
     List<User> findAll();
     User findByUsername(String username);
-    void deleteById(long id);
-    void update(long id, User user);
+    void deleteById(Long id);
+    void update(Long id, User user);
 }

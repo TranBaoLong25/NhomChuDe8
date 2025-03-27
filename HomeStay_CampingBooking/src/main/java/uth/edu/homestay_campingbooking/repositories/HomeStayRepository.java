@@ -25,7 +25,7 @@ public class HomeStayRepository implements IHomeStayRepository {
     }
 
     @Override
-    public HomeStay findHomeStay(long id) {
+    public HomeStay findHomeStay(Long id) {
         if (em.find(HomeStay.class, id) == null) {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
@@ -45,7 +45,7 @@ public class HomeStayRepository implements IHomeStayRepository {
     }
 
     @Override
-    public void deleteHomeStay(long id) {
+    public void deleteHomeStay(Long id) {
         HomeStay hs = findHomeStay(id);
         if (hs == null) {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);

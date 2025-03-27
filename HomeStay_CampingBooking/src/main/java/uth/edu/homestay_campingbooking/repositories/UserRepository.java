@@ -17,7 +17,7 @@ public class UserRepository implements IUserRepository {
     public void save(User user) {
         entityManager.persist(user);
     }
-    public User findById(long id) {
+    public User findById(Long id) {
         if (entityManager.find(User.class, id) == null) {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
@@ -35,7 +35,7 @@ public class UserRepository implements IUserRepository {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         User user = findById(id);
         if (user != null) {
             entityManager.remove(user);
@@ -43,7 +43,7 @@ public class UserRepository implements IUserRepository {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
-    public void update(long id, User newData) {
+    public void update(Long id, User newData) {
         User user = findById(id);
         if (user != null) {
             user.setUsername(newData.getUsername());

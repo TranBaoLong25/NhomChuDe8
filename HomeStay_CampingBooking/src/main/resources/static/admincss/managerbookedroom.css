@@ -1,0 +1,98 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Bảng danh sách dịch vụ */
+.bookedroom-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bookedroom-list th, .bookedroom-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.bookedroom-list th {
+    background: #007bff;
+    color: white;
+}
+
+.bookedroom-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Form nhập dịch vụ */
+.bookedroom-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.bookedroom-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.bookedroom-form input {
+    width: 93%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Nút bấm */
+button {
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:nth-child(2) {
+    background: #dc3545;
+}
+
+#booked {
+    width: 3%;
+    line-height: 1; /* Giữ checkbox không bị kéo xa */
+    transform: scale(1.5); /* Phóng to checkbox */
+    margin-top: 5px; /* Giảm khoảng cách với chữ "Tình trạng" */
+}
+

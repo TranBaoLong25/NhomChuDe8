@@ -15,7 +15,6 @@
       <a href="/" class="active">Trang Chủ</a>
       <a href="About">Giới Thiệu</a>
       <a href="service">Dịch Vụ</a>
-      <a href="filter">Lọc Homestay</a>
       <a href="support">Hỗ Trợ</a>
       <a href="bookedroom">Đặt Chỗ</a>
       <th:block th:if="${session.loggedInUser}">
@@ -48,15 +47,26 @@
       <div class="profile-info">
         <p><strong>👤 Username:</strong> <span th:text="${session.loggedInUser.username}"></span></p>
         <p><strong>🎭 Vai trò:</strong> <span th:text="${session.loggedInUser.role}"></span></p>
+        <p><strong>📝 Họ Tên:</strong> </p>
+        <p><strong>📞 Số Điện Thoại:</strong></p>
       </div>
       <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
     </th:block>
+      <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+      <div class="admin-panel">
+          <h3 style="color: red;">🔧 Khu vực quản trị</h3>
+          <ul>
+            <li><a href="managerbookedroom">Quản lý đặt phòng</a></li>
+            <li><a href="managerhomestay">Quản lý phòng</a></li>
+            <li><a href="managerservice">Quản lý dịch vụ</a></li>
+            <li><a href="manageruser">Quản lý người dùng</a></li>
+          </ul>
+        </div>
+      </th:block>
     <th:block th:unless="${session.loggedInUser}">
       <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
     </th:block>
   </div>
-
 </main>
-
 </body>
 </html>

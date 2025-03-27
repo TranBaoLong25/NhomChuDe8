@@ -13,7 +13,6 @@
       <a href="/" class="active">Trang Chủ</a>
       <a href="About">Giới Thiệu</a>
       <a href="service">Dịch Vụ</a>
-      <a href="filter">Lọc Homestay</a>
       <a href="support">Hỗ Trợ</a>
       <a href="bookedroom">Đặt Chỗ</a>
       <th:block th:if="${session.loggedInUser}">
@@ -38,7 +37,22 @@
   </div>
 </nav>
 <main style="margin-top: 80px;">
-      <p>Chức năng chưa hoạt động.<a href="/">Trang chủ</a></p>
+  <h1>Thanh toán</h1>
+  <form action="/payment/process" method="post">
+    <label for="name">Họ và tên:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="phone">Số điện thoại:</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <label for="service">Dịch vụ/Phòng đã chọn:</label>
+    <input type="text" id="service" name="service" th:value="${serviceName}" readonly>
+
+    <label for="price">Giá:</label>
+    <input type="text" id="price" name="price" th:value="${price}" readonly>
+
+    <button type="submit">Xác nhận thanh toán</button>
+  </form>
 </main>
 </body>
 </html>

@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IHomeStayRepository {
     void createHomeStay(HomeStay hs);
-    HomeStay findHomeStay(long id);
+    HomeStay findHomeStay(Long id);
     void updateHomeStay(Long id, HomeStay hs);
-    void deleteHomeStay(long id);
+    void deleteHomeStay(Long id);
     List<HomeStay> findAllHomeStays();
     List<HomeStay> findByType(RoomType type);
     List<HomeStay> findByLocation(Location location);

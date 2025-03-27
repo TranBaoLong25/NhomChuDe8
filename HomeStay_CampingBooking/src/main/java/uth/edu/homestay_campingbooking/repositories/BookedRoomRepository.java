@@ -1,6 +1,7 @@
 package uth.edu.homestay_campingbooking.repositories;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import uth.edu.homestay_campingbooking.models.HomeStay;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 @Transactional
 public class BookedRoomRepository implements IBookedRoomRepository {
@@ -57,10 +60,12 @@ public class BookedRoomRepository implements IBookedRoomRepository {
                 throw new AppException(ErrorCode.EXISTED);
             }
         }
+
         HomeStay homeStay = homeStayRepository.findHomeStay(homeStayId);
         bookedRoom.setHomeStay(homeStay);
         em.persist(bookedRoom);
     }
+
     @Override
     public void deleteBookedRoom(String phone) {
         List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
@@ -75,6 +80,32 @@ public class BookedRoomRepository implements IBookedRoomRepository {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
     }
+
+    @Override
+    public List<BookedRoom> info2(Long userId) {
+        List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
+        List<BookedRoom> filteredRooms = bookedRooms.stream()
+                .filter(room -> room.getUser() != null && room.getUser().getId().equals(userId))
+                .collect(Collectors.toList());
+
+        if (filteredRooms.isEmpty()) {
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
+        }
+        return filteredRooms;
+    }
+    @Override
+    public BookedRoom findBooked(String phone) {
+        try {
+            return em.createQuery("SELECT b FROM BookedRoom b WHERE b.guestPhone = :phone", BookedRoom.class)
+                    .setParameter("phone", phone)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
+        }
+    }
+
+
+
     @Override
     public void updateBookedRoom(String phone, BookedRoom bookedRoom) {
         List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
@@ -83,7 +114,6 @@ public class BookedRoomRepository implements IBookedRoomRepository {
             if (room.getGuestPhone().equals(phone)) {
                 room.setGuestName(bookedRoom.getGuestName());
                 room.setGuestPhone(bookedRoom.getGuestPhone());
-                room.setRoomType(bookedRoom.getRoomType());
                 room.setCheckInDate(bookedRoom.getCheckInDate());
                 room.setCheckOutDate(bookedRoom.getCheckOutDate());
                 room.setHomeStay(bookedRoom.getHomeStay());

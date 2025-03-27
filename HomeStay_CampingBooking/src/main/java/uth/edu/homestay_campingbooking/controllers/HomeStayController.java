@@ -20,7 +20,7 @@ public class HomeStayController {
         homeStayService.createHomeStay(homeStay);
     }
     @GetMapping("/id/{id}")
-    public HomeStay findHomeStay(@PathVariable long id) {
+    public HomeStay findHomeStay(@PathVariable Long id) {
         return homeStayService.findHomeStay(id);
     }
     @PutMapping("/update/{id}")
@@ -28,7 +28,7 @@ public class HomeStayController {
         homeStayService.updateHomeStay(id, homeStay);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteHomeStay(@PathVariable long id) {
+    public void deleteHomeStay(@PathVariable Long id) {
         homeStayService.deleteHomeStay(id);
     }
     @GetMapping("/byPrice/{min}-{max}")
