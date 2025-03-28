@@ -61,6 +61,13 @@ h3 {
     margin-top: 10px;
     font-weight: bold;
 }
+.homestay-form select{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .homestay-form input {
     width: 100%;

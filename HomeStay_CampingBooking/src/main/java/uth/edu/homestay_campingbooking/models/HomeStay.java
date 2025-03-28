@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name = "HomeStay")
 public class HomeStay {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
     private RoomType roomType;

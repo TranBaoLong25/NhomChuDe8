@@ -51,7 +51,6 @@
         <p><strong>📞 Số Điện Thoại:</strong></p>
       </div>
       <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
-    </th:block>
       <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
       <div class="admin-panel">
           <h3 style="color: red;">🔧 Khu vực quản trị</h3>
@@ -63,6 +62,7 @@
           </ul>
         </div>
       </th:block>
+    </th:block>
     <th:block th:unless="${session.loggedInUser}">
       <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
     </th:block>
