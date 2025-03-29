@@ -47,10 +47,6 @@ public class HomeController {
     public String managerService(){
         return "admin/managerservice";
     }
-    @GetMapping("/manageruser")
-    public String managerUser(){
-        return "admin/manageruser";
-    }
     @GetMapping("/managerhomestay")
     public String managerHomestay(){
         return "admin/managerhomestay";
