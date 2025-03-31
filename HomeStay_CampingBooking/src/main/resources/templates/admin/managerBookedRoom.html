@@ -20,51 +20,51 @@
     </div>
 </nav>
 <th:block th:if="${session.loggedInUser}">
-<th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
-    <div class="container">
-        <div class="bookedroom-list">
-            <table border="1">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên khách</th>
-                    <th>Số điện thoại</th>
-                    <th>Check-in</th>
-                    <th>Check-out</th>
-                    <th>Mã phòng</th>
-                    <th>Mã người dùng</th>
-                    <th>Hành động</th>
-                </tr>
-                </thead>
-                <tbody id="bookedroomTable"></tbody>
-            </table>
-        </div>
+    <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+        <div class="container">
+            <div class="bookedroom-list">
+                <table border="1">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên khách</th>
+                        <th>Số điện thoại</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Mã phòng</th>
+                        <th>Mã người dùng</th>
+                        <th>Hành động</th>
+                    </tr>
+                    </thead>
+                    <tbody id="bookedroomTable"></tbody>
+                </table>
+            </div>
 
-        <!-- Form Thêm/Sửa -->
-        <div class="bookedroom-form">
-            <h3>Thêm/Sửa Đặt Phòng</h3>
-            <form id="bookedroomForm">
-                <input type="hidden" id="bookedroomId">
-                <label>Tên khách:</label>
-                <input type="text" id="guestName" style="width: 93%" required><br>
-                <label>Số điện thoại:</label>
-                <input type="number" id="guestPhone" style="width: 93%" required><br>
-                <label>Check-in:</label>
-                <input type="date" id="checkin" required><br>
-                <label>Check-out:</label>
-                <input type="date" id="checkout" required><br>
-                <label>Mã phòng:</label>
-                <input type="number" id="homeStayId" required><br>
-                <label>Mã người dùng:</label>
-                <input type="number" id="userID" required><br>
-                <button type="submit">Lưu</button>
-            </form>
+            <!-- Form Thêm/Sửa -->
+            <div class="bookedroom-form">
+                <h3>Thêm/Sửa Đặt Phòng</h3>
+                <form id="bookedroomForm">
+                    <input type="hidden" id="bookedroomId">
+                    <label>Tên khách:</label>
+                    <input type="text" id="guestName" style="width: 93%" required><br>
+                    <label>Số điện thoại:</label>
+                    <input type="number" id="guestPhone" style="width: 93%" required><br>
+                    <label>Check-in:</label>
+                    <input type="date" id="checkin" required><br>
+                    <label>Check-out:</label>
+                    <input type="date" id="checkout" required><br>
+                    <label>Mã phòng:</label>
+                    <input type="number" id="homeStayId" required><br>
+                    <label>Mã người dùng:</label>
+                    <input type="number" id="userID" required><br>
+                    <button type="submit">Lưu</button>
+                </form>
+            </div>
         </div>
-    </div>
-</th:block>
-<th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
-    <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
-</th:block>
+    </th:block>
+    <th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+        <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+    </th:block>
 </th:block>
 <th:block th:unless="${session.loggedInUser}">
     <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
@@ -94,7 +94,7 @@
         });
     });
     function loadBookedRooms() {
-        $.get("/booked", function(data) {
+        $.get("/manager/booked", function(data) {
             $('#bookedroomTable').empty();
             data.forEach(room => {
                 $('#bookedroomTable').append(`
@@ -125,7 +125,7 @@
         }
 
         $.ajax({
-            url: `/booked/insert/${homeStayId}`,
+            url: `/manager/booked/insert/${homeStayId}`,
             type: "POST",
             data: JSON.stringify(bookedroom),
             contentType: "application/json",
@@ -141,7 +141,7 @@
     }
 
     function editBookedRoom(guestPhone) {
-        $.get(`/booked/phone/${guestPhone}`, function(room) {
+        $.get(`/manager/booked/phone/${guestPhone}`, function(room) {
             if (!room) {
                 alert("Không tìm thấy đặt phòng!");
                 return;
@@ -157,7 +157,7 @@
     }
     function updateBookedRoom(guestPhone, bookedroom) {
         $.ajax({
-            url: `/booked/update/${guestPhone}`,
+            url: `/manager/booked/update/${guestPhone}`,
             type: "PUT",
             data: JSON.stringify(bookedroom),
             contentType: "application/json",
@@ -174,7 +174,7 @@
     function deleteBookedRoom(guestPhone) {
         if (confirm("Bạn có chắc muốn xóa không?")) {
             $.ajax({
-                url: `/booked/delete/${guestPhone}`,
+                url: `/manager/booked/delete/${guestPhone}`,
                 type: "DELETE",
                 success: function () {
                     alert("Xóa thành công!");
