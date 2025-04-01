@@ -1,5 +1,4 @@
-package uth.edu.homestay_campingbooking.controllers.ManagerHomestay;
-import jakarta.validation.Valid;
+package uth.edu.homestay_campingbooking.controllers.ManagerController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

@@ -2,75 +2,49 @@ package uth.edu.homestay_campingbooking.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import uth.edu.homestay_campingbooking.models.HomeStay;
 import uth.edu.homestay_campingbooking.models.Location;
 import uth.edu.homestay_campingbooking.models.RoomType;
-import uth.edu.homestay_campingbooking.models.BookedRoom;
-import uth.edu.homestay_campingbooking.repositories.IHomeStayRepository;
-import uth.edu.homestay_campingbooking.repositories.BookedRoomRepository;
+import uth.edu.homestay_campingbooking.repositories.HomeStayRepository;
 
 import java.util.List;
 
 @Service
-public class HomeStayService implements IHomeStayService {
-    private IHomeStayRepository homeStayRepository;
-    private BookedRoomRepository bookedRoomRepository;
+public class HomeStayService {
 
     @Autowired
-    public HomeStayService(IHomeStayRepository homeStayRepository, BookedRoomRepository bookedRoomRepository) {
-        this.homeStayRepository = homeStayRepository;
-        this.bookedRoomRepository = bookedRoomRepository;
+    HomeStayRepository homeStayRepository;
+
+    public String insertHomeStay(RoomType roomType, Location location, double roomPrice, boolean booked, List<MultipartFile> images) {
+        return homeStayRepository.insertHomeStay(roomType, location, roomPrice, booked, images);
     }
 
-    @Override
-    public void createHomeStay(HomeStay hs) {
-        homeStayRepository.createHomeStay(hs);
-    }
-
-    @Override
     public HomeStay findHomeStay(Long id) {
         return homeStayRepository.findHomeStay(id);
     }
 
-    @Override
-    public void updateHomeStay(Long id, HomeStay hs) {
-        homeStayRepository.updateHomeStay(id, hs);
+    public String updateHomeStay(Long id, RoomType roomType, Location location, double roomPrice, boolean booked, List<MultipartFile> images) {
+        return homeStayRepository.updateHomeStay(id, roomType, location, roomPrice, booked, images);
     }
 
-    @Override
     public void deleteHomeStay(Long id) {
         homeStayRepository.deleteHomeStay(id);
     }
 
-    @Override
-    public List<HomeStay> findAllHomeStays() {
-        return homeStayRepository.findAllHomeStays();
+    public List<HomeStay> findHomeStayByPrice(double min, double max) {
+        return homeStayRepository.findByPrice(min, max);
     }
 
-    @Override
-    public List<HomeStay> findByType(RoomType type) {
+    public List<HomeStay> findHomeStayByType(RoomType type) {
         return homeStayRepository.findByType(type);
     }
 
-    @Override
-    public List<HomeStay> findByLocation(Location location) {
+    public List<HomeStay> findHomeStayByLocation(Location location) {
         return homeStayRepository.findByLocation(location);
     }
 
-    @Override
-    public List<HomeStay> findByPrice(double minPrice, double maxPrice) {
-        return homeStayRepository.findByPrice(minPrice, maxPrice);
-    }
-
-    public void updateHomeStayBookingStatus() {
-        List<HomeStay> homeStays = findAllHomeStays();
-        List<BookedRoom> bookedRooms = bookedRoomRepository.findAllBookedRoom();
-
-        for (HomeStay homeStay : homeStays) {
-            boolean isBooked = bookedRooms.stream()
-                    .anyMatch(bookedRoom -> bookedRoom.getHomeStay().getId().equals(homeStay.getId()));
-            homeStay.setBooked(isBooked);
-            homeStayRepository.updateHomeStay(homeStay.getId(), homeStay);
-        }
+    public List<HomeStay> findAllHomeStays() {
+        return homeStayRepository.findAllHomeStays();
     }
 }
