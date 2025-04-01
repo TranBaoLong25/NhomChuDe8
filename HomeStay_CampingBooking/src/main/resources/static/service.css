@@ -1,190 +1,98 @@
-/* Trong IndexStyle.css hoặc một file CSS riêng cho service.html */
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.7;
-    color: #fff; /* Đặt màu chữ trắng để tương phản với nền đen */
-    background-color: #000; /* Đặt background màu đen */
+    color: #333;
     margin: 0;
     padding: 0;
+    background: linear-gradient(135deg, #f0f2f0, #e0e0e0);
 }
 
-/* Kiểu dáng cho phần menu (nav) - SỬA ĐỔI ĐỂ GIỐNG HÌNH ẢNH */
 nav {
-    position: fixed; /* Thay đổi từ sticky thành fixed */
+    position: sticky;
     top: 0;
     width: 100%;
-    background-color: #4CAF50; /* Màu nền xanh lá cây như trong ảnh */
-    z-index: 1000; /* Tăng z-index để đảm bảo nằm trên các phần tử khác */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng nhẹ */
+    background-color: #4CAF50;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px; /* Tăng padding để phù hợp với mẫu */
+    padding: 15px 20px;
     max-width: 1200px;
-    margin: auto; /* Thay đổi từ 0 auto thành auto để căn giữa */
+    margin: auto;
 }
 
 .logo {
-    font-size: 26px; /* Tăng kích thước logo */
+    font-size: 24px;
     font-weight: bold;
-    text-transform: uppercase; /* In hoa logo */
-    color: #fff; /* Màu chữ trắng cho logo */
+    color: white;
 }
 
 .nav-links {
     display: flex;
-    gap: 25px; /* Thêm gap để tạo khoảng cách giữa các liên kết */
-    align-items: center;
+    gap: 20px;
 }
 
 .nav-links a {
-    color: #fff; /* Màu chữ trắng cho liên kết */
+    color: white;
     text-decoration: none;
-    font-size: 16px; /* Tăng kích thước chữ liên kết */
-    font-weight: 500;
-    padding: 8px 12px; /* Thêm padding cho liên kết */
-    border-radius: 5px; /* Thêm border-radius cho liên kết */
-    transition: background-color 0.3s, transform 0.2s; /* Thêm hiệu ứng chuyển đổi */
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Thêm màu nền khi hover */
-    transform: translateY(-2px); /* Thêm hiệu ứng di chuyển lên khi hover */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-links a.active {
-    font-weight: bold; /* Thêm độ đậm cho liên kết active */
-}
-
-.account {
-    position: relative;
-}
-
-.account > a { /* Thay đổi từ .account a thành .account > a */
-    cursor: pointer;
     font-weight: bold;
-    padding: 8px 16px; /* Thêm padding cho liên kết tài khoản */
-    color: #fff; /* Màu chữ trắng cho liên kết tài khoản */
-}
-
-.account:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9); /* Thay đổi màu nền dropdown */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    min-width: 180px; /* Tăng chiều rộng dropdown */
-    text-align: center;
-    padding: 10px 0;
-    z-index: 999;
-}
-
-.dropdown-content a {
-    color: #fff; /* Màu chữ trắng cho dropdown */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Thêm màu nền khi hover dropdown */
-}
-
-.account:hover .dropdown-content {
-    display: block;
 }
 
 .language-dropdown select {
-    padding: 10px 15px;
-    border: none; /* Loại bỏ viền */
+    padding: 8px 12px;
+    border: none;
     border-radius: 5px;
-    background-color: #fff; /* Nền trắng cho select */
-    color: #333; /* Màu chữ đen cho select */
     cursor: pointer;
 }
 
-/* Kiểu dáng cho phần nội dung dịch vụ (service-section) */
 .service-section {
     width: 85%;
     max-width: 1200px;
     margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.1); /* Nền trong suốt hơn */
-    backdrop-filter: blur(10px);
     padding: 40px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08); /* Bóng đổ trắng hơn */
 }
 
 .service-section h1 {
     text-align: center;
-    margin-bottom: 40px;
-    color: #007bff;
-    font-size: 2.2em;
-    font-weight: 600;
-}
-
-.service-category {
-    margin-bottom: 40px;
-    border-bottom: 1px solid #333; /* Viền tối hơn */
-    padding-bottom: 30px;
-}
-
-.service-category h2 {
-    color: #fff; /* Màu chữ trắng */
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    font-weight: 600;
-}
-
-.service-item {
+    color: #4CAF50;
     margin-bottom: 30px;
 }
 
-.service-item h3 {
-    color: #007bff;
-    margin-bottom: 15px;
-    font-size: 1.4em;
-    font-weight: 500;
+.service-category {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
 }
 
-.service-item p {
+.service-category h2 {
+    color: #4CAF50;
     margin-bottom: 20px;
-    color: #ddd; /* Màu chữ xám nhạt */
-    font-size: 1em;
 }
 
-.service-item ul {
-    list-style-type: disc;
-    margin-left: 25px;
+.service-item {
+    margin-bottom: 20px;
 }
 
-.service-item li {
-    margin-bottom: 10px;
-    color: #ddd; /* Màu chữ xám nhạt */
-    font-size: 1em;
-}
-
-.service-item ul li {
-    margin-bottom: 8px;
-}
-
-.service-item:last-child {
-    margin-bottom: 0;
-}
-/* Thêm các kiểu dáng cho nội dung dịch vụ mới */
 .service-item h3 {
-    color: #007bff; /* Màu xanh lam cho tiêu đề */
+    color: #4CAF50;
+    margin-bottom: 10px;
 }
 
 .service-item ul {
@@ -193,6 +101,6 @@ nav {
 }
 
 .service-item li {
-    color: #ddd; /* Màu xám nhạt cho nội dung */
-    margin-bottom: 8px;
+    color: #666;
+    margin-bottom: 5px;
 }

@@ -43,10 +43,6 @@ public class HomeController {
     public String editProfile(){
         return "edit-profile";
     }
-    @GetMapping("/managerservice")
-    public String managerService(){
-        return "admin/managerservice";
-    }
     @GetMapping("/managerhomestay")
     public String managerHomestay(){
         return "admin/managerhomestay";
