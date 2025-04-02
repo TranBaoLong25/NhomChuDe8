@@ -55,4 +55,16 @@ public class managerUserController {
         userService.update(id, user);
         return "redirect:/manageruser";
     }
+    @GetMapping("/search")
+    public String searchUser(@RequestParam String keyword, Model model) {
+        try {
+            User user = userService.findByUser(keyword);
+            model.addAttribute("users", List.of(user));
+        } catch (Exception e) {
+            model.addAttribute("users", null);
+        }
+        model.addAttribute("newUser", new User());
+        return "admin/manageruser";
+    }
+
 }
