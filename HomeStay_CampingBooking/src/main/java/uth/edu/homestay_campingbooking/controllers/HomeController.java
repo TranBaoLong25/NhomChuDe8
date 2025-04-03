@@ -43,12 +43,4 @@ public class HomeController {
     public String editProfile(){
         return "edit-profile";
     }
-    @GetMapping("/managerhomestay")
-    public String managerHomestay(){
-        return "admin/managerhomestay";
-    }
-    @GetMapping("/managerbookedroom")
-    public String managerBookedRoom(){
-        return "admin/managerbookedroom";
-    }
 }

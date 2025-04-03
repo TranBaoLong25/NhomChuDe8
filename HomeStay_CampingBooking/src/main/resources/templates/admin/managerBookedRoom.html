@@ -1,191 +1,112 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý Phòng Đã Đặt</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/admincss/managerbookedroom.css">
-</head>
-<body>
-<nav>
-    <div class="nav-container">
-        <div class="nav-links">
-            <a href="/" class="active">Trang Chủ</a>
-            <a href="manageruser">Users</a>
-            <a href="managerservice">Service</a>
-            <a href="managerhomestay">Homestay</a>
-            <a href="managerbookedroom">BookedRoom</a>
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý Phòng Đã Đặt</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/admincss/managerbookedroom.css">
+    </head>
+    <body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="/" class="active">Trang Chủ</a>
+                <a href="/manageruser">Users</a>
+                <a href="/managerservice">Service</a>
+                <a href="/managerhomestay">Homestay</a>
+                <a href="/managerbookedroom">BookedRoom</a>
+            </div>
         </div>
-    </div>
-</nav>
-<th:block th:if="${session.loggedInUser}">
-    <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+    </nav>
+    <th:block th:if="${session.loggedInUser}">
+    <th:block th:if="${session.loggedInUser?.role.toString() == 'admin'}">
         <div class="container">
             <div class="bookedroom-list">
+                <h2>Danh sách Phòng Đã Đặt</h2>
                 <table border="1">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tên khách</th>
+                        <th>Tên Khách</th>
                         <th>Số điện thoại</th>
                         <th>Check-in</th>
                         <th>Check-out</th>
-                        <th>Mã phòng</th>
-                        <th>Mã người dùng</th>
+                        <th>Mã Phòng</th>
+                        <th>Mã Người Dùng</th>
                         <th>Hành động</th>
                     </tr>
                     </thead>
-                    <tbody id="bookedroomTable"></tbody>
+                    <tbody>
+                    <tr th:each="bookedRoom : ${bookedRooms}">
+                        <td th:text="${bookedRoom.id}"></td>
+                        <td th:text="${bookedRoom.guestName}"></td>
+                        <td th:text="${bookedRoom.guestPhone}"></td>
+                        <td th:text="${bookedRoom.checkInDate}"></td>
+                        <td th:text="${bookedRoom.checkOutDate}"></td>
+                        <td th:text="${bookedRoom.homeStay != null ? bookedRoom.homeStay.id : 'Không có'}"></td>
+                        <td th:text="${bookedRoom.user != null ? bookedRoom.user.id : 'Không có'}"></td>
+                        <td>
+                            <a th:href="@{/managerbookedroom/edit/{phone}(phone=${bookedRoom.guestPhone})}">Sửa</a> |
+                            <a th:href="@{/managerbookedroom/delete/{phone}(phone=${bookedRoom.guestPhone})}"
+                               onclick="return confirm('Xóa phòng đã đặt này?')">Xóa</a>
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
 
-            <!-- Form Thêm/Sửa -->
             <div class="bookedroom-form">
-                <h3>Thêm/Sửa Đặt Phòng</h3>
-                <form id="bookedroomForm">
-                    <input type="hidden" id="bookedroomId">
+                <h3>Thêm Phòng Đã Đặt</h3>
+                <form id="bookedroomForm" th:action="@{/managerbookedroom/add}" method="post">
+                <input type="hidden" id="bookedroomId" name="id">
                     <label>Tên khách:</label>
-                    <input type="text" id="guestName" style="width: 93%" required><br>
+                    <input type="text" id="guestName" name="guestName" style="width: 93%" required><br>
                     <label>Số điện thoại:</label>
-                    <input type="number" id="guestPhone" style="width: 93%" required><br>
+                    <input type="number" id="guestPhone" name="guestPhone" style="width: 93%" required><br>
                     <label>Check-in:</label>
-                    <input type="date" id="checkin" required><br>
+                    <input type="date" id="checkin" name="checkInDate" required><br>
                     <label>Check-out:</label>
-                    <input type="date" id="checkout" required><br>
+                    <input type="date" id="checkout" name="checkOutDate" required><br>
                     <label>Mã phòng:</label>
-                    <input type="number" id="homeStayId" required><br>
+                    <input type="number" id="homeStayId" name="homeStayId" required><br>
                     <label>Mã người dùng:</label>
-                    <input type="number" id="userID" required><br>
+                    <input type="number" id="userID" name="userId" required><br>
                     <button type="submit">Lưu</button>
                 </form>
             </div>
+
+            <th:block th:if="${editBookedRoom}">
+                <div class="bookedroom-form">
+                    <h3>Sửa Phòng Đã Đặt</h3>
+                    <form th:action="@{/managerbookedroom/update/{phone}(phone=${editBookedRoom.guestPhone})}" method="post" th:object="${editBookedRoom}">
+                        <input type="hidden" name="id" th:value="${editBookedRoom.id}">
+                        <label>Tên khách:</label>
+                        <input type="text" name="guestName" th:value="${editBookedRoom.guestName}" required><br>
+                        <label>Số điện thoại:</label>
+                        <input type="number" name="guestPhone" th:value="${editBookedRoom.guestPhone}" required><br>
+                        <label>Check-in:</label>
+                        <input type="date" name="checkInDate" th:value="${editBookedRoom.checkInDate}" required><br>
+                        <label>Check-out:</label>
+                        <input type="date" name="checkOutDate" th:value="${editBookedRoom.checkOutDate}" required><br>
+                        <label>Mã phòng:</label>
+                        <input type="number" name="homeStayId" th:value="${editBookedRoom.homeStay.id}" required><br>
+                        <label>Mã người dùng:</label>
+                        <input type="number" name="userId" th:value="${editBookedRoom.user.id}" required><br>
+                        <button type="submit">Cập nhật</button>
+                    </form>
+                </div>
+            </th:block>
         </div>
+
     </th:block>
-    <th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
-        <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+        <th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+            <p>Bạn không đủ quyền hạn. <a href="/">Trang chủ</a></p>
+        </th:block>
     </th:block>
-</th:block>
-<th:block th:unless="${session.loggedInUser}">
-    <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
-</th:block>
-<script>
-    $(document).ready(function() {
-        loadBookedRooms();
 
-        $('#bookedroomForm').submit(function(event) {
-            event.preventDefault();
-            let phone = $('#guestPhone').val();
-            let id = $('#bookedroomId').val();
-            let bookedroom = {
-                guestName: $('#guestName').val(),
-                guestPhone: $('#guestPhone').val(),
-                checkInDate: $('#checkin').val(),
-                checkOutDate: $('#checkout').val(),
-                homeStay: { id: $('#homeStayId').val() },
-                user: { id: $('#userID').val() }
-            };
-
-            if (id) {
-                updateBookedRoom(phone, bookedroom);
-            } else {
-                addBookedRoom(bookedroom);
-            }
-        });
-    });
-    function loadBookedRooms() {
-        $.get("/manager/booked", function(data) {
-            $('#bookedroomTable').empty();
-            data.forEach(room => {
-                $('#bookedroomTable').append(`
-                <tr>
-                    <td>${room.id}</td>
-                    <td>${room.guestName}</td>
-                    <td>${room.guestPhone}</td>
-                    <td>${room.checkInDate || "Không có dữ liệu"}</td>
-                    <td>${room.checkOutDate || "Không có dữ liệu"}</td>
-                    <td>${room.homeStay ? room.homeStay.id : "Không có"}</td>
-                    <td>${room.user ? room.user.id : "Không có"}</td>
-                    <td>
-                        <button onclick="editBookedRoom('${room.guestPhone}')">Sửa</button>
-                        <button onclick="deleteBookedRoom('${room.guestPhone}')">Xóa</button>
-                    </td>
-                </tr>
-            `);
-            });
-        });
-    }
-    function addBookedRoom(bookedroom) {
-        let homeStayId = $('#homeStayId').val().trim();
-
-        // Kiểm tra nếu homeStayId bị rỗng hoặc không phải số
-        if (!homeStayId || isNaN(homeStayId)) {
-            alert("Vui lòng nhập mã phòng hợp lệ!");
-            return;
-        }
-
-        $.ajax({
-            url: `/manager/booked/insert/${homeStayId}`,
-            type: "POST",
-            data: JSON.stringify(bookedroom),
-            contentType: "application/json",
-            success: function () {
-                alert("Thêm đặt phòng thành công!");
-                loadBookedRooms();
-                $('#bookedroomForm')[0].reset();
-            },
-            error: function () {
-                alert("Lỗi khi thêm đặt phòng!");
-            }
-        });
-    }
-
-    function editBookedRoom(guestPhone) {
-        $.get(`/manager/booked/phone/${guestPhone}`, function(room) {
-            if (!room) {
-                alert("Không tìm thấy đặt phòng!");
-                return;
-            }
-            $('#bookedroomId').val(room.id);
-            $('#guestName').val(room.guestName);
-            $('#guestPhone').val(room.guestPhone);
-            $('#checkin').val(room.checkInDate);
-            $('#checkout').val(room.checkOutDate);
-            $('#homeStayId').val(room.homeStay ? room.homeStay.id : "");
-            $('#userID').val(room.user ? room.user.id : "");
-        }).fail(() => alert("Lỗi khi lấy dữ liệu đặt phòng!"));
-    }
-    function updateBookedRoom(guestPhone, bookedroom) {
-        $.ajax({
-            url: `/manager/booked/update/${guestPhone}`,
-            type: "PUT",
-            data: JSON.stringify(bookedroom),
-            contentType: "application/json",
-            success: function () {
-                alert("Cập nhật thành công!");
-                loadBookedRooms();
-                $('#bookedroomForm')[0].reset();
-            },
-            error: function () {
-                alert("Lỗi khi cập nhật!");
-            }
-        });
-    }
-    function deleteBookedRoom(guestPhone) {
-        if (confirm("Bạn có chắc muốn xóa không?")) {
-            $.ajax({
-                url: `/manager/booked/delete/${guestPhone}`,
-                type: "DELETE",
-                success: function () {
-                    alert("Xóa thành công!");
-                    loadBookedRooms();
-                },
-                error: function () {
-                    alert("Lỗi khi xóa!");
-                }
-            });
-        }
-    }
-</script>
-</body>
-</html>
+    <th:block th:unless="${session.loggedInUser}">
+        <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+    </th:block>
+    </body>
+    </html>

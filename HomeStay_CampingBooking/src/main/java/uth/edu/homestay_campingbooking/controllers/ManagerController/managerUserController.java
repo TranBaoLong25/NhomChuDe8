@@ -49,7 +49,6 @@ public class managerUserController {
         return "admin/manageruser";
     }
 
-    // Cập nhật thông tin người dùng
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute("editUser") @Valid User user) {
         userService.update(id, user);
