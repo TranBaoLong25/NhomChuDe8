@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dịch vụ ăn uống và tiện ích</title>
+
+    <link rel="stylesheet" type="text/css" href="/header.css">
     <style>
         /* Định dạng chung cho trang */
         body {
@@ -75,7 +77,37 @@
     </style>
 </head>
 <body>
-<div class="container">
+<nav>
+    <div class="nav-container">
+        <div class="logo">Homestay & Camping</div>
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="About">Giới Thiệu</a>
+            <a href="service">Dịch Vụ</a>
+            <a href="support">Hỗ Trợ</a>
+            <a href="bookedroom">Đặt Chỗ</a>
+            <th:block th:if="${session.loggedInUser}">
+                <a href="/profile">Trang Cá Nhân</a>
+                <form action="login/logout" method="post" style="display:inline;">
+                    <button type="submit">Đăng Xuất</button>
+                </form>
+            </th:block>
+
+            <!-- Nếu chưa đăng nhập -->
+            <th:block th:unless="${session.loggedInUser}">
+                <a href="/login">Đăng Nhập</a>
+                <a href="/register">Đăng Ký</a>
+            </th:block>
+        </div>
+        <div class="language-dropdown">
+            <select>
+                <option value="vi">Việt Nam</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+</nav>
+<div class="container" style="margin-top: 80px">
     <h1>Dịch vụ của chúng tôi</h1>
 
     <img src="placeholder.jpg" alt="Hình ảnh dịch vụ" width="500"> <div class="service">

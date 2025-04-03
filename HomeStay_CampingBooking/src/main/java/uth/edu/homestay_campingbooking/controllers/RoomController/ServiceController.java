@@ -1,4 +1,4 @@
-package uth.edu.homestay_campingbooking.controllers;
+package uth.edu.homestay_campingbooking.controllers.RoomController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

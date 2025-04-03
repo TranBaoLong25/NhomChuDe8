@@ -1,15 +1,12 @@
-package uth.edu.homestay_campingbooking.controllers;
+package uth.edu.homestay_campingbooking.controllers.RoomController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-import uth.edu.homestay_campingbooking.exception.AppException;
-import uth.edu.homestay_campingbooking.exception.ErrorCode;
 import uth.edu.homestay_campingbooking.models.BookedRoom;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
