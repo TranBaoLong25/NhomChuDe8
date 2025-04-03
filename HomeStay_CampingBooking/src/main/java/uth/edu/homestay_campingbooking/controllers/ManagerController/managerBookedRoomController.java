@@ -1,56 +1,69 @@
 package uth.edu.homestay_campingbooking.controllers.ManagerController;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.homestay_campingbooking.models.BookedRoom;
+import uth.edu.homestay_campingbooking.models.HomeStay;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
-import java.time.LocalDate;
+
+import org.springframework.ui.Model;
+import uth.edu.homestay_campingbooking.services.HomeStayService;
+import uth.edu.homestay_campingbooking.services.UserService;
+
 import java.util.List;
 
-@RestController
-@RequestMapping("/manager/booked")
+@Controller
+@RequestMapping("/managerbookedroom")
 public class managerBookedRoomController {
     @Autowired
     private BookedRoomService bookedRoomService;
-
+    @Autowired
+    private HomeStayService homeStayService;
+    @Autowired
+    private UserService userService;
+    // Hiển thị danh sách các phòng đã đặt
     @GetMapping
-    public List<BookedRoom> getAllBookedRooms() {
-        return bookedRoomService.findAllBookedRoom();
+    public String getAllBookedRooms(Model model) {
+        List<BookedRoom> bookedRooms = bookedRoomService.findAllBookedRoom();
+        model.addAttribute("bookedRooms", bookedRooms);
+        model.addAttribute("newBookedRoom", new BookedRoom());
+        return "admin/managerbookedroom";
     }
-
-    @GetMapping("/info")
-    public List<BookedRoom> getBookedRoomInfo(@RequestParam("phone") String phone) {
-        return bookedRoomService.info(phone);
-    }
-
-    @GetMapping("/info2")
-    public List<BookedRoom> getBookedRoomInfo2(@RequestParam("userId") Long userId) {
-        return bookedRoomService.info2(userId);
-    }
-
-    @GetMapping("/check")
-    public Boolean checkBookedRoom(@RequestParam("check_in") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_in,
-                                   @RequestParam("check_out") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_out) {
-        return bookedRoomService.checkByDate(check_in, check_out);
-    }
-
-    @PostMapping("/insert/{homeStayId}")
-    public void insertBookedRoom(@PathVariable Long homeStayId, @RequestBody BookedRoom bookedRoom) {
+    @PostMapping("/add")
+    public String addBookedRoom(@ModelAttribute("newBookedRoom") @Valid BookedRoom bookedRoom,
+                                @RequestParam Long homeStayId,
+                                @RequestParam Long userId) {
+        bookedRoom.setHomeStay(homeStayService.findHomeStay(homeStayId));
+        bookedRoom.setUser(userService.findById(userId));
         bookedRoomService.saveBookedRoom(homeStayId, bookedRoom);
+        return "redirect:/managerbookedroom";
     }
 
-    @PutMapping("/update/{phone}")
-    public void updateBookedRoom(@PathVariable String phone, @RequestBody BookedRoom bookedRoom) {
-        bookedRoomService.updateBookedRoom(phone, bookedRoom);
-    }
-
-    @DeleteMapping("/delete/{phone}")
-    public void deleteBookedRoom(@PathVariable String phone) {
+    @GetMapping("/delete/{phone}")
+    public String deleteBookedRoom(@PathVariable String phone) {
         bookedRoomService.deleteBookedRoom(phone);
+        return "redirect:/managerbookedroom";
     }
 
-    @GetMapping("/phone/{phone}")
-    public BookedRoom findBookedRoomByPhone(@PathVariable String phone) {
-        return bookedRoomService.findBooked(phone);
+    // Lấy thông tin phòng đã đặt cần chỉnh sửa
+    @GetMapping("/edit/{phone}")
+    public String editBookedRoom(@PathVariable String phone, Model model) {
+        BookedRoom bookedRoom = bookedRoomService.findBooked(phone);
+        model.addAttribute("editBookedRoom", bookedRoom);
+        model.addAttribute("bookedRooms", bookedRoomService.findAllBookedRoom());
+        return "admin/managerbookedroom";
     }
+    @PostMapping("/update/{phone}")
+    public String updateBookedRoom(@PathVariable String phone,
+                                   @ModelAttribute("editBookedRoom") @Valid BookedRoom bookedRoom,
+                                   @RequestParam Long homeStayId,
+                                   @RequestParam Long userId) {
+        bookedRoom.setHomeStay(homeStayService.findHomeStay(homeStayId));
+        bookedRoom.setUser(userService.findById(userId));
+        bookedRoomService.updateBookedRoom(phone, bookedRoom);
+        return "redirect:/managerbookedroom";
+    }
+
 }
