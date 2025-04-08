@@ -22,6 +22,15 @@
 
 <th:block th:if="${session.loggedInUser}">
   <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
+    <form th:action="@{/managerservice/search}" method="get">
+      <input type="text" name="keyword" placeholder="Nhập tên dịch vụ..." required>
+      <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <!-- Hiển thị thông báo nếu không tìm thấy -->
+    <th:block th:if="${services == null or services.isEmpty()}">
+      <p>Không tìm dịch vụ!</p>
+    </th:block>
 
     <div class="container">
       <!-- Danh sách dịch vụ -->

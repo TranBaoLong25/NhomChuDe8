@@ -14,14 +14,13 @@
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
             <a href="About">Giới Thiệu</a>
-            <a href="service">Dịch Vụ</a>
-            <a href="filter">Lọc Homestay</a>
+            <a href="services">Dịch Vụ</a>
             <a href="support">Hỗ Trợ</a>
             <a href="bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
                 <form action="login/logout" method="post" style="display:inline;">
-                    <button type="submit">Đăng Xuất</button>
+                    <button type="submit" style="padding: 3px;font-size: 16px">Đăng Xuất</button>
                 </form>
             </th:block>
 

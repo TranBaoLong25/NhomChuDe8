@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import uth.edu.homestay_campingbooking.models.HomeStay;
 import uth.edu.homestay_campingbooking.models.Location;
 import uth.edu.homestay_campingbooking.models.RoomType;
+import uth.edu.homestay_campingbooking.services.BookedRoomService;
 import uth.edu.homestay_campingbooking.services.HomeStayService;
 
 import java.util.List;
@@ -15,10 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/managerhomestay")
 public class managerHomestayController {
-
     @Autowired
     private HomeStayService homeStayService;
-
     @GetMapping
     public String getAllHomeStays(Model model) {
         List<HomeStay> homeStays = homeStayService.findAllHomeStays();

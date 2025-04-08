@@ -27,9 +27,10 @@ public class BookedRoomController {
         return bookedRoomService.info2(userId);
     }
     @GetMapping("/check")//http://localhost:8080/booked/check?check_in=2025-03-01&check_out=2025-03-05
-    public Boolean checkBookedRoom(@RequestParam("check_in") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_in,
+    public Boolean checkBookedRoom(@RequestParam("id") Long id,
+                                    @RequestParam("check_in") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_in,
                                    @RequestParam("check_out") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate check_out) {
-        return bookedRoomService.checkByDate(check_in, check_out);
+        return bookedRoomService.checkByDate(id, check_in, check_out);
     }
     @PostMapping("/insert/{homeStayId}")
     public void insertBookedRoom(@PathVariable Long homeStayId, @RequestBody BookedRoom bookedRoom) {

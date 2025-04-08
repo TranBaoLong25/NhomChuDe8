@@ -48,4 +48,15 @@ public class managerServiceController {
         serviceService.deleteService(id);
         return "redirect:/managerservice";
     }
+    @GetMapping("/search")
+    public String searchService(@RequestParam String keyword, Model model) {
+        try {
+            Service service = serviceService.findByName(keyword);
+            model.addAttribute("services", List.of(service));
+        } catch (Exception e) {
+            model.addAttribute("services", null);
+        }
+        model.addAttribute("newService", new Service());
+        return "admin/managerservice";
+    }
 }

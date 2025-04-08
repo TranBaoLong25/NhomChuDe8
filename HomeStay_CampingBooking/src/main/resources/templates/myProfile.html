@@ -14,7 +14,7 @@
     <div class="nav-links">
       <a href="/" class="active">Trang Chủ</a>
       <a href="About">Giới Thiệu</a>
-      <a href="service">Dịch Vụ</a>
+      <a href="services">Dịch Vụ</a>
       <a href="support">Hỗ Trợ</a>
       <a href="bookedroom">Đặt Chỗ</a>
       <th:block th:if="${session.loggedInUser}">
@@ -38,7 +38,6 @@
     </div>
   </div>
 </nav>
-<!-- Nội dung chính -->
 <main style="margin-top: 80px;">
   <h2 style="text-align: center; color: #333;">Thông Tin Cá Nhân</h2>
   <div class="profile-container">
@@ -47,9 +46,35 @@
       <div class="profile-info">
         <p><strong>👤 Username:</strong> <span th:text="${session.loggedInUser.username}"></span></p>
         <p><strong>🎭 Vai trò:</strong> <span th:text="${session.loggedInUser.role}"></span></p>
-        <p><strong>📝 Họ Tên:</strong> </p>
-        <p><strong>📞 Số Điện Thoại:</strong></p>
       </div>
+      <h3>Danh sách Homestay đã đặt:</h3>
+      <th:block th:if="${#lists.isEmpty(bookedRooms)}">
+        <p style="color: gray;">Chưa có phòng nào được đặt.<a href="bookedroom">Đặt phòng ngay!</a></p>
+      </th:block>
+      <th:block th:unless="${#lists.isEmpty(bookedRooms)}">
+        <table>
+          <thead>
+          <tr>
+            <th>Tên khách</th>
+            <th>Số điện thoại</th>
+            <th>Loại phòng</th>
+            <th>Vị trí</th>
+            <th>Ngày đến</th>
+            <th>Ngày đi</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="room : ${bookedRooms}">
+            <td th:text="${room.guestName}"></td>
+            <td th:text="${room.guestPhone}"></td>
+            <td th:text="${room.homeStay.roomType}"></td>
+            <td th:text="${room.homeStay.location}"></td>
+            <td th:text="${room.checkInDate}"></td>
+            <td th:text="${room.checkOutDate}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </th:block>
       <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
       <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
       <div class="admin-panel">

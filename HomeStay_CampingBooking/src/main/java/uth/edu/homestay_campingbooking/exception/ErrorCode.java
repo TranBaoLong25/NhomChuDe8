@@ -5,6 +5,7 @@ public enum ErrorCode {
     EXISTED(2001, "existed"),
     PRICE_INVALID(1005, "Price must be greater than 0"),
     INVALID_KEY(8888, "Invalid message key"),
+    INVALID_DAY(8888, "Date must be in the future"),
     USERNAME_INVALID(1002, "Username must be at least 4 character"),
     PASSWORD_INVALID(1003, "Password must be at least 8 character"),
     PASSWORD_ERROR(1004, "Password and confirm password do not match"),

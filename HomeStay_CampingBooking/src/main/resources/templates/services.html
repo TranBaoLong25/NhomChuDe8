@@ -82,10 +82,10 @@
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới Thiệu</a>
-            <a href="service">Dịch Vụ</a>
-            <a href="support">Hỗ Trợ</a>
-            <a href="bookedroom">Đặt Chỗ</a>
+            <a href="/About">Giới Thiệu</a>
+            <a href="/services">Dịch Vụ</a>
+            <a href="/support">Hỗ Trợ</a>
+            <a href="/bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
                 <form action="login/logout" method="post" style="display:inline;">
@@ -108,48 +108,42 @@
     </div>
 </nav>
 <div class="container" style="margin-top: 80px">
-    <h1>Dịch vụ của chúng tôi</h1>
+    <form th:action="@{/services/search}" method="get">
+        <input type="text" name="name" placeholder="Nhập tên dịch vụ..." required>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+    <th:block th:if="${services == null or services.isEmpty()}">
+        <p>Không tìm dịch vụ!</p>
+    </th:block>
 
-    <img src="placeholder.jpg" alt="Hình ảnh dịch vụ" width="500"> <div class="service">
-    <h2>1. Dịch vụ ăn uống</h2>
-    <ul>
-        <li>Bữa sáng miễn phí hoặc có phụ phí hợp lý.</li>
-        <li>BBQ & lẩu ngoài trời: Cung cấp nguyên liệu, bếp nướng, bàn ghế, hoặc dịch vụ nấu sẵn.</li>
-        <li>Đồ uống & cà phê: Cung cấp nước suối, trà, cà phê, nước ép, rượu vang, bia.</li>
-    </ul>
-</div>
+    <div class="container">
+        <div class="service-list">
+            <h2>Danh sách Dịch vụ</h2>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Dịch Vụ</th>
+                    <th>Mô Tả</th>
+                    <th>Giá</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="service : ${services}">
+                    <td th:text="${service.id}"></td>
+                    <td th:text="${service.serviceName}"></td>
+                    <td th:text="${service.serviceDescription}"></td>
+                    <td th:text="${service.servicePrice}"></td>
+                    <td>
+                        <a th:href="@{/payment/service/{id}(id=${service.id})}">Đặt dịch vụ</a>
+                    </td>
+                </tr>
 
-    <div class="service">
-        <h2>2. Dịch vụ tiện ích</h2>
-        <ul>
-            <li>Wi-Fi & ổ cắm sạc: Đảm bảo khách có thể sạc điện thoại, máy ảnh, laptop.</li>
-            <li>Cho thuê xe đạp, xe máy: Giúp khách di chuyển dễ dàng.</li>
-            <li>Bể bơi hoặc suối tự nhiên: Nếu có điều kiện.</li>
-            <li>Khu vui chơi, giải trí: Võng, xích đu, bàn cờ, đàn guitar, sách báo.</li>
-        </ul>
-    </div>
-
-    <div class="service">
-        <h2>3. Dịch vụ trải nghiệm & hoạt động ngoài trời</h2>
-        <ul>
-            <li>Tour khám phá thiên nhiên: Trekking, chèo thuyền kayak, câu cá, leo núi.</li>
-            <li>Lửa trại & giao lưu văn hóa: Tổ chức đốt lửa trại, âm nhạc, trò chơi nhóm.</li>
-            <li>Workshop & trải nghiệm địa phương: Học làm gốm, pha cà phê, trồng rau.</li>
-        </ul>
-    </div>
-
-    <div class="service">
-        <h2>4. Dịch vụ hỗ trợ khách hàng</h2>
-        <ul>
-            <li>Hỗ trợ đặt xe & hướng dẫn đường đi.</li>
-            <li>Cứu hộ khẩn cấp: Sơ cứu y tế, hỗ trợ gọi xe cấp cứu nếu cần.</li>
-            <li>Nhân viên thân thiện, tư vấn nhiệt tình.</li>
-        </ul>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
-<footer>
-    <p>&copy; 2024 Dịch vụ của chúng tôi. Mọi quyền được bảo lưu.</p>
-</footer>
 </body>
 </html>

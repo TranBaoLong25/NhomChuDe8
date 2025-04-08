@@ -43,34 +43,41 @@ public class BookedRoomRepository implements IBookedRoomRepository {
     }
 
     @Override
-    public Boolean checkByDate(LocalDate check_in, LocalDate check_out) {
+    public Boolean checkByDate(Long id, LocalDate check_in, LocalDate check_out) {
         List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
         for (BookedRoom room : bookedRooms) {
-            if (!(room.getCheckInDate().isAfter(check_out) || room.getCheckOutDate().isBefore(check_in))) {
-                return false;
+            if (room.getHomeStay().getId().equals(id)) {
+                if (!(room.getCheckInDate().isAfter(check_out) || room.getCheckOutDate().isBefore(check_in))) {
+                    return false;
+                }
             }
+
         }
         return true;
     }
     @Override
     public void saveBookedRoom(Long homeStayId, BookedRoom bookedRoom) {
         List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
+        if (bookedRoom.getCheckInDate().isBefore(LocalDate.now())) {
+            throw new AppException(ErrorCode.INVALID_DAY);
+        }
+        if (bookedRoom.getCheckOutDate().isBefore(bookedRoom.getCheckInDate())) {
+            throw new AppException(ErrorCode.INVALID_DAY);
+        }
         for (BookedRoom room : bookedRooms) {
-            if (!(room.getCheckInDate().isAfter(bookedRoom.getCheckOutDate()) || room.getCheckOutDate().isBefore(bookedRoom.getCheckInDate()))) {
-                throw new AppException(ErrorCode.EXISTED);
+            if (room.getId().equals(bookedRoom.getId())) continue;
+            if (room.getHomeStay().getId().equals(homeStayId)) {
+                if (!(room.getCheckInDate().isAfter(bookedRoom.getCheckOutDate()) || room.getCheckOutDate().isBefore(bookedRoom.getCheckInDate()))) {
+                    throw new AppException(ErrorCode.EXISTED);
+                }
             }
         }
         HomeStay homeStay = homeStayRepository.findHomeStay(homeStayId);
-        for (BookedRoom room : bookedRooms) {
-            if (homeStayId.equals(room.getHomeStayId())) {
-                throw new AppException(ErrorCode.EXISTED);
-            }
-        }
+        bookedRoom.setHomeStay(homeStay);
         if (bookedRoom.getUser() != null) {
             User user = userRepository.findById(bookedRoom.getUser().getId());
             bookedRoom.setUser(user);
         }
-        bookedRoom.setHomeStay(homeStay);
         em.persist(bookedRoom);
     }
 
@@ -97,7 +104,7 @@ public class BookedRoomRepository implements IBookedRoomRepository {
                 .collect(Collectors.toList());
 
         if (filteredRooms.isEmpty()) {
-            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
+            return null;
         }
         return filteredRooms;
     }
@@ -114,18 +121,19 @@ public class BookedRoomRepository implements IBookedRoomRepository {
     @Override
     public void updateBookedRoom(String phone, BookedRoom bookedRoom) {
         BookedRoom existingRoom = findBooked(phone);
-        if (existingRoom == null) {
-            throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
-        }
         List<BookedRoom> bookedRooms = em.createQuery("from BookedRoom", BookedRoom.class).getResultList();
-        for (BookedRoom room : bookedRooms) {
-            if (!(room.getCheckInDate().isAfter(bookedRoom.getCheckOutDate()) || room.getCheckOutDate().isBefore(bookedRoom.getCheckInDate()))) {
-                throw new AppException(ErrorCode.EXISTED);
-            }
+        if (bookedRoom.getCheckInDate().isBefore(LocalDate.now())) {
+            throw new AppException(ErrorCode.INVALID_DAY);
+        }
+        if (bookedRoom.getCheckOutDate().isBefore(bookedRoom.getCheckInDate())) {
+            throw new AppException(ErrorCode.INVALID_DAY);
         }
         for (BookedRoom room : bookedRooms) {
-            if (room.getHomeStayId().equals(bookedRoom.getHomeStay())) {
-                throw new AppException(ErrorCode.EXISTED);
+            if (room.getId().equals(existingRoom.getId())) continue;
+            if (room.getHomeStay().getId().equals(existingRoom.getHomeStay().getId())) {
+                if (!(room.getCheckInDate().isAfter(bookedRoom.getCheckOutDate()) || room.getCheckOutDate().isBefore(bookedRoom.getCheckInDate()))) {
+                    throw new AppException(ErrorCode.EXISTED);
+                }
             }
         }
         existingRoom.setGuestName(bookedRoom.getGuestName());

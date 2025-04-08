@@ -40,8 +40,8 @@ public class BookedRoomService implements IBookedRoomService {
     }
 
     @Override
-    public Boolean checkByDate(LocalDate check_in, LocalDate check_out) {
-        return bookedRoomRepository.checkByDate(check_in, check_out);
+    public Boolean checkByDate(Long id, LocalDate check_in, LocalDate check_out) {
+        return bookedRoomRepository.checkByDate(id, check_in, check_out);
     }
     @Override
     public void saveBookedRoom(Long homeStayId, BookedRoom bookedRoom) {

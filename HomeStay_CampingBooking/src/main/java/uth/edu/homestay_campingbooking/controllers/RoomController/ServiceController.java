@@ -1,13 +1,15 @@
 package uth.edu.homestay_campingbooking.controllers.RoomController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.homestay_campingbooking.models.Service;
 import uth.edu.homestay_campingbooking.services.ServiceService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/services")
 public class ServiceController {
 
@@ -15,37 +17,21 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @GetMapping
-    public List<Service> findAllServices() {
-        return serviceService.findAllServices();
+    public String findAllServices(Model model) {
+        List<Service> services = serviceService.findAllServices();
+        model.addAttribute("services", services);
+        return "services";
     }
 
-    @GetMapping("/check")
-    public List<Service> checkService(@RequestParam Long serviceId) {
-        return serviceService.checkService(serviceId);
-    }
-
-    @PostMapping("/insert")
-    public void insertService(@RequestBody Service service) {
-        serviceService.saveService(service);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public void deleteService(@PathVariable Long id) {
-        serviceService.deleteService(id);
-    }
-
-    @PutMapping("/update/{id}")
-    public void updateService(@PathVariable Long id, @RequestBody Service service) {
-        serviceService.updateService(id, service);
-    }
-
-    @GetMapping("/id/{id}")
-    public Service findById(@PathVariable Long id) {
-        return serviceService.findById(id);
-    }
-
-    @GetMapping("/servicename/{servicename}")
-    public Service findByServiceName(@PathVariable String servicename) {
-        return serviceService.findByName(servicename);
+    @GetMapping("/search")
+    public String search (@RequestParam String name, Model model) {
+        try{
+            Service service = serviceService.findByName(name);
+            model.addAttribute("services", List.of(service));
+        }catch (Exception e){
+            model.addAttribute("service", null);
+        }
+        model.addAttribute("newService", new Service());
+        return "services";
     }
 }
