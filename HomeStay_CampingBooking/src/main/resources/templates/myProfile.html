@@ -89,6 +89,7 @@
             <th>Vị trí</th>
             <th>Ngày đến</th>
             <th>Ngày đi</th>
+            <th>Giá</th>
           </tr>
           </thead>
           <tbody>
@@ -99,6 +100,7 @@
             <td th:text="${room.homeStay.location}"></td>
             <td th:text="${room.checkInDate}"></td>
             <td th:text="${room.checkOutDate}"></td>
+            <td th:text="${room.homeStay.roomPrice}"></td>
           </tr>
           </tbody>
         </table>
@@ -116,6 +118,7 @@
             <th>Tên dịch vụ</th>
             <th>Giá</th>
             <th>Mô tả</th>
+            <th>Thời gian</th>
           </tr>
           </thead>
           <tbody>
@@ -123,6 +126,7 @@
             <td th:text="${booked.service.serviceName}"></td>
             <td th:text="${booked.service.servicePrice} + ' VNĐ'"></td>
             <td th:text="${booked.service.serviceDescription}"></td>
+            <td th:text="${booked.time}"></td>
           </tr>
           </tbody>
         </table>

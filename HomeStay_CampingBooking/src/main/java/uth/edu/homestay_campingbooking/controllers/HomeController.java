@@ -10,20 +10,34 @@ import uth.edu.homestay_campingbooking.models.BookedRoom;
 import uth.edu.homestay_campingbooking.models.BookedService;
 import uth.edu.homestay_campingbooking.models.User;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
+<<<<<<< HEAD
 import uth.edu.homestay_campingbooking.services.BookedServiceService;
+=======
+import uth.edu.homestay_campingbooking.services.HomeStayService; // Import HomeStayService
+import uth.edu.homestay_campingbooking.models.HomeStay; // Import HomeStay model
+>>>>>>> ec7f26462dfe91f3b493d619e2827c21d93613a3
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/") // Keep this to handle the root path
 public class HomeController {
     @Autowired
     private BookedRoomService bookedRoomService;
     @Autowired
+<<<<<<< HEAD
     private BookedServiceService bookedServiceService;
 
     @GetMapping("/")
     public String trangChu(){
+=======
+    private HomeStayService homeStayService; // Autowire HomeStayService
+
+    @GetMapping("/") // Ensure this is just "/"
+    public String trangChu(Model model){
+        List<HomeStay> homeStays = homeStayService.findAllHomeStays(); // Fetch HomeStay data
+        model.addAttribute("homeStays", homeStays); // Add data to the model
+>>>>>>> ec7f26462dfe91f3b493d619e2827c21d93613a3
         return "index";
     }
     @GetMapping("/login")

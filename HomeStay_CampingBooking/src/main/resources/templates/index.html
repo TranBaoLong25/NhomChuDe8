@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,18 +13,16 @@
         <div class="logo">Homestay & Camping</div>
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
-            <a href="About">Giới Thiệu</a>
-            <a href="services">Dịch Vụ</a>
-            <a href="support">Hỗ Trợ</a>
-            <a href="bookedroom">Đặt Chỗ</a>
+            <a href="/About">Giới Thiệu</a>
+            <a href="/service">Dịch Vụ</a>
+            <a href="/support">Hỗ Trợ</a>
+            <a href="/bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
                 <a href="/profile">Trang Cá Nhân</a>
-                <form action="login/logout" method="post" style="display:inline;">
+                <form action="/login/logout" method="post" style="display:inline;">
                     <button type="submit">Đăng Xuất</button>
                 </form>
             </th:block>
-
-            <!-- Nếu chưa đăng nhập -->
             <th:block th:unless="${session.loggedInUser}">
                 <a href="/login">Đăng Nhập</a>
                 <a href="/register">Đăng Ký</a>
@@ -47,140 +45,35 @@
 </section>
 
 <div id="homestay-List">
+
 </div>
-
-<div class="title">
-    <h2> Homestay & Camping</h2>
-</div>
-
-
-<section id="gallerya" class="homestay-list">
-    <img src="/images/homestay_balcony.jpg" alt="Ban công homestay">
-    <img src="images/homestay_breakfast.jpg" alt="Bữa sáng homestay">
-    <img src="images/homestay_couple.jpg" alt="Cặp đôi ở homestay">
-    <img src="images/homestay_dinner.jpg" alt="Bữa tối homestay">
-    <img src="images/homestay_family.jpg" alt="Gia đình ở homestay">
-    <img src="images/homestay_garden.jpg" alt="Vườn homestay">
-    <img src="images/homestay_garden2.jpg" alt="Vườn homestay 2">
-    <img src="images/homestay_J98.jpg" alt="Homestay J98">
-    <img src="images/homestay_kitchen.jpg" alt="Bếp homestay">
-    <img src="images/Homestay_meomeo.jpg" alt="Homestay Meo Meo">
-    <img src="images/homestay_pool.jpg" alt="Bể bơi homestay">
-    <img src="images/homestay_relax.jpg" alt="Góc thư giãn homestay">
-
-</section>
-<section>
-
-    <h1 class="title">Danh Sách Homestay & Camping</h1>
-
-</section>
 
 <section id="gallery" class="homestay-list">
+
     <div id="homestayList">
-        <div class="homestay-item">
-            <img src="images/homestay_balcony.jpg" alt="Homestay Standard Room - View Ban Công ">
+
+        <div th:each="homeStay : ${homeStays}" class="homestay-item">
+
             <div class="homestay-details">
-                <h3> Standard Room - View Ban Công </h3>
-                <p>Giá: 500.000 VND</p>
-                <p>Phòng tiêu chuẩn với ban công riêng, tầm nhìn đẹp.</p>
+
+                <h3 th:text="${homeStay.roomType}"></h3>
+
+                <p>Giá: <span th:text="${#numbers.formatDecimal(homeStay.roomPrice, 0, 'COMMA', 0, 'POINT')}"></span> VNĐ</p>
+
+                <p>Loại phòng: <span th:text="${homeStay.roomType}"></span></p>
+
+                <p>Vị trí: <span th:text="${homeStay.location}"></span></p>
+
             </div>
+
         </div>
-        <div class="homestay-item">
-            <img src="images/homestay_breakfast.jpg" alt="Homestay Standard Room - Vier Bờ Sông ">
-            <div class="homestay-details">
-                <h3>Standard Room - View Bờ Sông</h3>
-                <p>Giá: 300.000 VND</p>
-                <p>Phòng tiêu chuẩn với bữa sáng đặc sản địa phương.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_couple.jpg" alt="Homestay Deluxe Room - Phòng Cặp Đôi">
-            <div class="homestay-details">
-                <h3>Deluxe Room - Phòng Cặp Đôi </h3>
-                <p>Giá: 600.000 VND</p>
-                <p>Phòng cao cấp với không gian lãng mạn cho các cặp đôi.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_cozy.jpg" alt="Homestay Standard Room - Phòng Vip ">
-            <div class="homestay-details">
-                <h3>Standard Room - Phòng VIP </h3>
-                <p>Giá: 400.000 VND</p>
-                <p>Phòng tiêu chuẩn mang đến cảm giác ấm cúng như ở nhà.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_dinner.jpg" alt="Homestay Deluxe Room - Phòng Thường ">
-            <div class="homestay-details">
-                <h3>Deluxe Room - Phòng Thường</h3>
-                <p>Giá: 550.000 VND</p>
-                <p>Phòng cao cấp với bữa tối sang trọng và tiện nghi.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_family.jpg" alt="Homestay Suite Room - Phòng Gia Đình ">
-            <div class="homestay-details">
-                <h3>Suite Room - Phòng Gia Đình </h3>
-                <p>Giá: 350.000 VND</p>
-                <p>Phòng lớn, phù hợp với gia đình hoặc nhóm bạn.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_garden.jpg" alt="Homestay Bungalow - view vườn Hoa ">
-            <div class="homestay-details">
-                <h3>Bungalow - View Vườn Hoa</h3>
-                <p>Giá: 700.000 VND</p>
-                <p>Nhà riêng biệt gần thiên nhiên, có khu vườn rộng rãi.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_garden2.jpg" alt="Homestay Bungalow - Vườn Hoa Hồng">
-            <div class="homestay-details">
-                <h3>Bungalow - Vườn Hoa Hồng</h3>
-                <p>Giá: 450.000 VND</p>
-                <p>Nhà nhỏ gần thiên nhiên, phù hợp để thư giãn.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_J98.jpg" alt="Homestay Suite Room - Phòng VIP">
-            <div class="homestay-details">
-                <h3>Suite Room - Phòng VIP</h3>
-                <p>Giá: 800.000 VND</p>
-                <p>Phòng cao cấp có phòng khách riêng, tiện nghi hiện đại.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_kitchen.jpg" alt="Homestay Dormitory Room -Phòng Có Bếp ">
-            <div class="homestay-details">
-                <h3>Dormitory Room - Phòng Có Bếp </h3>
-                <p>Giá: 500.000 VND</p>
-                <p>Phòng tập thể có bếp tiện nghi, phù hợp nhóm bạn.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_pool.jpg" alt="Homestay Dormitory Room - Phòng Hồ Bơi ">
-            <div class="homestay-details">
-                <h3>Dormitory Room - Phòng Hồ Bơi </h3>
-                <p>Giá: 370.000 VND</p>
-                <p>Phòng tập thể với hồ bơi rộng, phù hợp khách du lịch.</p>
-            </div>
-        </div>
-        <div class="homestay-item">
-            <img src="images/homestay_relax.jpg" alt="Homestay Deluxe Room - Phòng Thường ">
-            <div class="homestay-details">
-                <h3>Deluxe Room - Phòng Thường </h3>
-                <p>Giá: 720.000 VND</p>
-                <p>Phòng cao cấp yên tĩnh, lý tưởng để nghỉ ngơi.</p>
-            </div>
 
     </div>
 
-    </div>
-    </div>
-
-
-    </div>
-    </div>
 </section>
+
+</main>
+
 </body>
+
 </html>
