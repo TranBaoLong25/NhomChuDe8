@@ -5,16 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import uth.edu.homestay_campingbooking.models.BookedRoom;
-import uth.edu.homestay_campingbooking.models.HomeStay;
-import uth.edu.homestay_campingbooking.models.Service;
-import uth.edu.homestay_campingbooking.models.User;
-import uth.edu.homestay_campingbooking.services.BookedRoomService;
-import uth.edu.homestay_campingbooking.services.HomeStayService;
-import uth.edu.homestay_campingbooking.services.ServiceService;
-import uth.edu.homestay_campingbooking.services.UserService;
+import uth.edu.homestay_campingbooking.models.*;
+import uth.edu.homestay_campingbooking.services.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/payment")
@@ -27,6 +22,8 @@ public class PaymentController {
     private ServiceService serviceService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private BookedServiceService bookedServiceService;
 
     @GetMapping("/service/{id}")
     public String showPaymentService(@PathVariable Long id, Model model) {
@@ -44,9 +41,21 @@ public class PaymentController {
 
     @PostMapping("/processService/{id}")
     public String processPaymentService(@PathVariable Long id,
+                                        @RequestParam("time") String time,
                                         @ModelAttribute("service") Service service,
                                         HttpSession session,
                                         Model model) {
+        Service s = serviceService.findById(id);
+        BookedService bookedService = new BookedService();
+        User user = (User) session.getAttribute("loggedInUser");
+        if (user != null) {
+            bookedService.setService(s);
+            bookedService.setUser(userService.findById(user.getId()));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate bookingTime = LocalDate.parse(time, formatter);
+            bookedService.setTime(bookingTime);
+            bookedServiceService.saveBookedService(id, bookedService);
+        }
         model.addAttribute("message", "Thanh toán dịch vụ thành công!");
         return "payment-success";
     }
@@ -59,7 +68,7 @@ public class PaymentController {
         BookedRoom bookedRoom = new BookedRoom();
         User user = (User) session.getAttribute("loggedInUser");
         if (user != null) {
-            bookedRoom.setHomeStay(homeStayService.findHomeStay(id));
+            bookedRoom.setHomeStay(h);
             bookedRoom.setUser(userService.findById(user.getId()));
             bookedRoomService.saveBookedRoom(id, bookedRoom);
         }

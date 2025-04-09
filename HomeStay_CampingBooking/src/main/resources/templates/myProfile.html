@@ -47,6 +47,34 @@
         <p><strong>👤 Username:</strong> <span th:text="${session.loggedInUser.username}"></span></p>
         <p><strong>🎭 Vai trò:</strong> <span th:text="${session.loggedInUser.role}"></span></p>
       </div>
+      <!-- Nút bật form: dùng label để kiểm soát checkbox -->
+      <label for="toggleEdit" class="btn-edit">Chỉnh sửa thông tin</label>
+
+      <!-- Checkbox ẩn để bật/tắt modal -->
+      <input type="checkbox" id="toggleEdit" hidden>
+
+      <div class="modal">
+        <div class="modal-content">
+          <label for="toggleEdit" class="close-btn">&times;</label>
+          <h3>Chỉnh sửa thông tin</h3>
+          <form action="/edit-profile" method="post">
+            <label><strong>👤 Username:</strong></label>
+            <input type="text" name="username" th:value="${session.loggedInUser.username}" required>
+
+            <label><strong>🔑 Mật khẩu mới:</strong></label>
+            <input type="password" name="password" required>
+
+            <label><strong>🔑 Mật khẩu cũ:</strong></label>
+            <input type="password" name="confirmPassword" required>
+
+            <div class="button-group">
+              <label for="toggleEdit" class="btn-edit cancel-btn">Hủy</label>
+              <button type="submit" class="btn-edit">Lưu thay đổi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
       <h3>Danh sách Homestay đã đặt:</h3>
       <th:block th:if="${#lists.isEmpty(bookedRooms)}">
         <p style="color: gray;">Chưa có phòng nào được đặt.<a href="bookedroom">Đặt phòng ngay!</a></p>
@@ -75,7 +103,30 @@
           </tbody>
         </table>
       </th:block>
-      <a href="edit-profile" class="btn-edit">Chỉnh sửa thông tin</a>
+      <h3>Dịch vụ đã đặt:</h3>
+
+      <th:block th:if="${#lists.isEmpty(bookedServices)}">
+        <p style="color: gray;">Chưa có dịch vụ nào được đặt. <a href="/services">Đặt dịch vụ ngay!</a></p>
+      </th:block>
+
+      <th:block th:unless="${#lists.isEmpty(bookedServices)}">
+        <table>
+          <thead>
+          <tr>
+            <th>Tên dịch vụ</th>
+            <th>Giá</th>
+            <th>Mô tả</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="booked : ${bookedServices}">
+            <td th:text="${booked.service.serviceName}"></td>
+            <td th:text="${booked.service.servicePrice} + ' VNĐ'"></td>
+            <td th:text="${booked.service.serviceDescription}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </th:block>
       <th:block th:if="${session.loggedInUser.role.toString() == 'admin'}">
       <div class="admin-panel">
           <h3 style="color: red;">🔧 Khu vực quản trị</h3>
