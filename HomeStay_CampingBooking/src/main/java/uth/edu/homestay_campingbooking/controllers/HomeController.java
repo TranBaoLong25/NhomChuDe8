@@ -9,16 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import uth.edu.homestay_campingbooking.models.BookedRoom;
 import uth.edu.homestay_campingbooking.models.User;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
+import uth.edu.homestay_campingbooking.services.HomeStayService; // Import HomeStayService
+import uth.edu.homestay_campingbooking.models.HomeStay; // Import HomeStay model
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/") // Keep this to handle the root path
 public class HomeController {
     @Autowired
     private BookedRoomService bookedRoomService;
-    @GetMapping("/")
-    public String trangChu(){
+    @Autowired
+    private HomeStayService homeStayService; // Autowire HomeStayService
+
+    @GetMapping("/") // Ensure this is just "/"
+    public String trangChu(Model model){
+        List<HomeStay> homeStays = homeStayService.findAllHomeStays(); // Fetch HomeStay data
+        model.addAttribute("homeStays", homeStays); // Add data to the model
         return "index";
     }
     @GetMapping("/login")
