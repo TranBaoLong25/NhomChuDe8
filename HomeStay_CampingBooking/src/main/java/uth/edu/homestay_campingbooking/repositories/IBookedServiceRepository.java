@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IBookedServiceRepository {
+    BookedService getBookedServiceById(Long id);
     List<BookedService> info(Long userId);
     List<BookedService> findAllBookedService();
     void saveBookedService(Long serviceId, BookedService bookedService);

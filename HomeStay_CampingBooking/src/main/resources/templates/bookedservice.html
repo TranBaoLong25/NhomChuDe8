@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Dịch Vụ Đã Đặt</title>
+    <link rel="stylesheet" type="text/css" href="/admincss/managerbookedservice.css">
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="/" class="active">Trang Chủ</a>
+            <a href="/manageruser">Users</a>
+            <a href="/managerservice">Service</a>
+            <a href="/managerhomestay">Homestay</a>
+            <a href="/managerbookedroom">BookedRoom</a>
+            <a href="/managerbookedservice">BookedService</a>
+        </div>
+    </div>
+</nav>
+
+<th:block th:if="${session.loggedInUser}">
+    <th:block th:if="${session.loggedInUser?.role.toString() == 'admin'}">
+        <div class="container">
+            <div class="bookedservice-list">
+                <h2>Danh sách Dịch Vụ Đã Đặt</h2>
+                <table border="1">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Thời gian</th>
+                        <th>Mã Dịch Vụ</th>
+                        <th>Mã Người Dùng</th>
+                        <th>Hành động</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="bookedService : ${bookedServices}">
+                        <td th:text="${bookedService.id}"></td>
+                        <td th:text="${bookedService.time}"></td>
+                        <td th:text="${bookedService.service != null ? bookedService.service.id : 'Không có'}"></td>
+                        <td th:text="${bookedService.user != null ? bookedService.user.id : 'Không có'}"></td>
+                        <td>
+                            <a th:href="@{/managerbookedservice/edit/{id}(id=${bookedService.id})}">Sửa</a> |
+                            <a th:href="@{/managerbookedservice/delete/{id}(id=${bookedService.id})}"
+                               onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Form thêm mới dịch vụ đã đặt -->
+            <div class="bookedservice-form">
+                <h3>Thêm Dịch Vụ Đã Đặt</h3>
+                <form th:action="@{/managerbookedservice/add}" method="post" th:object="${newBookedService}">
+                    <label>Thời gian:</label>
+                    <input type="date" name="time" required><br>
+                    <label>Mã Dịch Vụ:</label>
+                    <input type="number" name="serviceId" required><br>
+                    <label>Mã Người Dùng:</label>
+                    <input type="number" name="userId" required><br>
+                    <button type="submit">Thêm</button>
+                </form>
+            </div>
+
+            <!-- Form chỉnh sửa nếu có -->
+            <th:block th:if="${editBookedService}">
+                <div class="bookedservice-form">
+                    <h3>Chỉnh sửa Dịch Vụ Đã Đặt</h3>
+                    <form th:action="@{/managerbookedservice/update/{id}(id=${editBookedService.id})}" method="post" th:object="${editBookedService}">
+                        <label>Thời gian:</label>
+                        <input type="text" name="time" th:value="${editBookedService.time}" required><br>
+                        <label>Mã Dịch Vụ:</label>
+                        <input type="number" name="serviceId" th:value="${editBookedService.service.id}" required><br>
+                        <label>Mã Người Dùng:</label>
+                        <input type="number" name="userId" th:value="${editBookedService.user.id}" required><br>
+                        <button type="submit">Cập nhật</button>
+                    </form>
+                </div>
+            </th:block>
+        </div>
+    </th:block>
+
+    <th:block th:unless="${session.loggedInUser.role.toString() == 'admin'}">
+        <p>Bạn không đủ quyền truy cập trang này. <a href="/">Trang chủ</a></p>
+    </th:block>
+</th:block>
+
+<th:block th:unless="${session.loggedInUser}">
+    <p>Bạn chưa đăng nhập. <a href="/login">Đăng nhập</a></p>
+</th:block>
+
+</body>
+</html>

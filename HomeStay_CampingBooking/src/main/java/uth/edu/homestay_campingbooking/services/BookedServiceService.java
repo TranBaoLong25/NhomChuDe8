@@ -9,6 +9,10 @@ import java.util.List;
 
 @Service
 public class BookedServiceService implements IBookedServiceService {
+    @Override
+    public BookedService getBookedServiceById(Long id) {
+        return bookedServiceRepository.getBookedServiceById(id);
+    }
     @Autowired
     private BookedServiceRepository bookedServiceRepository;
     @Override

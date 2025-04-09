@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
 @Repository
 @Transactional
 public class BookedServiceRepository implements IBookedServiceRepository {
+    @Override
+    public BookedService getBookedServiceById(Long id) {
+        return em.find(BookedService.class, id);
+    }
     @Autowired
     private ServiceRepository serviceRepository;
     @Autowired

@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Bảng danh sách dịch vụ đã đặt */
+.bookedservice-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bookedservice-list th,
+.bookedservice-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.bookedservice-list th {
+    background: #007bff;
+    color: white;
+}
+
+.bookedservice-list tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Form thêm/sửa dịch vụ */
+.bookedservice-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.bookedservice-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.bookedservice-form input {
+    width: 93%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Nút bấm */
+button {
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button.cancel {
+    background: #dc3545;
+}
