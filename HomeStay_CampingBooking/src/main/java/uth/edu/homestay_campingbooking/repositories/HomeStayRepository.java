@@ -2,6 +2,10 @@ package uth.edu.homestay_campingbooking.repositories;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -106,6 +110,30 @@ public class HomeStayRepository implements IHomeStayRepository {
             throw new AppException(ErrorCode.ID_OR_NAME_NOT_EXISTED);
         }
         return ds;
+    }
+
+    @Override
+    public List<HomeStay> searchHomeStays(RoomType roomType, Location location, Double minPrice, Double maxPrice) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<HomeStay> cq = cb.createQuery(HomeStay.class);
+        Root<HomeStay> root = cq.from(HomeStay.class);
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (roomType != null) {
+            predicates.add(cb.equal(root.get("roomType"), roomType));
+        }
+        if (location != null) {
+            predicates.add(cb.equal(root.get("location"), location));
+        }
+        if (minPrice != null) {
+            predicates.add(cb.greaterThanOrEqualTo(root.get("roomPrice"), minPrice));
+        }
+        if (maxPrice != null) {
+            predicates.add(cb.lessThanOrEqualTo(root.get("roomPrice"), maxPrice));
+        }
+
+        cq.where(predicates.toArray(new Predicate[0]));
+        return em.createQuery(cq).getResultList();
     }
 
     public String insertHomeStay(RoomType roomType, Location location, double roomPrice, boolean booked, List<MultipartFile> images) {

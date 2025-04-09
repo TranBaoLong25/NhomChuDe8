@@ -147,3 +147,55 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+-------------------------
+    /* General container for the search results */
+#search-results {
+    margin-top: 20px; /* Khoảng cách phía trên của khu vực kết quả */
+    padding: 10px; /* Khoảng cách bên trong khu vực kết quả */
+    border: 1px solid #ddd; /* Viền mỏng, màu xám nhạt */
+    border-radius: 5px; /* Góc bo tròn nhẹ */
+    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng, mờ 80% */
+}
+
+/* Heading for the results section */
+#search-results h2 {
+    font-size: 1.5em; /* Kích thước chữ của tiêu đề (ví dụ: "Kết quả tìm kiếm") */
+    margin-bottom: 15px; /* Khoảng cách phía dưới của tiêu đề */
+    color: #333; /* Màu chữ tiêu đề (xám đậm) */
+}
+
+/* Unordered list styling */
+#search-results ul {
+    list-style-type: none; /* Loại bỏ dấu chấm đầu dòng */
+    padding: 0; /* Loại bỏ khoảng cách mặc định */
+}
+
+/* List item styling (each homestay result) */
+#search-results li {
+    margin-bottom: 15px; /* Khoảng cách phía dưới của mỗi kết quả homestay */
+    padding: 10px; /* Khoảng cách bên trong mỗi kết quả homestay */
+    border-bottom: 1px solid #eee; /* Viền dưới mỏng, màu xám rất nhạt */
+    position: relative; /* Vị trí tương đối (cần thiết cho các phần tử con được định vị tuyệt đối) */
+    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng, mờ 60% cho mỗi kết quả */
+    border-radius: 5px; /* Góc bo tròn nhẹ cho mỗi kết quả */
+}
+
+/* Strong tag styling (e.g., "Loại phòng:") */
+#search-results strong {
+    font-weight: bold; /* Chữ đậm */
+    color: #555; /* Màu chữ (xám) */
+}
+
+/* Paragraph styling */
+#search-results p {
+    margin: 5px 0; /* Khoảng cách trên và dưới của đoạn văn */
+}
+
+/* Horizontal rule styling */
+#search-results hr {
+    border: none; /* Loại bỏ viền mặc định */
+    height: 1px; /* Chiều cao của đường kẻ ngang */
+    background-color: #ccc; /* Màu của đường kẻ ngang (xám) */
+    margin-top: 10px; /* Khoảng cách phía trên của đường kẻ ngang */
+}

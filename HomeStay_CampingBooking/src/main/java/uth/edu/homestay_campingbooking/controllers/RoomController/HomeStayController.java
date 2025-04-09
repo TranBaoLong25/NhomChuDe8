@@ -45,4 +45,34 @@ public class HomeStayController {
         return homeStayService.findHomeStayByLocation(location);
     }
 
+    @GetMapping("/search") // Matches th:action="@{/homestay/search}" in HTML
+    public String searchHomeStays(
+            @RequestParam(value = "roomType", required = false) RoomType roomType,
+            @RequestParam(value = "price", required = false) String priceRange,
+            @RequestParam(value = "location", required = false) Location location,
+            Model model) {
+
+        Double minPrice = null;
+        Double maxPrice = null;
+
+        if (priceRange != null && !priceRange.isEmpty()) {
+            String[] prices = priceRange.split("-");
+            try {
+                minPrice = Double.parseDouble(prices[0]);
+                if (prices.length > 1) {
+                    maxPrice = Double.parseDouble(prices[1]);
+                } else if (priceRange.endsWith("+")) {
+                    maxPrice = Double.MAX_VALUE;
+                }
+            } catch (NumberFormatException e) {
+                // Handle the exception (e.g., log it) or set default values
+                System.err.println("Invalid price range format: " + priceRange);
+            }
+        }
+
+        List<HomeStay> searchResults = homeStayService.searchHomeStays(roomType, location, minPrice, maxPrice);
+        model.addAttribute("searchResults", searchResults);
+        return "bookedroom"; // Returns the name of the template
+    }
 }
+

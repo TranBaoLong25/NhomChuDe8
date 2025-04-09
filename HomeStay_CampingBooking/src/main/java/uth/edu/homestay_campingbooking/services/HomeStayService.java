@@ -47,4 +47,8 @@ public class HomeStayService {
     public List<HomeStay> findAllHomeStays() {
         return homeStayRepository.findAllHomeStays();
     }
+
+    public List<HomeStay> searchHomeStays(RoomType roomType, Location location, Double minPrice, Double maxPrice) {
+        return homeStayRepository.searchHomeStays(roomType, location, minPrice, maxPrice);
+    }
 }

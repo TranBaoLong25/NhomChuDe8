@@ -8,11 +8,20 @@ import java.util.List;
 
 public interface IHomeStayService {
     void createHomeStay(HomeStay hs);
+
     HomeStay findHomeStay(Long id);
+
     void updateHomeStay(Long id, HomeStay hs);
+
     void deleteHomeStay(Long id);
+
     List<HomeStay> findAllHomeStays();
+
     List<HomeStay> findByType(RoomType type);
+
     List<HomeStay> findByLocation(Location location);
+
     List<HomeStay> findByPrice(double minPrice, double maxPrice);
+
+    List<HomeStay> searchHomeStays(RoomType roomType, Location location, Double minPrice, Double maxPrice); // Add this
 }
