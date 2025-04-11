@@ -7,11 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uth.edu.homestay_campingbooking.models.BookedRoom;
+import uth.edu.homestay_campingbooking.models.BookedService;
 import uth.edu.homestay_campingbooking.models.User;
 import uth.edu.homestay_campingbooking.services.BookedRoomService;
+import uth.edu.homestay_campingbooking.services.BookedServiceService;
 import uth.edu.homestay_campingbooking.services.HomeStayService; // Import HomeStayService
 import uth.edu.homestay_campingbooking.models.HomeStay; // Import HomeStay model
-
 import java.util.List;
 
 @Controller
@@ -20,12 +21,13 @@ public class HomeController {
     @Autowired
     private BookedRoomService bookedRoomService;
     @Autowired
+    private BookedServiceService bookedServiceService;
+    @Autowired
     private HomeStayService homeStayService; // Autowire HomeStayService
-
-    @GetMapping("/") // Ensure this is just "/"
+    @GetMapping("/")
     public String trangChu(Model model){
         List<HomeStay> homeStays = homeStayService.findAllHomeStays(); // Fetch HomeStay data
-        model.addAttribute("homeStays", homeStays); // Add data to the model
+        model.addAttribute("homeStays", homeStays);
         return "index";
     }
     @GetMapping("/login")
@@ -56,13 +58,12 @@ public class HomeController {
             if (bookedRooms != null) {
                 model.addAttribute("bookedRooms", bookedRooms);
             }
+            List<BookedService> bookedServices = bookedServiceService.info(user.getId());
+            if (bookedServices != null) {
+                model.addAttribute("bookedServices", bookedServices);
+            }
         }
-
         return "myProfile";
-    }
-    @GetMapping("/edit-profile")
-    public String editProfile(){
-        return "edit-profile";
     }
     @GetMapping("/payment/success")
     public String paymentSuccess(){

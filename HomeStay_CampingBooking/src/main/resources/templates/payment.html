@@ -43,6 +43,8 @@
     <p>Mô tả dịch vụ: <span th:text="${service.serviceDescription}"></span></p>
     <p>Giá: <span th:text="${service.servicePrice}"></span> VNĐ</p>
     <form th:action="@{/payment/processService/{id}(id=${service.id})}" method="post" th:object="${service}">
+      <label for="time">Chọn ngày đặt:</label>
+      <input type="date" id="time" name="time" required>
       <button type="submit">Thanh toán</button>
     </form>
   </div>

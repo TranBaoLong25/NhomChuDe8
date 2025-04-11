@@ -9,7 +9,34 @@
   <link rel="stylesheet" type="text/css" th:href="@{/header.css}">
 </head>
 <body>
-<nav th:replace="~{fragments/header :: header}"></nav>
+<nav th:fragment="header">
+  <div class="nav-container">
+    <div class="logo">Homestay & Camping</div>
+    <div class="nav-links">
+      <a href="/" class="active">Trang Chủ</a>
+      <a href="/About">Giới Thiệu</a>
+      <a href="/services">Dịch Vụ</a>
+      <a href="/support">Hỗ Trợ</a>
+      <a href="/bookedroom">Đặt Chỗ</a>
+      <th:block th:if="${session.loggedInUser}">
+        <a href="/profile">Trang Cá Nhân</a>
+        <form action="/login/logout" method="post" style="display:inline;">
+          <button type="submit">Đăng Xuất</button>
+        </form>
+      </th:block>
+      <th:block th:unless="${session.loggedInUser}">
+        <a href="/login">Đăng Nhập</a>
+        <a href="/register">Đăng Ký</a>
+      </th:block>
+    </div>
+    <div class="language-dropdown">
+      <select>
+        <option value="vi">Việt Nam</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </div>
+</nav>
 <div id="filter-container">
   <div class="filter-title">Tìm Kiếm</div>
   <form th:action="@{/homestay/search}" method="get">
@@ -116,9 +143,11 @@
       </li>
     </ul>
   </div>
+
   <div th:if="${searchResults == null or #lists.isEmpty(searchResults)}">
     <p>Không tìm thấy kết quả nào.</p>
   </div>
+
 </div>
 </body>
 </html>

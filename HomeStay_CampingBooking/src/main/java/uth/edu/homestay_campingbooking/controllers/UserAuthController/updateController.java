@@ -19,12 +19,10 @@ public class updateController {
     private UserService userService;
 
     @PostMapping
-    public String updateProfile(@RequestParam String username,  @RequestParam String guestName,
-                                @RequestParam String guestPhone,@RequestParam String password,
+    public String updateProfile(@RequestParam String username,@RequestParam String password,
                                 @RequestParam String confirmPassword, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser != null) {
-            String oldPassword = loggedInUser.getPassword();
             for (User user : userService.findAll()) {
                 if (user.getUsername().equals(username)) {
                     throw new AppException(ErrorCode.USER_EXISTED);
