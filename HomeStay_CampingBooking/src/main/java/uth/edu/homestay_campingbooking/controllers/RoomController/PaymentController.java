@@ -61,17 +61,31 @@ public class PaymentController {
     }
     @PostMapping("/processHomeStay/{id}")
     public String processPaymentHomeStay(@PathVariable Long id,
-                                         @ModelAttribute("homeStay") HomeStay homeStay,
+                                         @RequestParam("checkinDate") String checkinDateStr,
+                                         @RequestParam("checkoutDate") String checkoutDateStr,
+                                         @RequestParam("name") String guestName,
+                                         @RequestParam("phone") String guestPhone,
                                          HttpSession session,
                                          Model model) {
         HomeStay h = homeStayService.findHomeStay(id);
         BookedRoom bookedRoom = new BookedRoom();
         User user = (User) session.getAttribute("loggedInUser");
+
         if (user != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate checkinDate = LocalDate.parse(checkinDateStr, formatter);
+            LocalDate checkoutDate = LocalDate.parse(checkoutDateStr, formatter);
+
             bookedRoom.setHomeStay(h);
             bookedRoom.setUser(userService.findById(user.getId()));
+            bookedRoom.setCheckInDate(checkinDate);
+            bookedRoom.setCheckOutDate(checkoutDate);
+            bookedRoom.setGuestName(guestName);
+            bookedRoom.setGuestPhone(guestPhone);
+
             bookedRoomService.saveBookedRoom(id, bookedRoom);
         }
+
         model.addAttribute("message", "Thanh toán homestay thành công!");
         return "payment-success";
     }
