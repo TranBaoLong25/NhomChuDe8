@@ -1,6 +1,32 @@
 /* services.css */
 
 /* Định dạng form tìm kiếm */
+
+/* General layout */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image:url('images/4khdBG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Lớp phủ trắng mờ */
+    backdrop-filter: blur(2px); /* Hiệu ứng làm mờ */
+    z-index: -1; /* Đặt phía sau nội dung */
+}
+
 form {
     display: flex;
     margin-bottom: 20px;

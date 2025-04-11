@@ -14,7 +14,7 @@
         <div class="nav-links">
             <a href="/" class="active">Trang Chủ</a>
             <a href="/About">Giới Thiệu</a>
-            <a href="/service">Dịch Vụ</a>
+            <a href="/services">Dịch Vụ</a>
             <a href="/support">Hỗ Trợ</a>
             <a href="/bookedroom">Đặt Chỗ</a>
             <th:block th:if="${session.loggedInUser}">
@@ -49,25 +49,78 @@
 </div>
 
 <section id="gallery" class="homestay-list">
-
     <div id="homestayList">
-
         <div th:each="homeStay : ${homeStays}" class="homestay-item">
-
             <div class="homestay-details">
-
                 <h3 th:text="${homeStay.roomType}"></h3>
-
                 <p>Giá: <span th:text="${#numbers.formatDecimal(homeStay.roomPrice, 0, 'COMMA', 0, 'POINT')}"></span> VNĐ</p>
-
                 <p>Loại phòng: <span th:text="${homeStay.roomType}"></span></p>
-
                 <p>Vị trí: <span th:text="${homeStay.location}"></span></p>
+                <div>
+                    <p>Ảnh:</p>
+                    <div class="image-gallery" th:each="imgUrl : ${homeStay.imageUrls}">
+                        <img th:src="${images}" alt="Ảnh homestay" style="width: 200px; height: auto; margin-right: 10px;" />
+                    </div>
+                </div>
 
+
+
+                <!-- Nút đặt phòng -->
+                <label th:for="'toggleBook-' + ${homeStay.id}" class="btn-book">Đặt phòng</label>
+
+                <!-- Checkbox ẩn điều khiển modal -->
+                <input type="checkbox" th:id="'toggleBook-' + ${homeStay.id}" class="toggle-modal" hidden/>
+
+                <!-- Modal hiển thị khi checkbox được check -->
+                <div th:class="'modal'" th:if="${true}">
+                    <div class="modal-content" th:classappend="' show-' + ${homeStay.id}">
+                        <!-- Nút đóng form -->
+                        <label th:for="'toggleBook-' + ${homeStay.id}" class="close-btn">&times;</label>
+                        <h3>Thông tin Đặt phòng</h3>
+                        <form th:action="@{/submitBooking}" method="post">
+                            <input type="hidden" name="homeStayId" th:value="${homeStay.id}"/>
+
+                            <div>
+                                <label for="name">Tên:</label>
+                                <input type="text" id="name" name="name" required/>
+                            </div>
+
+                            <div>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required/>
+                            </div>
+
+                            <div>
+                                <label for="phone">Số điện thoại:</label>
+                                <input type="tel" id="phone" name="phone" required/>
+                            </div>
+
+                            <div>
+                                <label for="checkinDate">Ngày đến:</label>
+                                <input type="date" id="checkinDate" name="checkinDate" required/>
+                            </div>
+
+                            <div>
+                                <label for="checkoutDate">Ngày đi:</label>
+                                <input type="date" id="checkoutDate" name="checkoutDate" required/>
+                            </div>
+
+                            <div>
+                                <label for="guests">Số lượng người:</label>
+                                <input type="number" id="guests" name="guests" min="1" required/>
+                            </div>
+
+                            <div class="button-group">
+                                <label th:for="'toggleBook-' + ${homeStay.id}" class="btn-book cancel-btn">Hủy</label>
+                                <button type="submit" class="btn-book">Xác nhận Đặt phòng</button>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
 
 </section>
