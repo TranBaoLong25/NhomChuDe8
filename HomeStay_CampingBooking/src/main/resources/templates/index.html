@@ -44,11 +44,54 @@
     </div>
 </section>
 
-<div id="homestay-List">
 
+
+<section class="commitments">
+    <div class="container">
+        <h2>Cam Kết Của Chúng Tôi</h2>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> Chất lượng dịch vụ hàng đầu.</li>
+            <li><i class="fas fa-check-circle"></i> Không gian thoải mái và sạch sẽ.</li>
+            <li><i class="fas fa-check-circle"></i> Giá cả hợp lý và cạnh tranh.</li>
+            <li><i class="fas fa-check-circle"></i> Hỗ trợ khách hàng 24/7.</li>
+            <li><i class="fas fa-check-circle"></i> Bảo vệ môi trường và tôn trọng văn hóa địa phương.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="homestay-gallery">
+    <div class="container">
+        <h2>Hình Ảnh Homestay</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="/uploads/e2eac0d5-263f-4e3e-85dd-2d7d4580bf83_homestay_family.jpg" alt="Standard Room">
+                <h3>Standard Room</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="/uploads/4071ccc0-0b40-4b26-8ffa-8a7192574cf2_homestay_garden2.jpg" alt="Deluxe Room">
+                <h3>Deluxe Room</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="/uploads/e2eac0d5-263f-4e3e-85dd-2d7d4580bf83_homestay_family.jpg" alt="Suite Room">
+                <h3>Suite Room</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="/uploads/df501287-2036-4e9f-b85d-adc5dbc5891e_homestay_dinner.jpg" alt="Dormitory Room">
+                <h3>Dormitory Room</h3>
+            </div>
+            <div class="gallery-item">
+                <img src="/uploads/aad3a7ff-b184-41b5-92cd-9031bb027b01_homestay_garden.jpg" alt="Bungalow">
+                <h3>Bungalow</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2> Homestay</h2>
+<div id="homestay-List">
 </div>
 
-<section id="gallery" class="homestay-list">
+<section id="gallery"   class="homestay-list">
     <div id="homestayList">
         <div th:each="homeStay : ${homeStays}" class="homestay-item">
             <div class="homestay-details">
@@ -56,13 +99,6 @@
                 <p>Giá: <span th:text="${#numbers.formatDecimal(homeStay.roomPrice, 0, 'COMMA', 0, 'POINT')}"></span> VNĐ</p>
                 <p>Loại phòng: <span th:text="${homeStay.roomType}"></span></p>
                 <p>Vị trí: <span th:text="${homeStay.location}"></span></p>
-                <div>
-                    <p>Ảnh:</p>
-                    <div class="image-gallery" th:each="imgUrl : ${homeStay.imageUrls}">
-                        <img th:src="${images}" alt="Ảnh homestay" style="width: 200px; height: auto; margin-right: 10px;" />
-                    </div>
-                </div>
-
 
 
                 <!-- Nút đặt phòng -->

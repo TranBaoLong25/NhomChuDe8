@@ -1,20 +1,16 @@
-/* services.css */
-
-/* Định dạng form tìm kiếm */
-
-/* General layout */
+/* Định dạng chung */
 body {
-    background-color: #f0f0f0;
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-image:url('images/4khdBG.jpg');
+    background-image: url('images/4khdBG.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -22,43 +18,67 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.3); /* Lớp phủ trắng mờ */
-    backdrop-filter: blur(2px); /* Hiệu ứng làm mờ */
-    z-index: -1; /* Đặt phía sau nội dung */
+    background: rgba(255, 255, 255, 0.2); /* Giữ lớp phủ nhẹ */
+    z-index: -1; /* Không làm mờ nữa */
 }
 
+/* Định dạng form tìm kiếm */
 form {
     display: flex;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: center;
     align-items: center;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 form input[type="text"] {
     flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
     border-radius: 5px;
     margin-right: 10px;
     font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
 form button[type="submit"] {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button[type="submit"]:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+form button[type="submit"]::before {
+    content: "\1F50D"; /* Unicode for magnifying glass icon */
+    font-size: 18px;
 }
 
 /* Định dạng thông báo không tìm thấy dịch vụ */
@@ -68,43 +88,97 @@ p {
     background-color: #fdecea;
     color: #d9534f;
     border: 1px solid #d9534f;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Định dạng phần danh sách dịch vụ */
 .service-list {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.85); /* Giữ nền trắng mờ nhẹ */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 90%;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.service-list h2 {
-    color: #0056b3;
-    margin-top: 0;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+.service-list:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Định dạng bảng danh sách dịch vụ */
 .service-list table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9); /* Giữ nền bảng trắng */
 }
 
-.service-list th, .service-list td {
+.service-list th,
+.service-list td {
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 8px; /* Giảm khoảng cách padding để làm ô nhỏ hơn */
     text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px; /* Tăng kích thước chữ */
+    font-weight: bold; /* Làm chữ đậm hơn */
 }
 
 .service-list th {
     background-color: #f8f8f8;
     font-weight: bold;
     color: #333;
+    text-align: center;
+    position: relative;
+    padding-left: 35px;
+}
+
+/* Thêm icon cho từng cột */
+.service-list th:nth-child(1)::before {
+    content: "\1F4C8"; /* Unicode for bar chart icon (📈) */
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.service-list th:nth-child(2)::before {
+    content: "\1F4D1"; /* Unicode for bookmark icon (📑) */
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.service-list th:nth-child(3)::before {
+    content: "\1F4DD"; /* Unicode for memo icon (📝) */
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.service-list th:nth-child(4)::before {
+    content: "\1F4B0"; /* Unicode for money bag icon (💰) */
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.service-list th:nth-child(5)::before {
+    content: "\270D\FE0F"; /* Unicode for pencil icon (✏️) */
+    position: absolute;
+    left: 10px;
+    font-size: 18px;
+    color: #007bff;
 }
 
 .service-list tbody tr:nth-child(even) {
@@ -113,9 +187,37 @@ p {
 
 .service-list tbody tr:hover {
     background-color: #e0f7fa;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    transform: scale(1.01);
 }
 
+/* Định dạng hành động */
 .service-list td:last-child {
     text-align: center;
+    white-space: nowrap;
+}
+
+.service-list td a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-list td a:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.service-list td a::before {
+    content: "\1F4B3"; /* Unicode for credit card icon (💳) */
+    font-size: 18px;
 }

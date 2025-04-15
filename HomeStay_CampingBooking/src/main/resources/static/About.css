@@ -1,7 +1,8 @@
+/* Cài đặt chung */
 body {
-    background-color: #f0f0f0;
+    background-color: #f8f9fa;
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-image: url('images/4khdBG.jpg');
@@ -15,82 +16,114 @@ body {
 main {
     width: 80%;
     margin: 20px auto;
-    background: rgba(255, 255, 255, 0.75); /* Giảm độ trong suốt để nền trong hơn */
-    backdrop-filter: blur(9px); /* Tăng hiệu ứng làm mờ nền */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); /* Tăng độ nổi */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(9px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Animation hiệu ứng fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Căn trái tất cả tiêu đề */
 h1, h2, h3 {
     text-align: left;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* Định dạng từng cấp độ tiêu đề */
 h1 {
     font-size: 2.5em;
-    color: #1a5276; /* Xanh đậm */
+    color: #1a5276;
     margin-bottom: 15px;
+    border-left: 5px solid #2874a6;
+    padding-left: 15px;
 }
 
 h2 {
     font-size: 2em;
-    color: #2874a6; /* Xanh nhạt hơn */
+    color: #2874a6;
     margin-bottom: 12px;
+    border-left: 4px solid #1a5276;
+    padding-left: 12px;
 }
 
 h3 {
-    font-size: 1.6em;
-    color: black; /* Xanh lá nhạt */
+    font-size: 1.5em;
+    color: #1c2833;
     margin-bottom: 10px;
+    border-left: 3px solid #34495e;
+    padding-left: 10px;
 }
 
 /* Căn trái đoạn văn */
 p {
-    font-size: 1.2em;
-    text-align: left;
-    line-height: 1.6;
-    margin-bottom: 10px;
+    font-size: 1.1em;
+    text-align: justify;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    color: #2c3e50;
 }
 
 /* Căn trái danh sách */
 ul, ol {
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: left;
-    width: 100%; /* Chiếm hết chiều rộng */
     margin: 10px 0;
-    line-height: 1.5;
-    padding-left: 20px;
+    line-height: 1.6;
+    padding-left: 25px;
 }
 
 /* Định dạng mục danh sách */
 li {
-    color: #34495e; /* Xám đậm */
+    color: #34495e;
     margin-bottom: 8px;
-    font-size: 1.1em;
+    font-size: 1em;
+    position: relative;
+    padding-left: 15px;
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động */
 }
+
+/* Hiệu ứng động khi hover vào mục danh sách */
+li:hover {
+    color: #27ae60; /* Đổi màu chữ sang xanh lá */
+    transform: translateX(10px) scale(1.05); /* Dịch mục sang phải và phóng to nhẹ */
+    text-shadow: 0 0 10px rgba(39, 174, 96, 0.5); /* Thêm ánh sáng */
+}
+
+/* Định dạng liên kết (link) */
 a {
     display: inline-block;
     text-align: left;
-    font-size: 1.2em;
-    color: black;
+    font-size: 1.1em;
+    color: #1a5276;
     text-decoration: none;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
-    color: black;
+    color: #2874a6;
+    transform: scale(1.05);
 }
 
 /* Responsive: Điều chỉnh trên màn hình nhỏ */
 @media (max-width: 768px) {
     main {
         width: 95%;
-        padding: 15px;
+        padding: 20px;
     }
 
     h1 {
@@ -102,19 +135,54 @@ a:hover {
     }
 
     h3 {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
 
     p, ul, ol, li {
-        width: 100%;
         font-size: 1em;
     }
 }
+
+/* Tiêu đề chính giữa với hiệu ứng */
 .title-center {
-    text-align: center; /* Căn giữa theo chiều ngang */
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh; /* Hoặc đặt chiều cao theo ý muốn */
-    font-size: 39px; /* Tăng cỡ chữ */
+    height: 10vh;
+    font-size: 36px;
+    font-weight: bold;
+    color: #2874a6;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Thêm hiệu ứng hover cho các nút */
+button {
+    background-color: #1a5276;
+    color: white;
+    font-size: 1em;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #2874a6;
+    transform: scale(1.1);
+}
+
+/* Dropdown ngôn ngữ */
+.language-dropdown select {
+    font-size: 1em;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.language-dropdown select:hover {
+    border-color: #2874a6;
 }

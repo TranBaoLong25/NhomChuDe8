@@ -55,6 +55,7 @@ body::before {
     margin-bottom: 20px;
 }
 
+
 header {
     background-color: #4CAF50;
     color: white;
@@ -112,6 +113,8 @@ header {
     margin-bottom: 5px;
 }
 
+
+
 /* Ngăn chặn lướt ngang */
 html, body {
     overflow-x: hidden;
@@ -121,55 +124,44 @@ html, body {
 /* Đảm bảo mọi phần tử con không tràn ra ngoài */
 * {
     max-width: 100%;
-
-    #gallerya {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Chia ảnh theo lưới */
-        gap: 10px;
-        padding: 20px;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
-        border-radius: 10px;
-        max-width: 1200px;
-        margin: auto;
-    }
-
-    #gallerya img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px;
-        display: block;
-    }
 }
-.title {
-    text-align: center; /* Căn giữa chữ */
-    font-weight: bold; /* In đậm */
-    background-color: #d6d6d6; /* Màu nền xanh */
-    color: white; /* Màu chữ trắng */
-    padding: 10px 20px; /* Khoảng cách nội dung và viền */
-    border-radius: 8px; /* Bo góc */
-    display: block; /* Chuyển thành khối để dễ căn giữa */
-    width: fit-content; /* Giữ kích thước theo nội dung */
-    margin: 20px auto; /* Căn giữa theo chiều ngang */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+
+/* ===== Nút Đặt Phòng (btn-book) ===== */
+.btn-book {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(0, 123, 255, 0.4)); /* Gradient nền */
+    color: #007bff; /* Màu chữ xanh dương */
+    padding: 12px 24px; /* Khoảng đệm nút */
+    border: 2px solid #007bff; /* Viền xanh dương */
+    border-radius: 8px; /* Bo góc mềm mại */
+    cursor: pointer;
+    font-size: 18px; /* Kích thước chữ lớn hơn */
+    font-weight: bold; /* Chữ đậm */
+    text-decoration: none;
+    display: inline-flex; /* Hiển thị ngang với icon */
+    align-items: center; /* Căn giữa icon và text */
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển màu và bóng */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng nhẹ */
 }
------------------------------------
+
+.btn-book i {
+    font-size: 20px; /* Kích thước icon */
+    transition: transform 0.3s ease; /* Hiệu ứng động cho icon */
+}
+
+.btn-book:hover {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.4), rgba(0, 123, 255, 0.6)); /* Gradient đậm hơn */
+    transform: translateY(-3px); /* Nhô lên nhẹ khi hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Bóng đổ nổi bật hơn */
+}
+
+.btn-book:hover i {
+    transform: rotate(15deg) scale(1.2); /* Hiệu ứng xoay và phóng to icon */
+}
+
+/* ===== Modal ===== */
 .modal {
     display: none; /* Ẩn modal mặc định */
-    position: fixed; /* Cố định vị trí trên màn hình */
-    z-index: 1; /* Đảm bảo modal ở trên các phần tử khác */
-    left: 0;
-    top: 0;
-    width: 100%; /* Chiều rộng toàn màn hình */
-    height: 100%; /* Chiều cao toàn màn hình */
-    overflow: auto; /* Cho phép cuộn nếu nội dung quá dài */
-    background-color: rgba(0,0,0,0.4); /* Màu nền mờ */
-}
-
-/* Ẩn modal mặc định */
-.modal {
-    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -177,7 +169,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
 }
 
 /* Khi checkbox được checked thì modal hiển thị */
@@ -185,15 +177,235 @@ input[type="checkbox"].toggle-modal:checked + .modal {
     display: block;
 }
 
-/* Modal content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #fff;
     margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
 }
 
+/* Tiêu đề */
+.modal-content h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Nhãn và input căn hàng gọn */
+.modal-content form > div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-content label {
+    font-weight: 600;
+    width: 120px;
+    color: #444;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="tel"],
+.modal-content input[type="date"] {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng focus */
+}
+
+.modal-content input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Icon trong input */
+.modal-content input[type="text"]::placeholder,
+.modal-content input[type="tel"]::placeholder,
+.modal-content input[type="date"]::placeholder {
+    font-style: italic;
+    color: #999;
+}
+
+/* Nhóm nút */
+.button-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-group .btn-book {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #28a745; /* Màu xanh lá */
+    margin: 0 10px;
+    display: inline-flex; /* Hiển thị ngang với icon */
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-group .btn-book i {
+    font-size: 16px; /* Kích thước icon trong modal */
+}
+
+.button-group .btn-book:hover {
+    background-color: #218838; /* Màu xanh lá đậm hơn khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bóng đổ nổi bật hơn */
+}
+
+.button-group .cancel-btn {
+    background-color: #dc3545; /* Màu đỏ cho nút Hủy */
+}
+
+.button-group .cancel-btn:hover {
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}
+
+/* Nút đóng (dấu X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000; /* Đổi màu khi hover */
+}
+
+/* ===== Section: Cam Kết ===== */
+.commitments {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+    margin: 30px auto;
+    max-width: 800px;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.commitments h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Danh sách cam kết */
+.commitments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.commitments li {
+    margin: 10px 0;
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    justify-content: center; /* Căn giữa danh sách */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.commitments li:hover {
+    color: #007bff; /* Đổi màu chữ khi hover */
+    transform: translateY(-5px); /* Dịch nhẹ lên khi hover */
+}
+
+/* Icon cho mục cam kết */
+.commitments li i {
+    color: #007bff; /* Màu xanh nổi bật */
+    font-size: 20px; /* Kích thước icon */
+}
+
+/* ===== Section: Hình Ảnh Homestay ===== */
+.homestay-gallery {
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 30px;
+}
+
+.homestay-gallery h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Bố cục ảnh được căn giữa */
+.homestay-gallery .gallery {
+    display: flex;
+    justify-content: center; /* Căn giữa toàn bộ gallery */
+    gap: 20px; /* Khoảng cách giữa các hình ảnh */
+    flex-wrap: wrap; /* Cho phép ảnh xuống hàng nếu không đủ chỗ */
+}
+
+/* Card thiết kế */
+.homestay-gallery .gallery-item {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 200px; /* Kích thước cố định của card */
+    position: relative;
+}
+
+.homestay-gallery .gallery-item:hover {
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bóng đổ nổi bật hơn */
+    background-color: #f9f9f9; /* Nền sáng hơn khi hover */
+}
+
+/* Ảnh */
+.homestay-gallery .gallery-item img {
+    width: 100%;
+    height: 150px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt ảnh gọn gàng */
+    transition: transform 0.3s ease;
+}
+
+.homestay-gallery .gallery-item:hover img {
+    transform: scale(1.05); /* Phóng to nhẹ ảnh khi hover */
+}
+
+/* Nội dung của ảnh */
+.homestay-gallery .gallery-item h3 {
+    margin: 10px 0 5px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: capitalize;
+}

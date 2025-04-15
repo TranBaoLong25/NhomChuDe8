@@ -1,201 +1,294 @@
 /* ===================== */
-/*  🎨 Kiểu dáng chung  */
+/* 🌟 Bộ lọc tìm kiếm   */
 /* ===================== */
-
 #filter-container {
-    margin-top: 55px;
-    padding: 20px;
-    border: 1px solid rgba(204, 204, 204, 0.5);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    background-color: rgba(249, 249, 249, 0.85);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 40px auto 20px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Nhẹ hơn để tinh tế hơn */
+    max-width: 500px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Tiêu đề bộ lọc */
-.filter-title {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    color: white;
-    background-color: #007bff;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+#filter-container:hover {
+    transform: scale(1.03); /* Tăng nhẹ hơn khi hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bóng đổ lớn hơn khi hover */
 }
-
-/* ===================== */
-/*  📌 Kiểu dáng bộ lọc  */
-/* ===================== */
 
 .filter-option {
     margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Label chung */
 .filter-option label {
     display: block;
-    font-weight: bold;
-    font-size: 16px;
-    color: #222;
+    font-size: 16px; /* Cỡ chữ vừa phải */
+    font-weight: 600; /* Chữ hơi đậm */
+    color: #555; /* Màu xám dịu */
     margin-bottom: 8px;
 }
 
-/* Hover hiệu ứng */
-.filter-option label:hover {
-    color: #0056b3;
-    cursor: pointer;
+.filter-option select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease; /* Hiệu ứng mượt hơn */
 }
 
-/* ========================== */
-/*  ✅ Căn chỉnh Checkbox    */
-/* ========================== */
-
-/* Bố cục nhóm checkbox */
-#room-features-filter,
-#room-type-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
+.filter-option select:focus {
+    outline: none;
+    border-color: #007bff; /* Xanh dương nổi bật */
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3); /* Bóng nhẹ khi focus */
 }
-
-/* Căn chỉnh checkbox & label */
-#room-features-filter label,
-#room-type-filter label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    position: relative;
-    padding: 6px 10px;
-    border-radius: 5px;
-    transition: background 0.2s ease-in-out;
-}
-
-/* Ẩn checkbox mặc định */
-#room-features-filter input[type="checkbox"],
-#room-type-filter input[type="checkbox"] {
-    display: none;
-}
-
-/* Thiết kế checkbox tùy chỉnh */
-#room-features-filter label::before,
-#room-type-filter label::before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    border: 2px solid #007bff;
-    border-radius: 4px;
-    display: inline-block;
-    transition: all 0.2s ease-in-out;
-    background-color: white;
-}
-
-/* Khi checkbox được chọn */
-#room-features-filter input[type="checkbox"]:checked + label::before,
-#room-type-filter input[type="checkbox"]:checked + label::before {
-    background-color: #007bff;
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    content: "✔";
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    line-height: 18px;
-    font-weight: bold;
-}
-
-/* Hover hiệu ứng */
-#room-features-filter label:hover::before,
-#room-type-filter label:hover::before {
-    border-color: #0056b3;
-}
-
-/* ========================== */
-/*  🔎 Nút Tìm Kiếm           */
-/* ========================== */
 
 #apply-filters {
     display: block;
     width: 100%;
     padding: 12px;
     background-color: #4CAF50;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #apply-filters:hover {
     background-color: #45a049;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-#filter-container label,
-.filter-option label {
-    font-size: 16px;
-    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
--------------------------
-    /* General container for the search results */
+/* ===================== */
+/* 🔍 Kết quả tìm kiếm   */
+/* ===================== */
 #search-results {
-    margin-top: 20px; /* Khoảng cách phía trên của khu vực kết quả */
-    padding: 10px; /* Khoảng cách bên trong khu vực kết quả */
-    border: 1px solid #ddd; /* Viền mỏng, màu xám nhạt */
-    border-radius: 5px; /* Góc bo tròn nhẹ */
-    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng, mờ 80% */
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Nhẹ hơn để tinh tế */
+    max-width: 90%;
 }
 
-/* Heading for the results section */
 #search-results h2 {
-    font-size: 1.5em; /* Kích thước chữ của tiêu đề (ví dụ: "Kết quả tìm kiếm") */
-    margin-bottom: 15px; /* Khoảng cách phía dưới của tiêu đề */
-    color: #333; /* Màu chữ tiêu đề (xám đậm) */
+    font-size: 20px; /* Cỡ chữ vừa phải */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
 }
 
-/* Unordered list styling */
 #search-results ul {
-    list-style-type: none; /* Loại bỏ dấu chấm đầu dòng */
-    padding: 0; /* Loại bỏ khoảng cách mặc định */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
 }
 
-/* List item styling (each homestay result) */
 #search-results li {
-    margin-bottom: 15px; /* Khoảng cách phía dưới của mỗi kết quả homestay */
-    padding: 10px; /* Khoảng cách bên trong mỗi kết quả homestay */
-    border-bottom: 1px solid #eee; /* Viền dưới mỏng, màu xám rất nhạt */
-    position: relative; /* Vị trí tương đối (cần thiết cho các phần tử con được định vị tuyệt đối) */
-    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng, mờ 60% cho mỗi kết quả */
-    border-radius: 5px; /* Góc bo tròn nhẹ cho mỗi kết quả */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
 }
 
-/* Strong tag styling (e.g., "Loại phòng:") */
-#search-results strong {
+#search-results li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#search-results li::before {
+    content: "\1F3E0"; /* Icon ngôi nhà */
+    font-size: 20px;
+    color: #007bff;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ===== Nút Đặt Phòng (btn-book) ===== */
+.btn-book {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(0, 123, 255, 0.4)); /* Gradient nền */
+    color: #007bff; /* Màu chữ xanh dương */
+    padding: 12px 24px; /* Khoảng đệm nút */
+    border: 2px solid #007bff; /* Viền xanh dương */
+    border-radius: 8px; /* Bo góc mềm mại */
+    cursor: pointer;
+    font-size: 18px; /* Kích thước chữ lớn hơn */
     font-weight: bold; /* Chữ đậm */
-    color: #555; /* Màu chữ (xám) */
+    text-decoration: none;
+    display: inline-flex; /* Hiển thị ngang với icon */
+    align-items: center; /* Căn giữa icon và text */
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển màu và bóng */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng nhẹ */
 }
 
-/* Paragraph styling */
-#search-results p {
-    margin: 5px 0; /* Khoảng cách trên và dưới của đoạn văn */
+.btn-book i {
+    font-size: 20px; /* Kích thước icon */
+    transition: transform 0.3s ease; /* Hiệu ứng động cho icon */
 }
 
-/* Horizontal rule styling */
-#search-results hr {
-    border: none; /* Loại bỏ viền mặc định */
-    height: 1px; /* Chiều cao của đường kẻ ngang */
-    background-color: #ccc; /* Màu của đường kẻ ngang (xám) */
-    margin-top: 10px; /* Khoảng cách phía trên của đường kẻ ngang */
+.btn-book:hover {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.4), rgba(0, 123, 255, 0.6)); /* Gradient đậm hơn */
+    transform: translateY(-3px); /* Nhô lên nhẹ khi hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Bóng đổ nổi bật hơn */
+}
+
+.btn-book:hover i {
+    transform: rotate(15deg) scale(1.2); /* Hiệu ứng xoay và phóng to icon */
+}
+
+/* ===== Modal ===== */
+.modal {
+    display: none; /* Ẩn modal mặc định */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
+}
+
+/* Khi checkbox được checked thì modal hiển thị */
+input[type="checkbox"].toggle-modal:checked + .modal {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Tiêu đề */
+.modal-content h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Nhãn và input căn hàng gọn */
+.modal-content form > div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-content label {
+    font-weight: 600;
+    width: 120px;
+    color: #444;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="tel"],
+.modal-content input[type="date"] {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng focus */
+}
+
+.modal-content input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Icon trong input */
+.modal-content input[type="text"]::placeholder,
+.modal-content input[type="tel"]::placeholder,
+.modal-content input[type="date"]::placeholder {
+    font-style: italic;
+    color: #999;
+}
+
+/* Nhóm nút */
+.button-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-group .btn-book {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #28a745; /* Màu xanh lá */
+    margin: 0 10px;
+    display: inline-flex; /* Hiển thị ngang với icon */
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa icon và text */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-group .btn-book i {
+    font-size: 16px; /* Kích thước icon trong modal */
+}
+
+.button-group .btn-book:hover {
+    background-color: #218838; /* Màu xanh lá đậm hơn khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bóng đổ nổi bật hơn */
+}
+
+.button-group .cancel-btn {
+    background-color: #dc3545; /* Màu đỏ cho nút Hủy */
+}
+
+.button-group .cancel-btn:hover {
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}
+
+/* Nút đóng (dấu X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000; /* Đổi màu khi hover */
 }
