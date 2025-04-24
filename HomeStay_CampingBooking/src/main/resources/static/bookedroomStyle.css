@@ -1,294 +1,242 @@
-/* ===================== */
-/* 🌟 Bộ lọc tìm kiếm   */
-/* ===================== */
+:root {
+    --primary-color: #007bff;
+    --primary-hover-color: #0056b3;
+    --secondary-color: #28a745;
+    --secondary-hover-color: #218838;
+    --border-radius: 8px;
+    --modal-overlay: rgba(0, 0, 0, 0.4);
+    --box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --box-shadow-modal: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --text-color: #333;
+    --heading-color: #222;
+    --background-color: #f4f4f4;
+    --card-bg-color: #fff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-speed: 0.3s;
+    --input-padding: 12px;
+    --font-size-base: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+}
+
 #filter-container {
-    margin: 40px auto 20px;
-    padding: 25px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Nhẹ hơn để tinh tế hơn */
-    max-width: 500px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    width: 90%;
+    max-width: 600px;
+    margin: 70px auto 30px; /* Tăng margin-top lên 50px */
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
 }
 
-#filter-container:hover {
-    transform: scale(1.03); /* Tăng nhẹ hơn khi hover */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Bóng đổ lớn hơn khi hover */
+#filter-container form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
-.filter-option {
-    margin-bottom: 15px;
-}
-
-.filter-option label {
-    display: block;
-    font-size: 16px; /* Cỡ chữ vừa phải */
-    font-weight: 600; /* Chữ hơi đậm */
-    color: #555; /* Màu xám dịu */
+#filter-container label {
+    font-weight: 600;
     margin-bottom: 8px;
 }
 
-.filter-option select {
+#filter-container select,
+#filter-container input[type="date"] {
     width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333;
-    background-color: #f9f9f9;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease; /* Hiệu ứng mượt hơn */
+    padding: var(--input-padding);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.filter-option select:focus {
+#filter-container select:focus,
+#filter-container input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
     outline: none;
-    border-color: #007bff; /* Xanh dương nổi bật */
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3); /* Bóng nhẹ khi focus */
 }
 
 #apply-filters {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 14px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 16px;
     font-weight: 600;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 #apply-filters:hover {
-    background-color: #45a049;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ===================== */
-/* 🔍 Kết quả tìm kiếm   */
-/* ===================== */
 #search-results {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Nhẹ hơn để tinh tế */
-    max-width: 90%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    overflow: hidden; /* Cắt bỏ phần tử mờ tràn ra */
+}
+
+#search-results::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Hoặc contain, tùy vào nhu cầu */
+    background-position: center; /* Thường là tốt nhất */
+    filter: blur(8px); /* Độ mờ */
+    z-index: -1; /* Đưa xuống dưới nội dung */
+    border-radius: inherit; /* Quan trọng: Lấy bo góc từ #search-results */
 }
 
 #search-results h2 {
-    font-size: 20px; /* Cỡ chữ vừa phải */
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #333;
     text-align: center;
+    margin-bottom: 25px;
+    color: var(--heading-color);
+    font-size: 22px;
+    font-weight: bold;
 }
 
 #search-results ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 0;
     list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 #search-results li {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    position: relative;
+    background-color: var(--card-bg-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
 }
 
-#search-results li:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+#search-results li h3 {
+    margin-top: 0;
+    color: var(--heading-color);
+    font-size: 18px;
 }
 
-#search-results li::before {
-    content: "\1F3E0"; /* Icon ngôi nhà */
-    font-size: 20px;
-    color: #007bff;
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#search-results li p {
+    margin: 8px 0;
 }
 
-
-/* ===== Nút Đặt Phòng (btn-book) ===== */
 .btn-book {
-    background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(0, 123, 255, 0.4)); /* Gradient nền */
-    color: #007bff; /* Màu chữ xanh dương */
-    padding: 12px 24px; /* Khoảng đệm nút */
-    border: 2px solid #007bff; /* Viền xanh dương */
-    border-radius: 8px; /* Bo góc mềm mại */
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 12px; /* Giảm padding nút */
+    border: none;
+    border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 18px; /* Kích thước chữ lớn hơn */
-    font-weight: bold; /* Chữ đậm */
+    font-weight: 600;
     text-decoration: none;
-    display: inline-flex; /* Hiển thị ngang với icon */
-    align-items: center; /* Căn giữa icon và text */
-    gap: 10px; /* Khoảng cách giữa icon và text */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển màu và bóng */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng nhẹ */
-}
-
-.btn-book i {
-    font-size: 20px; /* Kích thước icon */
-    transition: transform 0.3s ease; /* Hiệu ứng động cho icon */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    margin-top: 10px; /* Giảm margin nút */
 }
 
 .btn-book:hover {
-    background: linear-gradient(135deg, rgba(0, 123, 255, 0.4), rgba(0, 123, 255, 0.6)); /* Gradient đậm hơn */
-    transform: translateY(-3px); /* Nhô lên nhẹ khi hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Bóng đổ nổi bật hơn */
+    background-color: var(--secondary-hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-book:hover i {
-    transform: rotate(15deg) scale(1.2); /* Hiệu ứng xoay và phóng to icon */
+#search-results li .btn-book {
+    margin-top: 20px;
+    width: fit-content;
 }
 
-/* ===== Modal ===== */
+.btn-book:hover {
+    background-color: var(--secondary-hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .modal {
-    display: none; /* Ẩn modal mặc định */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Nền mờ */
-}
-
-/* Khi checkbox được checked thì modal hiển thị */
-input[type="checkbox"].toggle-modal:checked + .modal {
-    display: block;
+    background-color: var(--modal-overlay);
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
+    background-color: var(--card-bg-color);
     padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     max-width: 500px;
     width: 90%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow-modal);
     position: relative;
 }
 
-/* Tiêu đề */
-.modal-content h3 {
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #222;
-}
-
-/* Nhãn và input căn hàng gọn */
-.modal-content form > div {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.modal-content label {
-    font-weight: 600;
-    width: 120px;
-    color: #444;
-}
-
-.modal-content input[type="text"],
-.modal-content input[type="tel"],
-.modal-content input[type="date"] {
-    flex: 1;
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng focus */
-}
-
-.modal-content input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Icon trong input */
-.modal-content input[type="text"]::placeholder,
-.modal-content input[type="tel"]::placeholder,
-.modal-content input[type="date"]::placeholder {
-    font-style: italic;
-    color: #999;
-}
-
-/* Nhóm nút */
-.button-group {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.button-group .btn-book {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    background-color: #28a745; /* Màu xanh lá */
-    margin: 0 10px;
-    display: inline-flex; /* Hiển thị ngang với icon */
-    align-items: center;
-    gap: 10px; /* Khoảng cách giữa icon và text */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button-group .btn-book i {
-    font-size: 16px; /* Kích thước icon trong modal */
-}
-
-.button-group .btn-book:hover {
-    background-color: #218838; /* Màu xanh lá đậm hơn khi hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bóng đổ nổi bật hơn */
-}
-
-.button-group .cancel-btn {
-    background-color: #dc3545; /* Màu đỏ cho nút Hủy */
-}
-
-.button-group .cancel-btn:hover {
-    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
-}
-
-/* Nút đóng (dấu X) */
 .close-btn {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
     color: #888;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color var(--transition-speed);
 }
 
 .close-btn:hover {
-    color: #000; /* Đổi màu khi hover */
+    color: black;
+}
+
+.modal-content form > div {
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: var(--input-padding);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.modal-content input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group .btn-book {
+    flex: 1;
+    margin: 0 5px;
 }
